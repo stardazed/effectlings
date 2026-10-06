@@ -1,0 +1,34 @@
+//#title Producer and consumer
+//#kind complete
+//#deepens Queue.unbounded, Queue.offer, Queue.take, Effect.forkChild, Fiber.join
+//#hint Fork the consumer first so it is already waiting, then produce, then join the consumer.
+//#hint The consumer takes three values and adds them. The producer offers 1, 2, 3.
+/**
+ * The classic shape: one fiber produces values, another consumes them, and
+ * a queue sits between them.
+ *
+ * Goal: a consumer fiber takes three numbers from the queue and returns
+ * their sum. The main fiber produces 1, 2 and 3, then joins the consumer.
+ */
+import { Effect, Fiber, Queue } from "effect"
+import { check } from "../../src/check.ts"
+import { todo } from "../../src/todo.ts"
+
+//#solution
+const program = Effect.gen(function*() {
+  const queue = yield* Queue.unbounded<number>()
+  const consumer = yield* Effect.forkChild(
+    Effect.gen(function*() {
+      let sum = 0
+      for (let i = 0; i < 3; i++) sum += yield* Queue.take(queue)
+      return sum
+    })
+  )
+  for (const n of [1, 2, 3]) yield* Queue.offer(queue, n)
+  return yield* Fiber.join(consumer)
+})
+//#exercise
+const program: Effect.Effect<number> = todo()
+//#end
+
+check("sum", await Effect.runPromise(program), 6)

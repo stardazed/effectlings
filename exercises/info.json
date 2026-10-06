@@ -1,0 +1,2824 @@
+{
+  "exercises": [
+    {
+      "path": "00_intro/01_welcome.ts",
+      "title": "Welcome",
+      "kind": "complete",
+      "hints": [
+        "Replace todo() with a number.",
+        "The check at the bottom says which number."
+      ]
+    },
+    {
+      "path": "00_intro/02_type_errors.ts",
+      "title": "Type errors are the first teacher",
+      "kind": "fix",
+      "hints": [
+        "The annotation says string. Look at the value on the right.",
+        "Make the value a string that matches the check below."
+      ]
+    },
+    {
+      "path": "00_intro/03_asking_for_hints.ts",
+      "title": "Asking for hints",
+      "kind": "complete",
+      "hints": [
+        "Two plus three. Replace todo() with an expression that evaluates to 5.",
+        "2 + 3"
+      ]
+    },
+    {
+      "path": "00_intro/04_a_program_is_a_value.ts",
+      "title": "A program is a value",
+      "kind": "complete",
+      "hints": [
+        "Effect.succeed takes the value the program should finish with.",
+        "Effect.runSync(program) runs the program and returns its result."
+      ]
+    },
+    {
+      "path": "00_intro/05_nothing_runs_until_you_run_it.ts",
+      "title": "Nothing runs until you run it",
+      "kind": "complete",
+      "hints": [
+        "Effect.sync takes a function. Put the counter update inside it.",
+        "Effect.sync(() => { calls += 1 })"
+      ]
+    },
+    {
+      "path": "00_intro/06_the_effect_type.ts",
+      "title": "The Effect type",
+      "kind": "fix",
+      "hints": [
+        "The first type argument is what the program finishes with.",
+        "\"hello\" is a string, 3 is a number, and a Date is a Date."
+      ]
+    },
+    {
+      "path": "01_words/01_run_promise.ts",
+      "title": "Running with a Promise",
+      "kind": "complete",
+      "hints": [
+        "runPromise returns a Promise, so await it.",
+        "await Effect.runPromise(program)"
+      ]
+    },
+    {
+      "path": "01_words/02_succeed_is_eager.ts",
+      "title": "Succeed is eager, sync is lazy",
+      "kind": "fix",
+      "hints": [
+        "Effect.succeed(x) receives x already computed, so the increment happens while building.",
+        "Wrap the increment in a function and give it to Effect.sync."
+      ]
+    },
+    {
+      "path": "01_words/03_fail.ts",
+      "title": "Failing",
+      "kind": "complete",
+      "hints": [
+        "The value you pass to Effect.fail is the error. The check tells you which string.",
+        "Effect.fail(\"out of stock\")"
+      ]
+    },
+    {
+      "path": "01_words/04_exit.ts",
+      "title": "Exit: success or failure as a value",
+      "kind": "complete",
+      "hints": [
+        "runPromiseExit never rejects. Await it to get an Exit value.",
+        "Exit.isSuccess(exit) and Exit.isFailure(exit) answer yes or no."
+      ]
+    },
+    {
+      "path": "01_words/05_promise.ts",
+      "title": "Wrapping a Promise that cannot reject",
+      "kind": "complete",
+      "hints": [
+        "Effect.promise takes a function that returns a promise, not the promise itself.",
+        "Effect.promise(() => loadGreeting())"
+      ]
+    },
+    {
+      "path": "01_words/06_try_promise.ts",
+      "title": "Wrapping a Promise that can reject",
+      "kind": "complete",
+      "hints": [
+        "Effect.tryPromise takes an object with two functions: try and catch.",
+        "The catch parameter is typed unknown, so error.message does not compile yet. Narrow it first with instanceof Error.",
+        "catch: (error) => (error instanceof Error ? error.message : String(error))"
+      ]
+    },
+    {
+      "path": "01_words/07_try.ts",
+      "title": "Wrapping code that can throw",
+      "kind": "complete",
+      "hints": [
+        "Same shape as tryPromise: an object with try and catch.",
+        "Effect.try({ try: () => JSON.parse(input), catch: () => \"invalid json\" })"
+      ]
+    },
+    {
+      "path": "01_words/08_suspend.ts",
+      "title": "Deciding at run time with suspend",
+      "kind": "complete",
+      "hints": [
+        "suspend takes a function that returns an Effect. Put the if inside that function.",
+        "Effect.suspend(() => mode === \"on\" ? Effect.succeed(\"on\") : Effect.fail(\"off\"))"
+      ]
+    },
+    {
+      "path": "01_words/09_void.ts",
+      "title": "A program that returns nothing",
+      "kind": "complete",
+      "hints": [
+        "It is a value, not a function. No parentheses.",
+        "const done = Effect.void"
+      ]
+    },
+    {
+      "path": "01_words/10_callback.ts",
+      "title": "Wrapping a callback",
+      "kind": "complete",
+      "hints": [
+        "The function you give to Effect.callback receives a resume function.",
+        "Call resume(Effect.succeed(value)) when the callback fires."
+      ]
+    },
+    {
+      "path": "01_words/11_sleep.ts",
+      "title": "Waiting",
+      "kind": "complete",
+      "hints": [
+        "Durations can be written as text, like \"20 millis\" or \"1 second\".",
+        "Effect.sleep(\"20 millis\")"
+      ]
+    },
+    {
+      "path": "01_words/12_translate_sync_functions.ts",
+      "title": "Translate: plain functions",
+      "kind": "translate",
+      "hints": [
+        "Which one can throw? That one needs try, the other needs sync.",
+        "sync for double, try for mustBePositive.",
+        "catch: (error) => (error instanceof Error ? error.message : String(error)), the same narrowing as in the tryPromise exercise."
+      ]
+    },
+    {
+      "path": "01_words/13_translate_promise_apis.ts",
+      "title": "Translate: promise-returning functions",
+      "kind": "translate",
+      "hints": [
+        "fetchScore never rejects. fetchRank can.",
+        "promise for the first, tryPromise for the second.",
+        "catch: (error) => (error instanceof Error ? error.message : String(error)), the same narrowing as in the tryPromise exercise."
+      ]
+    },
+    {
+      "path": "01_words/14_translate_callback_apis.ts",
+      "title": "Translate: node-style callbacks",
+      "kind": "translate",
+      "hints": [
+        "The callback receives (error, value). Its error is typed Error | null, so error.message is fine here.",
+        "resume(Effect.fail(error.message)) for the error, resume(Effect.succeed(value)) otherwise."
+      ]
+    },
+    {
+      "path": "01_words/15_capstone_pick_the_constructor.ts",
+      "title": "Capstone: pick the constructor",
+      "kind": "translate",
+      "hints": [
+        "For each one ask: is it a plain value, does it run code, can that code throw, is it a promise, can it reject?",
+        "Constructors in play: succeed, fail, void, sync, try, promise, tryPromise."
+      ]
+    },
+    {
+      "path": "02_grammar/01_map.ts",
+      "title": "Transforming a result with map",
+      "kind": "complete",
+      "hints": [
+        ".pipe(...) takes functions that transform the thing on its left.",
+        "price.pipe(Effect.map((n) => n * 1.5))"
+      ]
+    },
+    {
+      "path": "02_grammar/02_map_two_spellings.ts",
+      "title": "Two spellings of the same call",
+      "kind": "complete",
+      "hints": [
+        "The effect itself moves to the first argument.",
+        "Effect.map(price, (n) => n * 2)"
+      ]
+    },
+    {
+      "path": "02_grammar/03_pipe_function.ts",
+      "title": "The pipe function",
+      "kind": "complete",
+      "hints": [
+        "pipe(start, f, g) means g(f(start)).",
+        "pipe(3, double, addOne) and pipe(Effect.succeed(3), Effect.map(double), Effect.map(addOne))"
+      ]
+    },
+    {
+      "path": "02_grammar/04_map_chain.ts",
+      "title": "Chaining maps",
+      "kind": "complete",
+      "hints": [
+        "One .pipe call can take many steps, separated by commas.",
+        ".pipe(Effect.map((s) => s.trim()), Effect.map((s) => s.toUpperCase()), Effect.map((s) => s + \"!\"))"
+      ]
+    },
+    {
+      "path": "02_grammar/05_flat_map.ts",
+      "title": "Chaining programs with flatMap",
+      "kind": "complete",
+      "hints": [
+        "The function you give to flatMap returns an Effect, not a plain value.",
+        "userId.pipe(Effect.flatMap(loadUser), Effect.map((user) => user.name))"
+      ]
+    },
+    {
+      "path": "02_grammar/06_map_or_flat_map.ts",
+      "title": "map or flatMap?",
+      "kind": "fix",
+      "hints": [
+        "Read the type error. Effect<Effect<User>> means an Effect is wrapped inside another.",
+        "map wraps the function's result. When that result is already an Effect, use flatMap."
+      ]
+    },
+    {
+      "path": "02_grammar/07_gen.ts",
+      "title": "Effect.gen",
+      "kind": "complete",
+      "hints": [
+        "Inside the generator, write yield* before an effect to get its result.",
+        "const id = yield* userId; const user = yield* loadUser(id); return user.name"
+      ]
+    },
+    {
+      "path": "02_grammar/08_gen_many_steps.ts",
+      "title": "Many steps, plain code in between",
+      "kind": "complete",
+      "hints": [
+        "Yield each effect into a variable, then use ordinary arithmetic.",
+        "const price = yield* priceOf(sku); const qty = yield* quantityOf(sku); return price * qty"
+      ]
+    },
+    {
+      "path": "02_grammar/09_gen_control_flow.ts",
+      "title": "if and for inside a generator",
+      "kind": "complete",
+      "hints": [
+        "Use a normal for...of loop and yield* inside it.",
+        "let total = 0; for (const sku of skus) { total += yield* stockOf(sku) }; return total < 10 ? \"low\" : \"ok\""
+      ]
+    },
+    {
+      "path": "02_grammar/10_forgot_yield.ts",
+      "title": "Forgetting yield*",
+      "kind": "fix",
+      "hints": [
+        "One of the two constants is still an Effect, not a number.",
+        "Add yield* in front of getA."
+      ]
+    },
+    {
+      "path": "02_grammar/11_tap.ts",
+      "title": "Peeking with tap",
+      "kind": "complete",
+      "hints": [
+        "tap runs an effect for its side effect and then passes the original value along.",
+        "Effect.tap((n) => Effect.sync(() => { seen.push(n) }))"
+      ]
+    },
+    {
+      "path": "02_grammar/12_as.ts",
+      "title": "Replacing the result",
+      "kind": "complete",
+      "hints": [
+        "Effect.as(value) ignores the old result and produces the new one.",
+        "saved.pipe(Effect.as(\"created\")) and saved.pipe(Effect.asVoid)"
+      ]
+    },
+    {
+      "path": "02_grammar/13_zip.ts",
+      "title": "Pairing results with zip",
+      "kind": "complete",
+      "hints": [
+        "zip runs both programs, one after the other, and gives you a pair.",
+        "Effect.zip(name, age)"
+      ]
+    },
+    {
+      "path": "02_grammar/14_all_tuple.ts",
+      "title": "Running a list of programs with all",
+      "kind": "complete",
+      "hints": [
+        "Effect.all accepts an array of effects.",
+        "Effect.all([name, age, admin])"
+      ]
+    },
+    {
+      "path": "02_grammar/15_all_struct.ts",
+      "title": "all with named results",
+      "kind": "complete",
+      "hints": [
+        "Effect.all also accepts an object whose values are effects.",
+        "Effect.all({ name, age, admin })"
+      ]
+    },
+    {
+      "path": "02_grammar/16_for_each.ts",
+      "title": "Effect.forEach",
+      "kind": "complete",
+      "hints": [
+        "forEach takes the array first and the function second.",
+        "Effect.forEach(ids, loadName)"
+      ]
+    },
+    {
+      "path": "02_grammar/17_failure_short_circuits.ts",
+      "title": "A failure stops the program",
+      "kind": "complete",
+      "hints": [
+        "Follow the generator from the top. What happens at the line that fails?",
+        "Steps after a failing yield* never run."
+      ]
+    },
+    {
+      "path": "02_grammar/18_fn.ts",
+      "title": "Effect.fn: functions that return programs",
+      "kind": "complete",
+      "hints": [
+        "Effect.fn(\"name\") returns a function that accepts a generator function.",
+        "Effect.fn(\"priceWithTax\")(function*(price: number) { const rate = yield* taxRate; return price + price * rate })"
+      ]
+    },
+    {
+      "path": "02_grammar/19_fn_calls_fn.ts",
+      "title": "Building on smaller functions",
+      "kind": "complete",
+      "hints": [
+        "Call the smaller function and yield* its result, like any other effect.",
+        "const sub = yield* subtotal(unit, qty); return sub + shipping"
+      ]
+    },
+    {
+      "path": "02_grammar/20_fn_with_combinators.ts",
+      "title": "Adding steps after the generator",
+      "kind": "complete",
+      "hints": [
+        "Effect.fn accepts more arguments after the generator. Each one is applied to the result.",
+        "Effect.fn(\"x\")(function*..., Effect.map(...), Effect.tap(...))"
+      ]
+    },
+    {
+      "path": "02_grammar/21_fn_untraced.ts",
+      "title": "fnUntraced",
+      "kind": "complete",
+      "hints": [
+        "It is the same shape as Effect.fn, without the name argument.",
+        "Effect.fnUntraced(function*(n: number) { ... })"
+      ]
+    },
+    {
+      "path": "02_grammar/22_translate_then_chain.ts",
+      "title": "Translate: a .then chain",
+      "kind": "translate",
+      "hints": [
+        ".then with a function returning a Promise is flatMap. With a plain value it is map.",
+        "fetchUser(id).pipe(Effect.flatMap((u) => fetchPosts(u.id)), Effect.map((posts) => posts.length))"
+      ]
+    },
+    {
+      "path": "02_grammar/23_translate_async_await.ts",
+      "title": "Translate: an async function",
+      "kind": "translate",
+      "hints": [
+        "async becomes Effect.fn(...)(function*), and each await becomes yield*.",
+        "Keep the for loop and the ternary exactly as they are."
+      ]
+    },
+    {
+      "path": "02_grammar/24_translate_promise_all.ts",
+      "title": "Translate: Promise.all",
+      "kind": "translate",
+      "hints": [
+        "The fixed list becomes Effect.all. The list built by map becomes Effect.forEach.",
+        "Effect.all([loadA, loadB]) and Effect.forEach(ids, load)"
+      ]
+    },
+    {
+      "path": "02_grammar/25_capstone_receipt.ts",
+      "title": "Capstone: a receipt",
+      "kind": "complete",
+      "hints": [
+        "Look up every price with forEach, then add them up with plain code.",
+        "Effect.all([Effect.forEach(skus, lookupPrice), taxRate]) gets the prices and the rate together."
+      ]
+    },
+    {
+      "path": "03_types/01_reading_the_success_type.ts",
+      "title": "Reading the success type",
+      "kind": "fix",
+      "hints": [
+        "Look at what the generator returns. It is a template string.",
+        "Change `Answer` to string."
+      ]
+    },
+    {
+      "path": "03_types/02_reading_the_error_type.ts",
+      "title": "Reading the error type",
+      "kind": "fix",
+      "hints": [
+        "Find the line that fails. What type does its argument have?",
+        "Change `Failure` to string."
+      ]
+    },
+    {
+      "path": "03_types/03_reading_the_requirements.ts",
+      "title": "Reading the requirements",
+      "kind": "fix",
+      "hints": [
+        "The generator yields Mailer. That is what the program asks for.",
+        "Change `Needs` to Mailer."
+      ]
+    },
+    {
+      "path": "03_types/04_all_three_slots.ts",
+      "title": "All three slots",
+      "kind": "fix",
+      "hints": [
+        "Each annotation must describe A, then E, then R. Use never for a slot that is empty.",
+        "fail(\"x\") has A = never and E = string. The mailer program needs Mailer and finishes with a string."
+      ]
+    },
+    {
+      "path": "03_types/05_errors_add_up.ts",
+      "title": "Errors add up",
+      "kind": "fix",
+      "hints": [
+        "Yielding two effects that fail differently gives you both failures.",
+        "Change `Failure` to \"timeout\" | 404."
+      ]
+    },
+    {
+      "path": "03_types/06_map_error.ts",
+      "title": "Changing the error with mapError",
+      "kind": "complete",
+      "hints": [
+        "mapError is to E what map is to A.",
+        "lookup.pipe(Effect.mapError((e) => new Error(`user ${e}`)))"
+      ]
+    },
+    {
+      "path": "03_types/07_or_die.ts",
+      "title": "Giving up on an error with orDie",
+      "kind": "complete",
+      "hints": [
+        "orDie removes the error from the type. The error becomes a crash.",
+        "parse(s).pipe(Effect.orDie)"
+      ]
+    },
+    {
+      "path": "03_types/08_exit_as_a_value.ts",
+      "title": "Turning failure into a value with exit",
+      "kind": "complete",
+      "hints": [
+        "Effect.exit(program) wraps the outcome, so the new program cannot fail.",
+        "Effect.exit(risky)"
+      ]
+    },
+    {
+      "path": "03_types/09_unmet_requirements.ts",
+      "title": "Providing a service",
+      "kind": "fix",
+      "hints": [
+        "A program with a requirement cannot be run until the requirement is satisfied.",
+        "program.pipe(Effect.provideService(Mailer, { send: ... })) before running."
+      ]
+    },
+    {
+      "path": "03_types/10_providing_shrinks_r.ts",
+      "title": "Providing one of two services",
+      "kind": "complete",
+      "hints": [
+        "Provide only Db. Mailer stays in R.",
+        "program.pipe(Effect.provideService(Db, { find: ... }))"
+      ]
+    },
+    {
+      "path": "03_types/11_run_sync_or_promise.ts",
+      "title": "runSync cannot wait",
+      "kind": "fix",
+      "hints": [
+        "Read the error. The program has to wait, so it cannot finish synchronously.",
+        "Use Effect.runPromise and await it."
+      ]
+    },
+    {
+      "path": "03_types/12_fixing_a_signature.ts",
+      "title": "Writing the whole signature",
+      "kind": "fix",
+      "hints": [
+        "Look at the body. What does it succeed with, how can it fail, and what does it yield*?",
+        "Effect.Effect<User, \"not found\", Users>"
+      ]
+    },
+    {
+      "path": "03_types/13_fn_return_type.ts",
+      "title": "Stating the contract with fn.Return",
+      "kind": "fix",
+      "hints": [
+        "The annotation promises the error is exactly \"divide by zero\". But Effect.fail(\"...\") widens its argument to string.",
+        "Write the failure as Effect.fail(\"divide by zero\" as const)."
+      ]
+    },
+    {
+      "path": "03_types/14_accepting_failing_effects.ts",
+      "title": "Accepting effects that can fail",
+      "kind": "fix",
+      "hints": [
+        "The parameter type says the task never fails, but you pass one that can.",
+        "Widen the parameter: Effect.Effect<number, string>"
+      ]
+    },
+    {
+      "path": "03_types/15_capstone_signatures.ts",
+      "title": "Capstone: a function with a full signature",
+      "kind": "complete",
+      "hints": [
+        "Yield both services, look the user up, fail when there is no email, otherwise send.",
+        "Annotate the generator with Effect.fn.Return<\"notified\", \"no such user\", Db | Mailer>, and fail with \"no such user\" as const."
+      ]
+    },
+    {
+      "path": "04_errors/01_tagged_error.ts",
+      "title": "Errors are values with a tag",
+      "kind": "fix",
+      "hints": [
+        "A tagged error class extends Data.TaggedError(\"Name\"). The type argument lists the fields.",
+        "class Forbidden extends Data.TaggedError(\"Forbidden\")<{ readonly user: string }> {}"
+      ]
+    },
+    {
+      "path": "04_errors/02_fail_with_a_tagged_error.ts",
+      "title": "Failing with a tagged error",
+      "kind": "complete",
+      "hints": [
+        "Look the name up first. Fail when it is missing, succeed with a user when it is found.",
+        "const name = names.get(id); return name === undefined ? Effect.fail(new NotFound({ id })) : Effect.succeed({ id, name })"
+      ]
+    },
+    {
+      "path": "04_errors/03_yield_an_error.ts",
+      "title": "Yielding an error",
+      "kind": "complete",
+      "hints": [
+        "Compare amount with balance. Fail with the shortfall, otherwise return what is left.",
+        "if (amount > balance) return yield* new Insufficient({ needed: amount - balance })"
+      ]
+    },
+    {
+      "path": "04_errors/04_catch.ts",
+      "title": "Recovering with catch",
+      "kind": "complete",
+      "hints": [
+        "Effect.catch takes a function from the error to a new Effect.",
+        "parsePort(input).pipe(Effect.catch(() => Effect.succeed(3000)))"
+      ]
+    },
+    {
+      "path": "04_errors/05_catch_can_fail_again.ts",
+      "title": "A handler can fail too",
+      "kind": "complete",
+      "hints": [
+        "The handler returns an Effect, so it can choose between succeed and fail.",
+        "Effect.catch(() => key in cache ? Effect.succeed(cache[key]) : Effect.fail(new Unavailable({ key })))"
+      ]
+    },
+    {
+      "path": "04_errors/06_catch_tag.ts",
+      "title": "Handling one kind of error",
+      "kind": "complete",
+      "hints": [
+        "catchTag takes the tag first and the handler second.",
+        "lookup(id).pipe(Effect.catchTag(\"NotFound\", () => Effect.succeed(\"anonymous\")))"
+      ]
+    },
+    {
+      "path": "04_errors/07_catch_tag_narrows_e.ts",
+      "title": "What is left after catchTag",
+      "kind": "fix",
+      "hints": [
+        "catchTag removes the tag it handled. Which tag does it handle here?",
+        "The program handles \"NotFound\", so only Denied remains."
+      ]
+    },
+    {
+      "path": "04_errors/08_catch_tag_many.ts",
+      "title": "Several tags, one handler",
+      "kind": "complete",
+      "hints": [
+        "Give catchTag an array of tags. The handler receives the union of those errors.",
+        "Effect.catchTag([\"NotFound\", \"Denied\"], (e) => Effect.succeed(`recovered from ${e._tag}`))"
+      ]
+    },
+    {
+      "path": "04_errors/09_catch_tags.ts",
+      "title": "A handler per tag",
+      "kind": "complete",
+      "hints": [
+        "catchTags takes one object. Each key is a tag, each value is that tag's handler.",
+        "Effect.catchTags({ NotFound: () => ..., Denied: (e) => ..., Timeout: (e) => ... })"
+      ]
+    },
+    {
+      "path": "04_errors/10_catch_if.ts",
+      "title": "Handling errors that match a condition",
+      "kind": "complete",
+      "hints": [
+        "catchIf takes a predicate on the error, then a handler.",
+        "get(status).pipe(Effect.catchIf((e) => e.status === 404, () => Effect.succeed(\"\")))"
+      ]
+    },
+    {
+      "path": "04_errors/11_or_else_succeed.ts",
+      "title": "A default when you do not care why",
+      "kind": "complete",
+      "hints": [
+        "orElseSucceed takes a function that returns the default value.",
+        "parseCount(s).pipe(Effect.orElseSucceed(() => 0))"
+      ]
+    },
+    {
+      "path": "04_errors/12_match.ts",
+      "title": "Handling both outcomes at once",
+      "kind": "complete",
+      "hints": [
+        "match takes an object with onFailure and onSuccess.",
+        "Effect.match({ onFailure: (e) => ..., onSuccess: (name) => ... })"
+      ]
+    },
+    {
+      "path": "04_errors/13_tap_error.ts",
+      "title": "Watching failures go by",
+      "kind": "complete",
+      "hints": [
+        "tapError is to the error what tap is to the result.",
+        "lookup(id).pipe(Effect.tapError((e) => Effect.sync(() => { seen.push(e._tag) })))"
+      ]
+    },
+    {
+      "path": "04_errors/14_keep_the_cause.ts",
+      "title": "Keep the original error as cause",
+      "kind": "complete",
+      "hints": [
+        "Give catch the raw value and store it in the error: new DbError({ cause }).",
+        "catch: (cause) => new DbError({ cause })"
+      ]
+    },
+    {
+      "path": "04_errors/15_result_as_data.ts",
+      "title": "Failure as data with result",
+      "kind": "complete",
+      "hints": [
+        "yield* Effect.result(program) inside a generator. It never fails.",
+        "outcome._tag === \"Success\" ? outcome.success : outcome.failure"
+      ]
+    },
+    {
+      "path": "04_errors/16_ignore.ts",
+      "title": "Best effort with ignore",
+      "kind": "complete",
+      "hints": [
+        "Effect.ignore is a value you pass to pipe, not a function you call.",
+        "sendMetrics.pipe(Effect.ignore)"
+      ]
+    },
+    {
+      "path": "04_errors/17_filter_or_fail.ts",
+      "title": "Validating with filterOrFail",
+      "kind": "complete",
+      "hints": [
+        "filterOrFail takes a predicate, then a function that builds the error.",
+        "Effect.succeed(age).pipe(Effect.filterOrFail((n) => n >= 18, (n) => new TooYoung({ age: n })))"
+      ]
+    },
+    {
+      "path": "04_errors/18_partition.ts",
+      "title": "Collecting failures instead of stopping",
+      "kind": "complete",
+      "hints": [
+        "partition takes the items and a function that returns an Effect for each.",
+        "Effect.partition(ns, validate)"
+      ]
+    },
+    {
+      "path": "04_errors/19_fail_vs_die.ts",
+      "title": "Failures and defects",
+      "kind": "complete",
+      "hints": [
+        "Bad user input is expected, so it is a failure. An impossible state is a bug, so it is a defect.",
+        "Effect.fail(new InvalidInput({ field: \"email\" })) and Effect.die(\"unreachable state\")"
+      ]
+    },
+    {
+      "path": "04_errors/20_predict_a_throw.ts",
+      "title": "What does a throw become?",
+      "kind": "complete",
+      "hints": [
+        "Nobody declared these throws in E, except one of the three.",
+        "sync and gen: the throw is a defect. try: the throw is turned into a failure by catch."
+      ]
+    },
+    {
+      "path": "04_errors/21_try_catch_does_not_catch.ts",
+      "title": "try/catch does not catch failures",
+      "kind": "fix",
+      "hints": [
+        "A failing effect does not throw an exception, so the catch block never runs.",
+        "Drop the try/catch and use Effect.catch on the effect itself."
+      ]
+    },
+    {
+      "path": "04_errors/22_catch_defect.ts",
+      "title": "catch does not see defects",
+      "kind": "complete",
+      "hints": [
+        "Use catchDefect. Its handler receives the defect as unknown.",
+        "bug.pipe(Effect.catchDefect((defect) => Effect.succeed(`recovered from: ${String(defect)}`)))"
+      ]
+    },
+    {
+      "path": "04_errors/23_or_die_for_impossible.ts",
+      "title": "orDie for things that cannot happen",
+      "kind": "complete",
+      "hints": [
+        "Both are the same call: pipe the parse into Effect.orDie.",
+        "parseHex(\"000000\").pipe(Effect.orDie)"
+      ]
+    },
+    {
+      "path": "04_errors/24_catch_cause.ts",
+      "title": "Looking inside a Cause",
+      "kind": "complete",
+      "hints": [
+        "catchCause sees everything, including defects. The handler receives the whole Cause.",
+        "cause.reasons.some(Cause.isDieReason) asks: is there a defect in here?"
+      ]
+    },
+    {
+      "path": "04_errors/25_exit_match.ts",
+      "title": "Reading an Exit",
+      "kind": "complete",
+      "hints": [
+        "Exit.match takes the exit, then an object with onSuccess and onFailure.",
+        "onFailure receives the Cause. Its reasons are in cause.reasons."
+      ]
+    },
+    {
+      "path": "04_errors/26_catch_reason.ts",
+      "title": "Errors with reasons",
+      "kind": "complete",
+      "hints": [
+        "catchReason takes the parent tag, then the reason tag, then a handler for that reason.",
+        "Effect.catchReason(\"AiError\", \"RateLimited\", (reason) => Effect.succeed(`retry in ${reason.retryAfter}s`))"
+      ]
+    },
+    {
+      "path": "04_errors/27_translate_error_classes.ts",
+      "title": "Translate: Error subclasses and instanceof",
+      "kind": "translate",
+      "hints": [
+        "Handle the two known errors with catchTags. Leave Crash alone, like the final throw e did.",
+        "load(id).pipe(Effect.map((name) => `hello ${name}`), Effect.catchTags({ NotFound: ..., Denied: ... }))"
+      ]
+    },
+    {
+      "path": "04_errors/28_translate_promise_catch.ts",
+      "title": "Translate: .catch and two-argument .then",
+      "kind": "translate",
+      "hints": [
+        ".catch(() => 0) ignores the error: orElseSucceed. .then(onOk, onErr) handles both: match.",
+        "Effect.orElseSucceed(() => 0) and Effect.match({ onFailure: () => \"n/a\", onSuccess: (p) => `$${p}` })"
+      ]
+    },
+    {
+      "path": "04_errors/29_capstone_checkout.ts",
+      "title": "Capstone: placing an order",
+      "kind": "complete",
+      "hints": [
+        "placeOrder: look up the stock, fail with OutOfStock when short, then charge the price times the quantity.",
+        "placeOrder(sku, qty).pipe(Effect.catchTags({ UnknownSku: ..., OutOfStock: ..., PaymentDeclined: ... }))"
+      ]
+    },
+    {
+      "path": "05_data/01_option_some_none.ts",
+      "title": "Maybe there is a value",
+      "kind": "complete",
+      "hints": [
+        "Return Option.some(value) when you find one, Option.none() when you do not.",
+        "for (const n of ns) { if (n % 2 === 0) return Option.some(n) } return Option.none()"
+      ]
+    },
+    {
+      "path": "05_data/02_is_some.ts",
+      "title": "Asking an Option what it holds",
+      "kind": "complete",
+      "hints": [
+        "isSome narrows the type, so inside the true branch you can read .value.",
+        "Option.isSome(o) ? `value ${o.value}` : \"nothing\", and Option.isNone(o) for the second function."
+      ]
+    },
+    {
+      "path": "05_data/03_from_nullish.ts",
+      "title": "From null and undefined to Option",
+      "kind": "complete",
+      "hints": [
+        "fromNullishOr takes any value. null and undefined become none, everything else becomes some.",
+        "Option.fromNullishOr(prices.get(sku))"
+      ]
+    },
+    {
+      "path": "05_data/04_map_and_get_or_else.ts",
+      "title": "Transforming an Option",
+      "kind": "complete",
+      "hints": [
+        "Options have .pipe just like Effects. map changes the value inside, if there is one.",
+        "price.pipe(Option.map((p) => p * 2)) and o.pipe(Option.getOrElse(() => 0))"
+      ]
+    },
+    {
+      "path": "05_data/05_option_match.ts",
+      "title": "Handling both cases with match",
+      "kind": "complete",
+      "hints": [
+        "match takes an object with onNone and onSome.",
+        "price.pipe(Option.match({ onNone: () => \"no price\", onSome: (p) => `$${p}` }))"
+      ]
+    },
+    {
+      "path": "05_data/06_option_flat_map.ts",
+      "title": "Chaining lookups with flatMap",
+      "kind": "complete",
+      "hints": [
+        "Each step returns an Option, so use flatMap, not map.",
+        "findUser(id).pipe(Option.flatMap((u) => u.address), Option.flatMap((a) => a.city))"
+      ]
+    },
+    {
+      "path": "05_data/07_filter_and_or_else.ts",
+      "title": "Filtering and falling back",
+      "kind": "complete",
+      "hints": [
+        "filter turns a some into none when the predicate is false.",
+        "age.pipe(Option.filter((a) => a >= 18)) and primary.pipe(Option.orElse(() => backup))"
+      ]
+    },
+    {
+      "path": "05_data/08_option_all.ts",
+      "title": "All or nothing",
+      "kind": "complete",
+      "hints": [
+        "Option.all takes an array (or an object) of Options.",
+        "Option.all([first, last]) and Option.all({ first, last })"
+      ]
+    },
+    {
+      "path": "05_data/09_effect_from_option.ts",
+      "title": "From Option to Effect",
+      "kind": "complete",
+      "hints": [
+        "Effect.fromOption turns none into a failure. Then rename the failure with mapError.",
+        "Effect.fromOption(findUser(id)).pipe(Effect.mapError(() => new NotFound({ id })))"
+      ]
+    },
+    {
+      "path": "05_data/10_effect_option.ts",
+      "title": "Failure to Option",
+      "kind": "complete",
+      "hints": [
+        "Effect.option is a value you pass to pipe, like Effect.ignore.",
+        "parseAge(s).pipe(Effect.option)"
+      ]
+    },
+    {
+      "path": "05_data/11_result_basics.ts",
+      "title": "Result: success or failure as a plain value",
+      "kind": "complete",
+      "hints": [
+        "Return Result.fail(message) for the bad case and Result.succeed(value) otherwise.",
+        "b === 0 ? Result.fail(\"divide by zero\") : Result.succeed(a / b)"
+      ]
+    },
+    {
+      "path": "05_data/12_result_map_and_match.ts",
+      "title": "Transforming and reading a Result",
+      "kind": "complete",
+      "hints": [
+        "Result has .pipe too. map changes the success value only.",
+        "r.pipe(Result.map((n) => n * 2)) and r.pipe(Result.match({ onFailure: ..., onSuccess: ... }))"
+      ]
+    },
+    {
+      "path": "05_data/13_result_try.ts",
+      "title": "Catching a throw into a Result",
+      "kind": "complete",
+      "hints": [
+        "Same shape as Effect.try: an object with try and catch.",
+        "Result.try({ try: () => JSON.parse(input) as unknown, catch: () => \"invalid json\" })"
+      ]
+    },
+    {
+      "path": "05_data/14_result_flat_map.ts",
+      "title": "Chaining fallible steps",
+      "kind": "complete",
+      "hints": [
+        "Each step returns a Result, so chain them with flatMap.",
+        "parse(s).pipe(Result.flatMap(positive), Result.flatMap(even))"
+      ]
+    },
+    {
+      "path": "05_data/15_effect_and_result.ts",
+      "title": "Moving between Result and Effect",
+      "kind": "complete",
+      "hints": [
+        "fromResult lifts a Result into an Effect. Effect.result goes the other way.",
+        "Effect.fromResult(parse(s)) and Effect.result(program)"
+      ]
+    },
+    {
+      "path": "05_data/16_arr_head_and_last.ts",
+      "title": "Safe first and last",
+      "kind": "complete",
+      "hints": [
+        "Import the Array module under a new name so it does not hide the global Array.",
+        "[Arr.head(ns), Arr.last(ns)]"
+      ]
+    },
+    {
+      "path": "05_data/17_arr_find_first.ts",
+      "title": "Finding an element",
+      "kind": "complete",
+      "hints": [
+        "findFirst takes the array and a predicate, and returns an Option.",
+        "Arr.findFirst(people, (p) => p.age >= 18)"
+      ]
+    },
+    {
+      "path": "05_data/18_arr_group_by.ts",
+      "title": "Grouping",
+      "kind": "complete",
+      "hints": [
+        "groupBy takes the items and a function that returns the group key as a string.",
+        "Arr.groupBy(words, (w) => String(w.length))"
+      ]
+    },
+    {
+      "path": "05_data/19_arr_sort.ts",
+      "title": "Sorting with an Order",
+      "kind": "complete",
+      "hints": [
+        "Arr.sort takes an Order, and Order.Number or Order.String are ready-made ones.",
+        "pipe(ns, Arr.sort(Order.Number))"
+      ]
+    },
+    {
+      "path": "05_data/20_order_map_input.ts",
+      "title": "Sorting records by a field",
+      "kind": "complete",
+      "hints": [
+        "mapInput adapts an Order for numbers into an Order for people, by saying how to get the number.",
+        "const byAge = Order.mapInput(Order.Number, (p: Person) => p.age)"
+      ]
+    },
+    {
+      "path": "05_data/21_arr_dedupe_chunks.ts",
+      "title": "Deduplicating and chunking",
+      "kind": "complete",
+      "hints": [
+        "Both take the array first. chunksOf also takes the chunk size.",
+        "Arr.dedupe(ns) and Arr.chunksOf(ns, 2)"
+      ]
+    },
+    {
+      "path": "05_data/22_arr_partition.ts",
+      "title": "Splitting in two",
+      "kind": "complete",
+      "hints": [
+        "The function returns a Result for each item: succeed for one group, fail for the other.",
+        "Arr.partition(ns, (n) => n % 2 === 0 ? Result.succeed(n) : Result.fail(n))"
+      ]
+    },
+    {
+      "path": "05_data/23_rec_get_and_map.ts",
+      "title": "Records: get and map",
+      "kind": "complete",
+      "hints": [
+        "Import Record under an alias for the same reason as Array.",
+        "Rec.get(prices, sku) and Rec.map(prices, (p) => p * 2)"
+      ]
+    },
+    {
+      "path": "05_data/24_rec_entries_and_filter.ts",
+      "title": "Records: from entries, filter, keys",
+      "kind": "complete",
+      "hints": [
+        "fromEntries takes an array of [key, value] pairs.",
+        "Rec.fromEntries(pairs), Rec.filter(prices, (p) => p > 5), Rec.keys(prices)"
+      ]
+    },
+    {
+      "path": "05_data/25_data_class.ts",
+      "title": "Equal by value",
+      "kind": "fix",
+      "hints": [
+        "Two Point objects are different objects, so === is false. Data.Class makes them equal by value.",
+        "class Point extends Data.Class<{ readonly x: number; readonly y: number }> {}"
+      ]
+    },
+    {
+      "path": "05_data/26_tagged_enum.ts",
+      "title": "A union with tags",
+      "kind": "complete",
+      "hints": [
+        "Each constructor takes the fields of that case. The tag is added for you.",
+        "[Circle({ radius: 1 }), Square({ side: 2 }), Circle({ radius: 3 })] and shapes.filter($is(\"Circle\")).length"
+      ]
+    },
+    {
+      "path": "05_data/27_match_type.ts",
+      "title": "Match by tag",
+      "kind": "complete",
+      "hints": [
+        "Start with Match.type<Shape>(), then one Match.tag per case, then Match.exhaustive.",
+        "Match.type<Shape>().pipe(Match.tag(\"Circle\", (c) => ...), Match.tag(\"Square\", (s) => ...), Match.exhaustive)"
+      ]
+    },
+    {
+      "path": "05_data/28_match_is_exhaustive.ts",
+      "title": "Exhaustive means every case",
+      "kind": "fix",
+      "hints": [
+        "Read the type error. A case of the union has no handler.",
+        "Add Match.tag(\"Triangle\", (t) => t.base * t.height / 2) before Match.exhaustive."
+      ]
+    },
+    {
+      "path": "05_data/29_match_when.ts",
+      "title": "Match on values and types",
+      "kind": "complete",
+      "hints": [
+        "Match.value(input) starts a match on one value. Each Match.when has a pattern and a handler.",
+        "Match.value(input).pipe(Match.when(Match.string, (s) => ...), Match.when(Match.number, (n) => ...), Match.orElse(() => \"something else\"))"
+      ]
+    },
+    {
+      "path": "05_data/30_duration_basics.ts",
+      "title": "Durations",
+      "kind": "complete",
+      "hints": [
+        "Build each part with Duration.minutes and Duration.seconds, then add them with Duration.sum.",
+        "Duration.toMillis(Duration.sum(Duration.minutes(1), Duration.seconds(30)))"
+      ]
+    },
+    {
+      "path": "05_data/31_duration_compare.ts",
+      "title": "Comparing and parsing durations",
+      "kind": "complete",
+      "hints": [
+        "fromInput accepts the same text Effect.sleep accepts, and returns an Option.",
+        "Duration.fromInput(input).pipe(Option.map((d) => Duration.isGreaterThan(d, limit)), Option.getOrElse(() => false))"
+      ]
+    },
+    {
+      "path": "05_data/32_predicates.ts",
+      "title": "Combining predicates",
+      "kind": "complete",
+      "hints": [
+        "and, or and not combine predicates the way && || ! combine booleans.",
+        "Predicate.and(isEven, isSmall), Predicate.or(Predicate.isString, Predicate.isNumber), Predicate.not(Predicate.isString)"
+      ]
+    },
+    {
+      "path": "05_data/33_translate_optional_chaining.ts",
+      "title": "Translate: optional chaining",
+      "kind": "translate",
+      "hints": [
+        "Convert each nullable step into an Option, chain with flatMap, and finish with getOrElse.",
+        "Option.fromNullishOr(user).pipe(Option.flatMap((u) => Option.fromNullishOr(u.address)), Option.flatMap((a) => Option.fromNullishOr(a.city)), Option.getOrElse(() => \"unknown\"))"
+      ]
+    },
+    {
+      "path": "05_data/34_translate_switch.ts",
+      "title": "Translate: a switch on a tag",
+      "kind": "translate",
+      "hints": [
+        "Each case of the switch becomes a Match.tag. The default that never happens becomes Match.exhaustive.",
+        "Match.type<Event>().pipe(Match.tag(\"Click\", ...), Match.tag(\"Key\", ...), Match.tag(\"Scroll\", ...), Match.exhaustive)"
+      ]
+    },
+    {
+      "path": "05_data/35_capstone_inventory.ts",
+      "title": "Capstone: an inventory file",
+      "kind": "complete",
+      "hints": [
+        "parseLine: split on \":\", turn the quantity into an Option, keep it only if it is a whole number, then match to a Result.",
+        "summarize: map the lines with parseLine, then Arr.getSuccesses and Arr.getFailures split the Results."
+      ]
+    },
+    {
+      "path": "06_services/01_define_a_service.ts",
+      "title": "Defining a service",
+      "kind": "fix",
+      "hints": [
+        "A service class extends Context.Service<Self, Shape>() and then takes a string id.",
+        "class Greeter extends Context.Service<Greeter, { readonly greet: (name: string) => string }>()(\"Greeter\") {}"
+      ]
+    },
+    {
+      "path": "06_services/02_use_a_service.ts",
+      "title": "Using a service",
+      "kind": "complete",
+      "hints": [
+        "Yield the service to get it, then call its methods. Yield each method call too, since it returns an Effect.",
+        "const logger = yield* Logger; yield* logger.log(\"start\"); yield* logger.log(\"end\"); return \"done\""
+      ]
+    },
+    {
+      "path": "06_services/03_implementing_a_service.ts",
+      "title": "Implementations are plain objects",
+      "kind": "complete",
+      "hints": [
+        "Clock.of(...) checks that your object has the right shape.",
+        "Clock.of({ now: () => 1000 }), and for the ticking one keep a counter outside: () => (tickCount += 1)"
+      ]
+    },
+    {
+      "path": "06_services/04_use_shortcuts.ts",
+      "title": "The use shortcuts",
+      "kind": "complete",
+      "hints": [
+        "useSync takes a function from the service to a plain value. use takes one that returns an Effect.",
+        "Settings.useSync((s) => s.port) and Settings.use((s) => s.describe())"
+      ]
+    },
+    {
+      "path": "06_services/05_layer_succeed.ts",
+      "title": "Layers: recipes for services",
+      "kind": "complete",
+      "hints": [
+        "Layer.succeed takes the service class and an implementation.",
+        "Layer.succeed(Logger, Logger.of({ log: ... })) and program.pipe(Effect.provide(loggerLayer))"
+      ]
+    },
+    {
+      "path": "06_services/06_layer_effect.ts",
+      "title": "Layers that run setup code",
+      "kind": "complete",
+      "hints": [
+        "Layer.effect takes the service class and an Effect that produces the implementation.",
+        "Layer.effect(Counter, Effect.sync(() => { let n = 0; return Counter.of({ next: () => ++n }) }))"
+      ]
+    },
+    {
+      "path": "06_services/07_static_layer.ts",
+      "title": "The layer lives on the service",
+      "kind": "complete",
+      "hints": [
+        "Inside the class body, write a static property. You can refer to the class by name.",
+        "static readonly layer = Layer.succeed(Mailer, Mailer.of({ send: (to) => Effect.succeed(`sent to ${to}`) }))"
+      ]
+    },
+    {
+      "path": "06_services/08_reading_layer_types.ts",
+      "title": "Reading a Layer's type",
+      "kind": "fix",
+      "hints": [
+        "Layer<ROut, E, RIn>: what it provides, how building it can fail, what it needs to be built.",
+        "It provides Users, can fail with NotConnected, and needs Db."
+      ]
+    },
+    {
+      "path": "06_services/09_layer_provide.ts",
+      "title": "Feeding a layer its dependencies",
+      "kind": "complete",
+      "hints": [
+        "usersLayer needs Db, and dbLayer provides Db.",
+        "usersLayer.pipe(Layer.provide(dbLayer))"
+      ]
+    },
+    {
+      "path": "06_services/10_layer_provide_merge.ts",
+      "title": "Keeping the dependency visible",
+      "kind": "complete",
+      "hints": [
+        "provideMerge feeds the dependency like provide does, and also keeps it in the output.",
+        "usersLayer.pipe(Layer.provideMerge(dbLayer))"
+      ]
+    },
+    {
+      "path": "06_services/11_layer_merge.ts",
+      "title": "Combining independent layers",
+      "kind": "complete",
+      "hints": [
+        "merge takes two layers. mergeAll takes any number.",
+        "Layer.merge(clockLayer, loggerLayer) and Layer.mergeAll(clockLayer, loggerLayer, idsLayer)"
+      ]
+    },
+    {
+      "path": "06_services/12_provide_order.ts",
+      "title": "Provide from the outside in",
+      "kind": "fix",
+      "hints": [
+        "The program needs Users. Users needs Db. Which layer must be provided first?",
+        "Provide usersLayer first (it satisfies the program), then dbLayer (it satisfies usersLayer). Or combine with Layer.provide."
+      ]
+    },
+    {
+      "path": "06_services/13_layer_memoization.ts",
+      "title": "A layer is built once per provide",
+      "kind": "complete",
+      "hints": [
+        "Inside ONE provide, a layer that two others depend on is built once and shared.",
+        "Two separate Effect.provide calls each build their own copy."
+      ]
+    },
+    {
+      "path": "06_services/14_layer_fresh.ts",
+      "title": "Asking for a separate copy",
+      "kind": "complete",
+      "hints": [
+        "Layer.fresh(layer) wraps a layer so it is built again instead of shared.",
+        "bFromBase.pipe(Layer.provide(Layer.fresh(base)))"
+      ]
+    },
+    {
+      "path": "06_services/15_reference.ts",
+      "title": "Services with a default",
+      "kind": "complete",
+      "hints": [
+        "Context.Reference takes the value type, an id, and an options object with defaultValue.",
+        "Context.Reference<\"quiet\" | \"loud\">(\"Verbosity\", { defaultValue: () => \"quiet\" as const })"
+      ]
+    },
+    {
+      "path": "06_services/16_service_option.ts",
+      "title": "An optional service",
+      "kind": "complete",
+      "hints": [
+        "Effect.serviceOption(Metrics) gives an Option. Check it with Option.isSome.",
+        "const metrics = yield* Effect.serviceOption(Metrics); if (Option.isSome(metrics)) yield* metrics.value.count(\"work\")"
+      ]
+    },
+    {
+      "path": "06_services/17_update_service.ts",
+      "title": "Changing a service for part of a program",
+      "kind": "complete",
+      "hints": [
+        "updateService takes the service class and a function from the current implementation to a new one.",
+        "greet.pipe(Effect.updateService(Settings, (s) => ({ ...s, prefix: \"child\" })))"
+      ]
+    },
+    {
+      "path": "06_services/18_make_option.ts",
+      "title": "The make option",
+      "kind": "complete",
+      "hints": [
+        "this.make is the effect you gave to the class. Layer.effect(this, this.make) builds a layer from it.",
+        "static readonly layer = Layer.effect(this, this.make)"
+      ]
+    },
+    {
+      "path": "06_services/19_swap_implementations.ts",
+      "title": "One program, two implementations",
+      "kind": "complete",
+      "hints": [
+        "Both layers provide Mailer. The test one records the address in `outbox`.",
+        "Layer.succeed(Mailer, Mailer.of({ send: (to) => Effect.sync(() => { outbox.push(to); return `recorded ${to}` }) }))"
+      ]
+    },
+    {
+      "path": "06_services/20_layer_mock.ts",
+      "title": "Partial fakes with Layer.mock",
+      "kind": "complete",
+      "hints": [
+        "Layer.mock(Service) returns a function. Call it with only the members you want to implement.",
+        "Layer.mock(Users)({ find: (id) => Effect.succeed(`user-${id}`) })"
+      ]
+    },
+    {
+      "path": "06_services/21_layer_failure.ts",
+      "title": "Layers can fail",
+      "kind": "complete",
+      "hints": [
+        "Fail inside the Effect you give to Layer.effect, before returning the service.",
+        "if (url === \"\") return yield* new ConnectionFailed({ url })"
+      ]
+    },
+    {
+      "path": "06_services/22_translate_constructor_injection.ts",
+      "title": "Translate: constructor injection",
+      "kind": "translate",
+      "hints": [
+        "The constructor parameters become things you yield* at the top of the layer's generator.",
+        "Inside Layer.effect(UserService, Effect.gen(...)): const db = yield* Db; const mailer = yield* Mailer; then define register."
+      ]
+    },
+    {
+      "path": "06_services/23_translate_global_config.ts",
+      "title": "Translate: a global config object",
+      "kind": "translate",
+      "hints": [
+        "endpoint yields Settings and builds the url. The two layers differ only in the apiUrl they provide.",
+        "Layer.succeed(Settings, Settings.of({ apiUrl: \"https://prod.example.com\" }))"
+      ]
+    },
+    {
+      "path": "06_services/24_capstone_welcome.ts",
+      "title": "Capstone: wiring an app",
+      "kind": "complete",
+      "hints": [
+        "Users.layer needs Db and Mailer: yield both, then build welcome. appLayer feeds it the two dependency layers.",
+        "Users.layer.pipe(Layer.provide(Layer.mergeAll(dbLayer, mailerLayer)))"
+      ]
+    },
+    {
+      "path": "07_resources/01_ensuring.ts",
+      "title": "Cleanup that always runs",
+      "kind": "complete",
+      "hints": [
+        "ensuring takes the cleanup Effect, not a function.",
+        "task.pipe(Effect.ensuring(cleanup))"
+      ]
+    },
+    {
+      "path": "07_resources/02_on_exit.ts",
+      "title": "Reacting to how a program ended",
+      "kind": "complete",
+      "hints": [
+        "The function you give to onExit receives the Exit. Exit.isSuccess tells you which way it went.",
+        "task.pipe(Effect.onExit((exit) => Effect.sync(() => { log.push(Exit.isSuccess(exit) ? \"succeeded\" : \"failed\") })))"
+      ]
+    },
+    {
+      "path": "07_resources/03_acquire_use_release.ts",
+      "title": "acquireUseRelease",
+      "kind": "complete",
+      "hints": [
+        "Three arguments, in order: how to get it, what to do with it, how to give it back.",
+        "Effect.acquireUseRelease(openFile, (file) => read(file), (file) => file.close())"
+      ]
+    },
+    {
+      "path": "07_resources/04_release_always_runs.ts",
+      "title": "What happens when use fails?",
+      "kind": "complete",
+      "hints": [
+        "Follow the three phases. Does a failure in use skip the release?",
+        "open, then use (which fails), then close. The release still runs."
+      ]
+    },
+    {
+      "path": "07_resources/05_acquire_release_scoped.ts",
+      "title": "Resources that live in a scope",
+      "kind": "complete",
+      "hints": [
+        "acquireRelease takes the acquire Effect and a release function. scoped marks where the resources are released.",
+        "Effect.acquireRelease(open, () => close), then Effect.scoped(Effect.gen(...)) around the code that uses it."
+      ]
+    },
+    {
+      "path": "07_resources/06_scope_in_the_type.ts",
+      "title": "Scope in the type",
+      "kind": "fix",
+      "hints": [
+        "acquireRelease leaves a promise to release later. That promise is a requirement: Scope.",
+        "Needs is Scope.Scope. After Effect.scoped, nothing is required."
+      ]
+    },
+    {
+      "path": "07_resources/07_release_order.ts",
+      "title": "Released in reverse order",
+      "kind": "complete",
+      "hints": [
+        "Resources are released in the opposite order they were acquired, like a stack.",
+        "open a, open b, working, then close b, close a."
+      ]
+    },
+    {
+      "path": "07_resources/08_add_finalizer.ts",
+      "title": "Registering cleanup by hand",
+      "kind": "complete",
+      "hints": [
+        "addFinalizer takes a function that returns the cleanup Effect. It must run inside a scope.",
+        "yield* Effect.addFinalizer(() => Effect.sync(() => { log.push(\"cleanup\") }))"
+      ]
+    },
+    {
+      "path": "07_resources/09_finalizers_see_the_exit.ts",
+      "title": "Finalizers see how the scope ended",
+      "kind": "complete",
+      "hints": [
+        "The finalizer receives the Exit of the scoped block. Its _tag is \"Success\" or \"Failure\".",
+        "The first program succeeds and the second fails."
+      ]
+    },
+    {
+      "path": "07_resources/10_layer_with_a_resource.ts",
+      "title": "A layer that owns a resource",
+      "kind": "complete",
+      "hints": [
+        "Give Layer.effect an acquireRelease. The layer handles the scope for you.",
+        "Layer.effect(Db, Effect.acquireRelease(connect, () => disconnect))"
+      ]
+    },
+    {
+      "path": "07_resources/11_manual_scope.ts",
+      "title": "Closing a scope yourself",
+      "kind": "fix",
+      "hints": [
+        "The scope is made and used, but nothing ever closes it.",
+        "await Effect.runPromise(Scope.close(scope, Exit.void))"
+      ]
+    },
+    {
+      "path": "07_resources/12_translate_try_finally.ts",
+      "title": "Translate: try/finally",
+      "kind": "translate",
+      "hints": [
+        "The open is the acquire, the body of try is use, the finally block is release.",
+        "Effect.acquireUseRelease(open(path), (file) => file.readLine(), (file) => file.close())"
+      ]
+    },
+    {
+      "path": "07_resources/13_translate_nested_resources.ts",
+      "title": "Translate: nested try/finally",
+      "kind": "translate",
+      "hints": [
+        "Two acquireRelease calls in one scoped generator replace the nesting.",
+        "Effect.scoped(Effect.gen(function*() { const db = yield* acquireDb; const cache = yield* acquireCache; return yield* work(db, cache) }))"
+      ]
+    },
+    {
+      "path": "07_resources/14_capstone_startup_shutdown.ts",
+      "title": "Capstone: startup and shutdown order",
+      "kind": "complete",
+      "hints": [
+        "The server layer needs Db, so yield Db inside it. Build it with acquireRelease like the db layer.",
+        "serverLayer.pipe(Layer.provide(dbLayer)) makes a layer that needs nothing."
+      ]
+    },
+    {
+      "path": "08_concurrency/01_fork_and_join.ts",
+      "title": "Running something in the background",
+      "kind": "complete",
+      "hints": [
+        "forkChild starts the work and gives you a Fiber straight away. Fiber.join waits for its result.",
+        "const fiber = yield* Effect.forkChild(slowDouble(21)); ...; const doubled = yield* Fiber.join(fiber)"
+      ]
+    },
+    {
+      "path": "08_concurrency/02_fork_order.ts",
+      "title": "Who goes first?",
+      "kind": "complete",
+      "hints": [
+        "forkChild returns immediately. The child has to sleep before it logs.",
+        "forked, then the child finishes, then joined."
+      ]
+    },
+    {
+      "path": "08_concurrency/03_await_vs_join.ts",
+      "title": "join or await?",
+      "kind": "complete",
+      "hints": [
+        "Fiber.await gives you the Exit and never fails. Fiber.join fails if the fiber failed.",
+        "outcome: fork, then yield* Fiber.await(fiber). joined: fork, then yield* Fiber.join(fiber)."
+      ]
+    },
+    {
+      "path": "08_concurrency/04_interrupt.ts",
+      "title": "Stopping a fiber",
+      "kind": "complete",
+      "hints": [
+        "Fork Effect.never, let it start with Effect.yieldNow, interrupt it, then await its Exit.",
+        "const fiber = yield* Effect.forkChild(Effect.never); yield* Effect.yieldNow; yield* Fiber.interrupt(fiber); return yield* Fiber.await(fiber)"
+      ]
+    },
+    {
+      "path": "08_concurrency/05_on_interrupt.ts",
+      "title": "Cleaning up when interrupted",
+      "kind": "complete",
+      "hints": [
+        "onInterrupt takes a function returning the cleanup Effect. It runs only on interruption.",
+        "Effect.never.pipe(Effect.onInterrupt(() => Effect.sync(() => { log.push(\"cleanup\") })))"
+      ]
+    },
+    {
+      "path": "08_concurrency/06_uninterruptible.ts",
+      "title": "Protecting a critical section",
+      "kind": "fix",
+      "hints": [
+        "The job is cut short by the interrupt. Mark it so interruption waits for it.",
+        "const task = Effect.uninterruptible(job)"
+      ]
+    },
+    {
+      "path": "08_concurrency/07_children_end_with_parent.ts",
+      "title": "Children end with their parent",
+      "kind": "complete",
+      "hints": [
+        "A child started with forkChild cannot outlive the fiber that forked it.",
+        "child started, parent done, then the child is interrupted as the parent finishes."
+      ]
+    },
+    {
+      "path": "08_concurrency/08_fork_detach.ts",
+      "title": "Outliving the parent",
+      "kind": "complete",
+      "hints": [
+        "forkDetach starts a fiber that is not tied to the parent.",
+        "yield* Effect.forkDetach(job); return \"started\""
+      ]
+    },
+    {
+      "path": "08_concurrency/09_fork_scoped.ts",
+      "title": "A fiber that lives as long as a scope",
+      "kind": "complete",
+      "hints": [
+        "forkScoped ties the fiber to the current Scope, so the type needs Scope.Scope in R.",
+        "Effect.gen(function*() { yield* Effect.forkScoped(worker) })"
+      ]
+    },
+    {
+      "path": "08_concurrency/10_all_concurrently.ts",
+      "title": "Running things at the same time",
+      "kind": "fix",
+      "hints": [
+        "Effect.all takes an options object as its second argument.",
+        "Effect.all([...], { concurrency: \"unbounded\" })"
+      ]
+    },
+    {
+      "path": "08_concurrency/11_concurrency_limit.ts",
+      "title": "At most N at a time",
+      "kind": "complete",
+      "hints": [
+        "forEach takes the options object as its third argument.",
+        "Effect.forEach(ns, work, { concurrency: 2 })"
+      ]
+    },
+    {
+      "path": "08_concurrency/12_race.ts",
+      "title": "The first one wins",
+      "kind": "complete",
+      "hints": [
+        "race takes two effects. The loser is interrupted.",
+        "Effect.race(slow, fast)"
+      ]
+    },
+    {
+      "path": "08_concurrency/13_timeout.ts",
+      "title": "Giving up after a while",
+      "kind": "complete",
+      "hints": [
+        "timeout takes a duration and adds a TimeoutError to the error channel.",
+        "slow.pipe(Effect.timeout(\"5 millis\"), Effect.catchTag(\"TimeoutError\", () => Effect.succeed(\"gave up\")))"
+      ]
+    },
+    {
+      "path": "08_concurrency/14_timeout_or_else.ts",
+      "title": "A fallback on timeout",
+      "kind": "complete",
+      "hints": [
+        "timeoutOrElse takes one object: the duration and an orElse function.",
+        "slow.pipe(Effect.timeoutOrElse({ duration: \"5 millis\", orElse: () => Effect.succeed(\"fallback\") }))"
+      ]
+    },
+    {
+      "path": "08_concurrency/15_ref_basics.ts",
+      "title": "Mutable state with Ref",
+      "kind": "complete",
+      "hints": [
+        "Ref.make creates the Ref with an initial value. get reads it, set replaces it.",
+        "const status = yield* Ref.make(\"draft\"); const before = yield* Ref.get(status); yield* Ref.set(status, \"published\")"
+      ]
+    },
+    {
+      "path": "08_concurrency/16_ref_update.ts",
+      "title": "Updating a Ref",
+      "kind": "complete",
+      "hints": [
+        "update takes a function from the old value to the new one. updateAndGet also returns the new value.",
+        "yield* Ref.update(counter, (n) => n + 1) three times, then return yield* Ref.updateAndGet(counter, (n) => n + 10)"
+      ]
+    },
+    {
+      "path": "08_concurrency/17_ref_modify.ts",
+      "title": "Reading and changing in one step",
+      "kind": "complete",
+      "hints": [
+        "modify's function returns a pair: [the value to hand back, the new state].",
+        "Ref.modify(ref, (n) => [n, n + 1])"
+      ]
+    },
+    {
+      "path": "08_concurrency/18_ref_many_fibers.ts",
+      "title": "Many fibers, one Ref",
+      "kind": "complete",
+      "hints": [
+        "Create the Ref, run n updates with forEach and concurrency \"unbounded\", then read it.",
+        "Effect.forEach(Array.from({ length: n }), () => Ref.update(counter, (x) => x + 1), { concurrency: \"unbounded\" })"
+      ]
+    },
+    {
+      "path": "08_concurrency/19_deferred.ts",
+      "title": "Waiting for a signal",
+      "kind": "complete",
+      "hints": [
+        "A Deferred starts empty. One fiber awaits it, another completes it.",
+        "const signal = yield* Deferred.make<string>(); fork Deferred.await(signal); later yield* Deferred.succeed(signal, \"go\")"
+      ]
+    },
+    {
+      "path": "08_concurrency/20_deferred_fail.ts",
+      "title": "A signal that failed",
+      "kind": "complete",
+      "hints": [
+        "Deferred.make takes a second type argument for the error. fail completes it with a failure.",
+        "const d = yield* Deferred.make<string, string>(); yield* Deferred.fail(d, \"cancelled\"); return yield* Deferred.await(d)"
+      ]
+    },
+    {
+      "path": "08_concurrency/21_latch.ts",
+      "title": "A gate that opens",
+      "kind": "complete",
+      "hints": [
+        "A Latch starts closed when you pass false. Fibers that await it wait until it is opened.",
+        "const gate = yield* Latch.make(false); ...Latch.await(gate)...; yield* Latch.open(gate)"
+      ]
+    },
+    {
+      "path": "08_concurrency/22_semaphore.ts",
+      "title": "One at a time",
+      "kind": "complete",
+      "hints": [
+        "Make a semaphore with one permit, then wrap each job so it holds a permit while it runs.",
+        "const sem = yield* Semaphore.make(1); const guarded = Semaphore.withPermits(sem, 1)(job)"
+      ]
+    },
+    {
+      "path": "08_concurrency/23_queue_basics.ts",
+      "title": "Queues",
+      "kind": "complete",
+      "hints": [
+        "Create the queue, put things in with offer or offerAll, take them out with take. First in, first out.",
+        "yield* Queue.offer(queue, 1); yield* Queue.offerAll(queue, [2, 3]); then Queue.take three times"
+      ]
+    },
+    {
+      "path": "08_concurrency/24_queue_backpressure.ts",
+      "title": "A full queue makes the producer wait",
+      "kind": "complete",
+      "hints": [
+        "Queue.bounded(1) holds one item. The second offer cannot finish until somebody takes.",
+        "Only the first offer completed, so the counter is 1."
+      ]
+    },
+    {
+      "path": "08_concurrency/25_producer_consumer.ts",
+      "title": "Producer and consumer",
+      "kind": "complete",
+      "hints": [
+        "Fork the consumer first so it is already waiting, then produce, then join the consumer.",
+        "The consumer takes three values and adds them. The producer offers 1, 2, 3."
+      ]
+    },
+    {
+      "path": "08_concurrency/26_queue_dropping.ts",
+      "title": "A queue that drops",
+      "kind": "complete",
+      "hints": [
+        "dropping(n) refuses new values when full. offer tells you whether it was accepted.",
+        "const accepted = [yield* Queue.offer(q, 1), ...]; const kept = yield* Queue.takeAll(q)"
+      ]
+    },
+    {
+      "path": "08_concurrency/27_pubsub.ts",
+      "title": "Broadcasting with PubSub",
+      "kind": "complete",
+      "hints": [
+        "Subscribe before you publish: a subscriber only receives messages published after it subscribed.",
+        "const s1 = yield* PubSub.subscribe(hub); const s2 = yield* PubSub.subscribe(hub); yield* PubSub.publish(hub, \"hi\"); PubSub.take(s1)"
+      ]
+    },
+    {
+      "path": "08_concurrency/28_translate_promise_combinators.ts",
+      "title": "Translate: Promise.all and Promise.race",
+      "kind": "translate",
+      "hints": [
+        "Promise.all becomes Effect.all with concurrency \"unbounded\". Promise.race becomes Effect.race.",
+        "Effect.all([loadUser, loadPosts], { concurrency: \"unbounded\" }) and Effect.race(mirrorA, mirrorB)"
+      ]
+    },
+    {
+      "path": "08_concurrency/29_translate_limit_parallel.ts",
+      "title": "Translate: a parallel limit",
+      "kind": "translate",
+      "hints": [
+        "p-limit's limit(2) is the concurrency option of forEach.",
+        "Effect.forEach(urls, download, { concurrency: 2 })"
+      ]
+    },
+    {
+      "path": "08_concurrency/30_translate_abort_signal.ts",
+      "title": "Translate: AbortController",
+      "kind": "translate",
+      "hints": [
+        "tryPromise passes an AbortSignal to your try function. Interrupting the fiber aborts that signal.",
+        "Effect.tryPromise({ try: (signal) => slowFetch(signal), catch: () => \"failed\" })"
+      ]
+    },
+    {
+      "path": "08_concurrency/31_capstone_workers.ts",
+      "title": "Capstone: a pool of workers",
+      "kind": "complete",
+      "hints": [
+        "Put the jobs in the queue, fork two workers that each take half of them, join both, read the Ref.",
+        "Each worker: for (let i = 0; i < perWorker; i++) { const job = yield* Queue.take(queue); yield* Ref.update(total, (n) => n + job * 2) }"
+      ]
+    },
+    {
+      "path": "09_schema/01_decode_primitives.ts",
+      "title": "Checking unknown data",
+      "kind": "complete",
+      "hints": [
+        "Schema.decodeUnknownSync(schema) gives you a function from unknown to the schema's type.",
+        "const parseName = Schema.decodeUnknownSync(Schema.String)"
+      ]
+    },
+    {
+      "path": "09_schema/02_struct.ts",
+      "title": "Describing an object",
+      "kind": "complete",
+      "hints": [
+        "Schema.Struct takes an object whose values are schemas, one per field.",
+        "Schema.Struct({ name: Schema.String, age: Schema.Number })"
+      ]
+    },
+    {
+      "path": "09_schema/03_decode_failure.ts",
+      "title": "What a failed decode throws",
+      "kind": "complete",
+      "hints": [
+        "Wrap the decode in try/catch. A SchemaError means the input was bad; anything else is unexpected.",
+        "catch (error) { if (Schema.isSchemaError(error)) return \"invalid\"; throw error }"
+      ]
+    },
+    {
+      "path": "09_schema/04_decode_option.ts",
+      "title": "Decoding without exceptions: Option",
+      "kind": "complete",
+      "hints": [
+        "decodeUnknownOption returns some(value) when the input fits and none when it does not.",
+        "Schema.decodeUnknownOption(Person)(input)"
+      ]
+    },
+    {
+      "path": "09_schema/05_decode_effect.ts",
+      "title": "Decoding inside Effect",
+      "kind": "complete",
+      "hints": [
+        "decodeUnknownEffect fails with a SchemaError, whose tag is \"SchemaError\".",
+        "decodePerson(input).pipe(Effect.map((p) => `hello ${p.name}`), Effect.catchTag(\"SchemaError\", () => Effect.succeed(\"invalid person\")))"
+      ]
+    },
+    {
+      "path": "09_schema/06_is_guard.ts",
+      "title": "A type guard from a schema",
+      "kind": "complete",
+      "hints": [
+        "Schema.is(Person) is a function you can call in an if. Inside the branch TypeScript knows the shape.",
+        "Schema.is(Person)(input) ? `person ${input.name}` : \"not a person\""
+      ]
+    },
+    {
+      "path": "09_schema/07_optional_fields.ts",
+      "title": "Optional fields",
+      "kind": "complete",
+      "hints": [
+        "optionalKey: the key may be absent. optional: the key may be absent or hold undefined.",
+        "nickname: Schema.optionalKey(Schema.String), age: Schema.optional(Schema.Number)"
+      ]
+    },
+    {
+      "path": "09_schema/08_nullable.ts",
+      "title": "null is a value too",
+      "kind": "complete",
+      "hints": [
+        "NullOr wraps another schema and also allows null.",
+        "Schema.Struct({ id: Schema.Number, deletedAt: Schema.NullOr(Schema.String) })"
+      ]
+    },
+    {
+      "path": "09_schema/09_array.ts",
+      "title": "Arrays",
+      "kind": "complete",
+      "hints": [
+        "Schema.Array takes the schema of one element.",
+        "Schema.Array(Schema.Number)"
+      ]
+    },
+    {
+      "path": "09_schema/10_record.ts",
+      "title": "Records with any keys",
+      "kind": "complete",
+      "hints": [
+        "Schema.Record takes a schema for the keys and a schema for the values.",
+        "Schema.Record(Schema.String, Schema.Number)"
+      ]
+    },
+    {
+      "path": "09_schema/11_tuple.ts",
+      "title": "Tuples",
+      "kind": "complete",
+      "hints": [
+        "Schema.Tuple takes an array of schemas, one per position.",
+        "Schema.Tuple([Schema.Number, Schema.Number])"
+      ]
+    },
+    {
+      "path": "09_schema/12_literals.ts",
+      "title": "Exact values",
+      "kind": "complete",
+      "hints": [
+        "Literal is for one exact value, Literals for a set of them.",
+        "Schema.Literal(\"v1\") and Schema.Literals([\"draft\", \"published\"])"
+      ]
+    },
+    {
+      "path": "09_schema/13_union.ts",
+      "title": "One of several shapes",
+      "kind": "complete",
+      "hints": [
+        "Union takes an array of schemas. The input must fit at least one.",
+        "Schema.Union([Schema.String, Schema.Number])"
+      ]
+    },
+    {
+      "path": "09_schema/14_tagged_struct.ts",
+      "title": "Tagged structs",
+      "kind": "complete",
+      "hints": [
+        "TaggedStruct takes the tag first and the fields second, and adds the _tag field for you.",
+        "Schema.TaggedStruct(\"Circle\", { radius: Schema.Number })"
+      ]
+    },
+    {
+      "path": "09_schema/15_string_checks.ts",
+      "title": "Rules for strings",
+      "kind": "complete",
+      "hints": [
+        "Put the rules inside .check(...) on the base schema. You can give it several.",
+        "Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))"
+      ]
+    },
+    {
+      "path": "09_schema/16_number_checks.ts",
+      "title": "Rules for numbers",
+      "kind": "complete",
+      "hints": [
+        "isInt() takes no arguments. isBetween takes an object with minimum and maximum.",
+        "Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))"
+      ]
+    },
+    {
+      "path": "09_schema/17_error_messages.ts",
+      "title": "Your own error message",
+      "kind": "complete",
+      "hints": [
+        "Most checks take an options object as the last argument. message is one of its fields.",
+        "Schema.isGreaterThan(0, { message: \"must be positive\" })"
+      ]
+    },
+    {
+      "path": "09_schema/18_make_filter.ts",
+      "title": "A rule of your own",
+      "kind": "complete",
+      "hints": [
+        "makeFilter takes a function from the value to: undefined when it is fine, or a message when it is not.",
+        "Schema.makeFilter((n: number) => (n % 2 === 0 ? undefined : \"must be even\"))"
+      ]
+    },
+    {
+      "path": "09_schema/19_brand.ts",
+      "title": "Branded types",
+      "kind": "complete",
+      "hints": [
+        "brand is applied with pipe, and takes the name of the brand.",
+        "Schema.String.pipe(Schema.brand(\"UserId\"))"
+      ]
+    },
+    {
+      "path": "09_schema/20_brand_safety.ts",
+      "title": "The brand protects you",
+      "kind": "fix",
+      "hints": [
+        "loadUser wants a UserId, not any string. Turn the string into a UserId first.",
+        "loadUser(Schema.decodeUnknownSync(UserId)(\"u_7\"))"
+      ]
+    },
+    {
+      "path": "09_schema/21_number_from_string.ts",
+      "title": "Decoding changes the value",
+      "kind": "complete",
+      "hints": [
+        "Decode with decodeUnknownSync and the other direction with encodeSync, both on NumberFromString.",
+        "const parseQty = Schema.decodeUnknownSync(Schema.NumberFromString); const formatQty = Schema.encodeSync(Schema.NumberFromString)"
+      ]
+    },
+    {
+      "path": "09_schema/22_type_vs_encoded.ts",
+      "title": "Type and Encoded",
+      "kind": "fix",
+      "hints": [
+        "qty and at change during decoding. The Type holds a number and a Date, the Encoded form holds strings.",
+        "Type: { qty: number; at: Date }. Encoded: { qty: string; at: string }."
+      ]
+    },
+    {
+      "path": "09_schema/23_roundtrip.ts",
+      "title": "There and back again",
+      "kind": "complete",
+      "hints": [
+        "encodeSync turns each field back to its Encoded form. The number becomes a string, the Date an ISO string.",
+        "{ qty: \"3\", at: \"1970-01-01T00:00:00.000Z\" }"
+      ]
+    },
+    {
+      "path": "09_schema/24_transform.ts",
+      "title": "Your own conversion",
+      "kind": "complete",
+      "hints": [
+        "transform takes a decode function and an encode function. They must undo each other.",
+        "Schema.Finite.pipe(Schema.decode(SchemaTransformation.transform({ decode: (m: number) => m / 1000, encode: (k: number) => k * 1000 })))"
+      ]
+    },
+    {
+      "path": "09_schema/25_decode_to.ts",
+      "title": "From one shape to another",
+      "kind": "complete",
+      "hints": [
+        "decodeTo takes the target schema and a transformation whose decode and encode convert between the two shapes.",
+        "Schema.decodeTo(Schema.Struct({ age: Schema.Number }), SchemaTransformation.transform({ decode: ..., encode: ... }))"
+      ]
+    },
+    {
+      "path": "09_schema/26_trim_and_lowercase.ts",
+      "title": "Cleaning input",
+      "kind": "complete",
+      "hints": [
+        "Both are ready-made transformations. Attach each with Schema.decode.",
+        "Schema.String.pipe(Schema.decode(SchemaTransformation.trim()), Schema.decode(SchemaTransformation.toLowerCase()))"
+      ]
+    },
+    {
+      "path": "09_schema/27_decoding_default.ts",
+      "title": "A default when a field is missing",
+      "kind": "complete",
+      "hints": [
+        "Start from an optionalKey, then pipe it into withDecodingDefaultKey with an Effect that produces the default.",
+        "Schema.optionalKey(Schema.Number).pipe(Schema.withDecodingDefaultKey(Effect.succeed(3)))"
+      ]
+    },
+    {
+      "path": "09_schema/28_constructor_default.ts",
+      "title": "Defaults when building values",
+      "kind": "fix",
+      "hints": [
+        "Settings.make({ host }) fails to compile because retries is required. Give retries a constructor default.",
+        "retries: Schema.Number.pipe(Schema.withConstructorDefault(Effect.succeed(3)))"
+      ]
+    },
+    {
+      "path": "09_schema/29_make_validates.ts",
+      "title": "make checks the rules too",
+      "kind": "complete",
+      "hints": [
+        ".make throws when a rule fails, so wrap it in try/catch.",
+        "try { Adult.make({ name, age }); return `registered ${name}` } catch { return \"rejected\" }"
+      ]
+    },
+    {
+      "path": "09_schema/30_class.ts",
+      "title": "Schemas that are classes",
+      "kind": "fix",
+      "hints": [
+        "The class has no fields, so this.age does not exist. Extend Schema.Class and list the fields there.",
+        "class Person extends Schema.Class<Person>(\"Person\")({ name: Schema.String, age: Schema.Number }) { ... }"
+      ]
+    },
+    {
+      "path": "09_schema/31_tagged_class.ts",
+      "title": "Classes with a tag",
+      "kind": "fix",
+      "hints": [
+        "TaggedClass works like Class, but takes the tag as its first argument and adds the _tag field.",
+        "class Deposit extends Schema.TaggedClass<Deposit>()(\"Deposit\", { amount: Schema.Number }) {}"
+      ]
+    },
+    {
+      "path": "09_schema/32_tagged_error_class.ts",
+      "title": "Errors defined by schemas",
+      "kind": "fix",
+      "hints": [
+        "It has the same shape as TaggedClass: Schema.TaggedError<Self>()(tag, fields).",
+        "class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()(\"InsufficientFunds\", { needed: Schema.Number }) {}"
+      ]
+    },
+    {
+      "path": "09_schema/33_json_strings.ts",
+      "title": "Schemas for JSON text",
+      "kind": "complete",
+      "hints": [
+        "Give fromJsonString the schema of the value INSIDE the JSON.",
+        "Schema.fromJsonString(Person)"
+      ]
+    },
+    {
+      "path": "09_schema/34_option_from_null.ts",
+      "title": "null in the data, Option in the program",
+      "kind": "complete",
+      "hints": [
+        "OptionFromNullOr wraps the schema of the value that may be present.",
+        "Schema.OptionFromNullOr(Schema.String)"
+      ]
+    },
+    {
+      "path": "09_schema/35_reuse_fields.ts",
+      "title": "Reusing fields",
+      "kind": "complete",
+      "hints": [
+        "A Struct remembers its fields in .fields. fieldsAssign adds more.",
+        "Person.pipe(Schema.fieldsAssign({ company: Schema.String })) and Schema.Struct({ name: Person.fields.name })"
+      ]
+    },
+    {
+      "path": "09_schema/36_recursive.ts",
+      "title": "Schemas that contain themselves",
+      "kind": "complete",
+      "hints": [
+        "The children field is an array of the schema you are defining. Wrap the self-reference in Schema.suspend.",
+        "children: Schema.Array(Schema.suspend((): Schema.Codec<Category> => Category))"
+      ]
+    },
+    {
+      "path": "09_schema/37_translate_type_guard.ts",
+      "title": "Translate: a hand-written type guard",
+      "kind": "translate",
+      "hints": [
+        "The fields go into a Struct. The guard is Schema.is of that schema.",
+        "const User = Schema.Struct({ name: Schema.String, age: Schema.Number }); const isUser = Schema.is(User)"
+      ]
+    },
+    {
+      "path": "09_schema/38_translate_json_parse.ts",
+      "title": "Translate: JSON.parse with a cast",
+      "kind": "translate",
+      "hints": [
+        "Decode the text with the schema from fromJsonString, using decodeUnknownEffect.",
+        "Schema.decodeUnknownEffect(Schema.fromJsonString(Config))(text)"
+      ]
+    },
+    {
+      "path": "09_schema/39_capstone_config.ts",
+      "title": "Capstone: loading configuration",
+      "kind": "complete",
+      "hints": [
+        "Config: host is a string, port an integer from 1 to 65535, env is an optional \"dev\" or \"prod\" defaulting to \"dev\".",
+        "loadConfig decodes Schema.fromJsonString(Config) and mapErrors the SchemaError into a ConfigError with its message."
+      ]
+    },
+    {
+      "path": "10_streams/01_make_and_collect.ts",
+      "title": "A stream is many values over time",
+      "kind": "complete",
+      "hints": [
+        "Stream.make takes the values. map and runCollect work like the ones you know.",
+        "Stream.make(1, 2, 3).pipe(Stream.map((n) => n * 2), Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/02_from_iterable.ts",
+      "title": "Streams from collections",
+      "kind": "complete",
+      "hints": [
+        "fromIterable takes any array or iterable. range takes a start and an end, both included.",
+        "Stream.fromIterable(words).pipe(Stream.filter(...), Stream.runCollect) and Stream.range(1, 5).pipe(Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/03_take_and_drop.ts",
+      "title": "Taking part of a stream",
+      "kind": "complete",
+      "hints": [
+        "take keeps the first n values, drop skips them.",
+        "Stream.range(1, 10).pipe(Stream.drop(2), Stream.take(3), Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/04_infinite_streams.ts",
+      "title": "Streams can be infinite",
+      "kind": "complete",
+      "hints": [
+        "iterate takes a starting value and a function from the current value to the next.",
+        "Stream.iterate(1, (n) => n * 2).pipe(Stream.take(6), Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/05_laziness.ts",
+      "title": "Only as much as needed",
+      "kind": "complete",
+      "hints": [
+        "tap runs an effect for each value as it passes, like Effect.tap. Only values that are pulled pass through it.",
+        "The stream stops after 3 values, so the tap sees 3."
+      ]
+    },
+    {
+      "path": "10_streams/06_run_fold.ts",
+      "title": "Reducing a stream",
+      "kind": "complete",
+      "hints": [
+        "runFold takes a function that returns the starting value, and a function that combines.",
+        "Stream.runFold(() => 0, (total, n) => total + n), Stream.runSum, Stream.runCount"
+      ]
+    },
+    {
+      "path": "10_streams/07_run_for_each.ts",
+      "title": "Doing something with every value",
+      "kind": "complete",
+      "hints": [
+        "runForEach takes a function returning an Effect for each value. runDrain runs the stream and discards values.",
+        "Stream.runForEach((n) => Effect.sync(() => { seen.push(n) })) and stream.pipe(Stream.tap(...), Stream.runDrain)"
+      ]
+    },
+    {
+      "path": "10_streams/08_head_and_last.ts",
+      "title": "The first and last value",
+      "kind": "complete",
+      "hints": [
+        "Both give an Option, because the stream might be empty.",
+        "Stream.runHead and Stream.runLast"
+      ]
+    },
+    {
+      "path": "10_streams/09_map_effect.ts",
+      "title": "Effects for every value",
+      "kind": "complete",
+      "hints": [
+        "mapEffect is map with a function that returns an Effect. It runs one value at a time by default.",
+        "Stream.mapEffect(lookup, { concurrency: 3 })"
+      ]
+    },
+    {
+      "path": "10_streams/10_flat_map.ts",
+      "title": "One value, many values",
+      "kind": "complete",
+      "hints": [
+        "The function you give to flatMap returns a Stream. Everything it produces is emitted in place of the original value.",
+        "Stream.flatMap((n) => Stream.make(n, n * 10))"
+      ]
+    },
+    {
+      "path": "10_streams/11_concat_and_zip.ts",
+      "title": "Joining streams",
+      "kind": "complete",
+      "hints": [
+        "concat plays one stream after the other. zip pairs values up and stops with the shorter stream.",
+        "Stream.concat(a, b) and Stream.zip(a, b)"
+      ]
+    },
+    {
+      "path": "10_streams/12_scan.ts",
+      "title": "Running totals",
+      "kind": "complete",
+      "hints": [
+        "scan works like fold, but emits every intermediate total, starting with the initial value.",
+        "Stream.scan(() => 0, (total: number, n: number) => total + n)"
+      ]
+    },
+    {
+      "path": "10_streams/13_take_while_until.ts",
+      "title": "Stopping on a condition",
+      "kind": "complete",
+      "hints": [
+        "takeWhile stops BEFORE the first value that fails. takeUntil keeps the value that satisfies it.",
+        "Stream.takeWhile((n) => n < 4) and Stream.takeUntil((n) => n === 4)"
+      ]
+    },
+    {
+      "path": "10_streams/14_grouped.ts",
+      "title": "Batching",
+      "kind": "complete",
+      "hints": [
+        "grouped takes the batch size. The last batch may be smaller.",
+        "Stream.grouped(2)"
+      ]
+    },
+    {
+      "path": "10_streams/15_unfold.ts",
+      "title": "Generating from state",
+      "kind": "complete",
+      "hints": [
+        "unfold takes a seed and an effectful function returning [value, nextSeed], or undefined to stop.",
+        "Stream.unfold(1, (n) => Effect.succeed(n > 5 ? undefined : [n * n, n + 1] as const))"
+      ]
+    },
+    {
+      "path": "10_streams/16_paginate.ts",
+      "title": "Paging through an API",
+      "kind": "complete",
+      "hints": [
+        "The step function gets the page number and returns [itemsOfThisPage, Option of the next page].",
+        "Stream.paginate(1, (page) => fetchPage(page).pipe(Effect.map((r) => [r.items, r.next] as const)))"
+      ]
+    },
+    {
+      "path": "10_streams/17_from_effect.ts",
+      "title": "A stream from one Effect",
+      "kind": "complete",
+      "hints": [
+        "fromEffect runs the effect once per pull when combined with forever.",
+        "Stream.fromEffect(readSensor).pipe(Stream.forever, Stream.take(3), Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/18_stream_errors.ts",
+      "title": "Failures in a stream",
+      "kind": "complete",
+      "hints": [
+        "A failure ends the stream. Stream.catch replaces the rest of it with another stream.",
+        "source.pipe(Stream.catch(() => Stream.make(-1)))"
+      ]
+    },
+    {
+      "path": "10_streams/19_ensuring.ts",
+      "title": "Cleanup when a stream ends",
+      "kind": "complete",
+      "hints": [
+        "Stream.ensuring takes the cleanup Effect, like Effect.ensuring.",
+        "Stream.make(1, 2).pipe(Stream.ensuring(cleanup), Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/20_from_queue.ts",
+      "title": "A stream from a queue",
+      "kind": "complete",
+      "hints": [
+        "A stream ends when the queue is ended. The queue's error type must include Cause.Done.",
+        "const queue = yield* Queue.unbounded<number, Cause.Done>(); yield* Queue.offerAll(queue, [1, 2, 3]); yield* Queue.end(queue)"
+      ]
+    },
+    {
+      "path": "10_streams/21_callback.ts",
+      "title": "Bridging an event source",
+      "kind": "complete",
+      "hints": [
+        "The function receives a queue. Push values with Queue.offerUnsafe and close it with Queue.endUnsafe.",
+        "Stream.callback<number>((queue) => Effect.sync(() => { source.subscribe((n) => Queue.offerUnsafe(queue, n), () => Queue.endUnsafe(queue)) }))"
+      ]
+    },
+    {
+      "path": "10_streams/22_sink_basics.ts",
+      "title": "Sinks: the consumer side",
+      "kind": "complete",
+      "hints": [
+        "Stream.run takes a Sink and runs the whole stream into it.",
+        "numbers.pipe(Stream.run(Sink.sum)) and numbers.pipe(Stream.run(Sink.collect<number>()))"
+      ]
+    },
+    {
+      "path": "10_streams/23_sink_take_count.ts",
+      "title": "Sinks that stop early",
+      "kind": "complete",
+      "hints": [
+        "Sink.take(n) consumes only n values and then finishes, so an endless stream is fine.",
+        "Stream.iterate(0, (n) => n + 1).pipe(Stream.run(Sink.take<number>(3)))"
+      ]
+    },
+    {
+      "path": "10_streams/24_sink_reduce.ts",
+      "title": "Your own sink",
+      "kind": "complete",
+      "hints": [
+        "Sink.reduce takes a function returning the start value and a function combining state and input.",
+        "Sink.reduce(() => 0, (longest: number, word: string) => Math.max(longest, word.length))"
+      ]
+    },
+    {
+      "path": "10_streams/25_merge.ts",
+      "title": "Merging streams",
+      "kind": "complete",
+      "hints": [
+        "merge runs both streams at the same time and emits values as they arrive.",
+        "Stream.merge(fast, slow)"
+      ]
+    },
+    {
+      "path": "10_streams/26_split_lines.ts",
+      "title": "Text in chunks",
+      "kind": "complete",
+      "hints": [
+        "Chunks of text arrive cut at arbitrary places. splitLines puts them back together into lines.",
+        "Stream.fromIterable(chunks).pipe(Stream.splitLines, Stream.runCollect)"
+      ]
+    },
+    {
+      "path": "10_streams/27_translate_array_pipeline.ts",
+      "title": "Translate: an array pipeline",
+      "kind": "translate",
+      "hints": [
+        "Each array method has a stream twin. The final reduce becomes runSum.",
+        "Stream.fromIterable(orders).pipe(Stream.filter(...), Stream.map(...), Stream.runSum)"
+      ]
+    },
+    {
+      "path": "10_streams/28_translate_async_iterator.ts",
+      "title": "Translate: for await",
+      "kind": "translate",
+      "hints": [
+        "fromAsyncIterable takes the iterable and a function that turns a thrown error into your error type.",
+        "Stream.fromAsyncIterable(numbers(), () => \"stream failed\")"
+      ]
+    },
+    {
+      "path": "10_streams/29_capstone_log_summary.ts",
+      "title": "Capstone: summarizing a log",
+      "kind": "complete",
+      "hints": [
+        "Split chunks into lines, drop the empty ones, read the level as the first word, then fold into counts.",
+        "Stream.runFold(() => ({ info: 0, warn: 0, error: 0 }), (counts, level) => ({ ...counts, [level]: counts[level] + 1 }))"
+      ]
+    },
+    {
+      "path": "11_time/01_retry_times.ts",
+      "title": "Trying again",
+      "kind": "complete",
+      "hints": [
+        "retry takes an options object. times says how many EXTRA attempts are allowed.",
+        "flaky.pipe(Effect.retry({ times: 3 }))"
+      ]
+    },
+    {
+      "path": "11_time/02_retry_exhausted.ts",
+      "title": "When retries run out",
+      "kind": "complete",
+      "hints": [
+        "times: 2 allows the first attempt and two retries. Count how many of them fail.",
+        "The task fails on attempts 1, 2 and 3. Three attempts are allowed, so no attempt succeeds."
+      ]
+    },
+    {
+      "path": "11_time/03_retry_while.ts",
+      "title": "Only retry what can get better",
+      "kind": "complete",
+      "hints": [
+        "while is a predicate on the error. Retry only when it returns true.",
+        "call.pipe(Effect.retry({ while: (e) => e._tag === \"Timeout\", times: 5 }))"
+      ]
+    },
+    {
+      "path": "11_time/04_schedule_recurs.ts",
+      "title": "Schedules",
+      "kind": "complete",
+      "hints": [
+        "recurs takes the number of repetitions.",
+        "const policy: Schedule.Schedule<number> = Schedule.recurs(3)"
+      ]
+    },
+    {
+      "path": "11_time/05_test_clock.ts",
+      "title": "A clock you control",
+      "kind": "complete",
+      "hints": [
+        "adjust moves the test clock forward. Sleeping fibers wake up when their time comes.",
+        "yield* TestClock.adjust(\"1 hour\")"
+      ]
+    },
+    {
+      "path": "11_time/06_retry_spaced.ts",
+      "title": "Waiting between attempts",
+      "kind": "complete",
+      "hints": [
+        "Pass a schedule AND a limit to retry. spaced waits the same time before each retry.",
+        "task.pipe(Effect.retry({ schedule: Schedule.spaced(\"1 second\"), times: 5 }))"
+      ]
+    },
+    {
+      "path": "11_time/07_exponential_backoff.ts",
+      "title": "Backing off",
+      "kind": "complete",
+      "hints": [
+        "exponential takes the first delay. Each following delay is twice as long.",
+        "task.pipe(Effect.retry({ schedule: Schedule.exponential(\"100 millis\"), times: 5 }))"
+      ]
+    },
+    {
+      "path": "11_time/08_schedule_up_to.ts",
+      "title": "Limiting a schedule",
+      "kind": "complete",
+      "hints": [
+        "upTo takes an options object with times, duration, or both.",
+        "Schedule.exponential(\"100 millis\").pipe(Schedule.upTo({ times: 3 }))"
+      ]
+    },
+    {
+      "path": "11_time/09_repeat.ts",
+      "title": "Doing it again, on success",
+      "kind": "complete",
+      "hints": [
+        "repeat takes the same kind of options as retry. times: 2 means two EXTRA runs.",
+        "tick.pipe(Effect.repeat({ times: 2 }))"
+      ]
+    },
+    {
+      "path": "11_time/10_repeat_until.ts",
+      "title": "Repeating until a condition",
+      "kind": "complete",
+      "hints": [
+        "until is a predicate on the SUCCESS value. Repeating stops when it returns true.",
+        "check.pipe(Effect.repeat({ until: (status) => status === \"ready\" }))"
+      ]
+    },
+    {
+      "path": "11_time/11_repeat_schedule.ts",
+      "title": "Repeating on a timer",
+      "kind": "complete",
+      "hints": [
+        "Give repeat a schedule for the pause and a limit for the count.",
+        "sample.pipe(Effect.repeat({ schedule: Schedule.spaced(\"1 second\"), times: 2 }))"
+      ]
+    },
+    {
+      "path": "11_time/12_timeout_with_test_clock.ts",
+      "title": "Testing a timeout without waiting",
+      "kind": "complete",
+      "hints": [
+        "Fork the guarded task, move the clock past the timeout, then join.",
+        "const fiber = yield* Effect.forkChild(guarded(slow)); yield* TestClock.adjust(\"1 minute\"); return yield* Fiber.join(fiber)"
+      ]
+    },
+    {
+      "path": "11_time/13_datetime_make.ts",
+      "title": "Dates as values",
+      "kind": "complete",
+      "hints": [
+        "makeUnsafe throws on bad input. make returns an Option instead.",
+        "DateTime.makeUnsafe(\"2026-01-15T10:30:00Z\"), DateTime.make(input), DateTime.formatIso(dt), DateTime.toEpochMillis(dt)"
+      ]
+    },
+    {
+      "path": "11_time/14_datetime_arithmetic.ts",
+      "title": "Adding and subtracting time",
+      "kind": "complete",
+      "hints": [
+        "add and subtract take an object such as { days: 20 }. startOf and endOf take a unit such as \"month\".",
+        "DateTime.add(start, { days: 20 }), DateTime.subtract(start, { weeks: 1 }), DateTime.startOf(start, \"month\")"
+      ]
+    },
+    {
+      "path": "11_time/15_datetime_compare.ts",
+      "title": "Comparing and measuring",
+      "kind": "complete",
+      "hints": [
+        "isGreaterThan(a, b) asks whether a is later than b. distance gives a Duration.",
+        "DateTime.isGreaterThan(now, deadline) and Duration.toMillis(DateTime.distance(from, to))"
+      ]
+    },
+    {
+      "path": "11_time/16_datetime_now.ts",
+      "title": "The current time, as a dependency",
+      "kind": "complete",
+      "hints": [
+        "DateTime.now is an Effect. It reads the Clock, so a test can set the time.",
+        "const now = yield* DateTime.now; return DateTime.isGreaterThan(now, deadline)"
+      ]
+    },
+    {
+      "path": "11_time/17_datetime_zoned.ts",
+      "title": "Time zones",
+      "kind": "complete",
+      "hints": [
+        "makeZoned takes the input and an options object with a timeZone. It returns an Option.",
+        "DateTime.makeZoned(input, { timeZone: \"Europe/Paris\" }) and DateTime.formatIsoZoned(zoned)"
+      ]
+    },
+    {
+      "path": "11_time/18_translate_set_interval.ts",
+      "title": "Translate: setInterval",
+      "kind": "translate",
+      "hints": [
+        "Three polls means one run plus two repeats, one second apart.",
+        "poll.pipe(Effect.repeat({ schedule: Schedule.spaced(\"1 second\"), times: 2 }), Effect.asVoid)"
+      ]
+    },
+    {
+      "path": "11_time/19_translate_retry_loop.ts",
+      "title": "Translate: a retry loop with backoff",
+      "kind": "translate",
+      "hints": [
+        "The loop, the counter and the sleep all collapse into a schedule.",
+        "call.pipe(Effect.retry({ schedule: Schedule.exponential(\"100 millis\"), times: 3 }))"
+      ]
+    },
+    {
+      "path": "11_time/20_capstone_poll_until_ready.ts",
+      "title": "Capstone: poll until ready",
+      "kind": "complete",
+      "hints": [
+        "Repeat the check every second until the status is \"ready\", then wrap the whole thing in a ten second timeout.",
+        "check.pipe(Effect.repeat({ schedule: Schedule.spaced(\"1 second\"), until: (s) => s === \"ready\" }), Effect.timeout(\"10 seconds\"), Effect.catchTag(\"TimeoutError\", () => Effect.succeed(\"gave up\" as const)))"
+      ]
+    },
+    {
+      "path": "12_observability/01_config_string.ts",
+      "title": "Reading configuration",
+      "kind": "complete",
+      "hints": [
+        "Config.String takes the name of the key. A Config is an Effect, so yield* it.",
+        "const host = yield* Config.String(\"HOST\")"
+      ]
+    },
+    {
+      "path": "12_observability/02_config_types.ts",
+      "title": "Numbers, flags and ports",
+      "kind": "complete",
+      "hints": [
+        "Each constructor takes the key name. Values in a provider are text; the Config converts them.",
+        "const port = yield* Config.Port(\"PORT\"); const debug = yield* Config.Boolean(\"DEBUG\"); const retries = yield* Config.Int(\"RETRIES\"); const rate = yield* Config.Number(\"RATE\")"
+      ]
+    },
+    {
+      "path": "12_observability/03_config_with_default.ts",
+      "title": "A default for a missing setting",
+      "kind": "complete",
+      "hints": [
+        "withDefault is applied with pipe, and takes the default value.",
+        "Config.Int(\"RETRIES\").pipe(Config.withDefault(3))"
+      ]
+    },
+    {
+      "path": "12_observability/04_config_option.ts",
+      "title": "An optional setting",
+      "kind": "complete",
+      "hints": [
+        "option wraps a Config and gives an Option: none when the key is missing.",
+        "Config.option(Config.String(\"PROXY\"))"
+      ]
+    },
+    {
+      "path": "12_observability/05_config_all.ts",
+      "title": "Several settings at once",
+      "kind": "complete",
+      "hints": [
+        "Config.all takes an object of Configs, like Effect.all.",
+        "Config.all({ host: Config.String(\"HOST\"), port: Config.Port(\"PORT\") })"
+      ]
+    },
+    {
+      "path": "12_observability/06_config_nested.ts",
+      "title": "Grouping settings under a prefix",
+      "kind": "complete",
+      "hints": [
+        "nested takes the Config and the name of the group.",
+        "Config.nested(Config.all({ url: Config.String(\"url\"), pool: Config.Int(\"pool\") }), \"db\")"
+      ]
+    },
+    {
+      "path": "12_observability/07_config_from_env.ts",
+      "title": "The environment as a provider",
+      "kind": "complete",
+      "hints": [
+        "fromEnvRecord takes an object shaped like process.env. Nested names are joined with underscores.",
+        "ConfigProvider.layer(ConfigProvider.fromEnvRecord({ APP_PORT: \"3000\" }))"
+      ]
+    },
+    {
+      "path": "12_observability/08_config_errors.ts",
+      "title": "When the configuration is wrong",
+      "kind": "complete",
+      "hints": [
+        "A bad or missing setting fails with a ConfigError, whose tag is \"ConfigError\".",
+        "Config.Port(\"PORT\").pipe(Effect.catchTag(\"ConfigError\", () => Effect.succeed(3000)))"
+      ]
+    },
+    {
+      "path": "12_observability/09_config_redacted.ts",
+      "title": "Secrets that do not leak",
+      "kind": "complete",
+      "hints": [
+        "Config.Redacted reads the setting as a Redacted value. Redacted.value is how you deliberately get the secret.",
+        "const apiKey = yield* Config.Redacted(\"API_KEY\"); ...Redacted.value(apiKey)"
+      ]
+    },
+    {
+      "path": "12_observability/10_config_map_and_or_else.ts",
+      "title": "Adjusting and falling back",
+      "kind": "complete",
+      "hints": [
+        "map transforms the value, orElse tries another Config when the first fails.",
+        "Config.Int(\"TIMEOUT_SECONDS\").pipe(Config.map((s) => s * 1000)) and Config.String(\"NEW_NAME\").pipe(Config.orElse(() => Config.String(\"OLD_NAME\")))"
+      ]
+    },
+    {
+      "path": "12_observability/11_config_schema.ts",
+      "title": "Configuration described by a Schema",
+      "kind": "complete",
+      "hints": [
+        "Config.schema takes a Schema.Struct whose fields are the setting names.",
+        "Config.schema(Schema.Struct({ HOST: Schema.String, PORT: Schema.NumberFromString }))"
+      ]
+    },
+    {
+      "path": "12_observability/12_config_in_a_layer.ts",
+      "title": "Services that configure themselves",
+      "kind": "complete",
+      "hints": [
+        "Read the config inside the generator you give to Layer.effect, then build the service from it.",
+        "Layer.effect(Server, Effect.gen(function*() { const host = yield* Config.String(\"HOST\"); const port = yield* Config.Port(\"PORT\"); return Server.of({ address: `${host}:${port}` }) }))"
+      ]
+    },
+    {
+      "path": "12_observability/13_translate_process_env.ts",
+      "title": "Translate: process.env",
+      "kind": "translate",
+      "hints": [
+        "Each line of the plain version becomes one Config. Combine them with Config.all.",
+        "Config.all({ name: Config.String(\"APP_NAME\"), workers: Config.Int(\"WORKERS\").pipe(Config.withDefault(4)) })"
+      ]
+    },
+    {
+      "path": "12_observability/14_log_basics.ts",
+      "title": "Writing log lines",
+      "kind": "complete",
+      "hints": [
+        "Each one is a function that takes the message and returns an Effect. Yield it.",
+        "yield* Effect.logInfo(\"started\"); yield* Effect.logWarning(\"slow\"); yield* Effect.logError(\"failed\"); yield* Effect.logDebug(\"details\")"
+      ]
+    },
+    {
+      "path": "12_observability/15_log_default.ts",
+      "title": "Effect.log and the default level",
+      "kind": "complete",
+      "hints": [
+        "Effect.log with no level is the same as Effect.logInfo.",
+        "The level is Info."
+      ]
+    },
+    {
+      "path": "12_observability/16_log_annotations.ts",
+      "title": "Attaching context to logs",
+      "kind": "complete",
+      "hints": [
+        "annotateLogs applies to every log inside the program it wraps.",
+        "work.pipe(Effect.annotateLogs({ requestId: \"r-1\", user: \"ada\" }))"
+      ]
+    },
+    {
+      "path": "12_observability/17_log_spans.ts",
+      "title": "Timing a section of logs",
+      "kind": "complete",
+      "hints": [
+        "withLogSpan takes a label. Every log inside carries it, with the elapsed time.",
+        "work.pipe(Effect.withLogSpan(\"checkout\"))"
+      ]
+    },
+    {
+      "path": "12_observability/18_log_levels.ts",
+      "title": "Showing debug messages",
+      "kind": "complete",
+      "hints": [
+        "The minimum level is a service. Override it with Effect.provideService for just this program.",
+        "program.pipe(Effect.provideService(References.MinimumLogLevel, \"Debug\"))"
+      ]
+    },
+    {
+      "path": "12_observability/19_custom_logger.ts",
+      "title": "Your own logger",
+      "kind": "complete",
+      "hints": [
+        "Logger.make takes a function from the log options to anything. Logger.layer takes an array of loggers.",
+        "Logger.make((options) => { lines.push(`${options.logLevel}: ${String(options.message)}`) }) and Logger.layer([logger])"
+      ]
+    },
+    {
+      "path": "12_observability/20_log_failures.ts",
+      "title": "Logging failures as they pass",
+      "kind": "complete",
+      "hints": [
+        "tapError runs an effect for the error without handling it. logError is such an effect.",
+        "call.pipe(Effect.tapError((e) => Effect.logError(`call failed: ${e}`)), Effect.catch(() => Effect.succeed(\"fallback\")))"
+      ]
+    },
+    {
+      "path": "12_observability/21_metric_counter.ts",
+      "title": "Counting things",
+      "kind": "complete",
+      "hints": [
+        "Define the counter once, at the top level. update adds to it. value reads its state.",
+        "const requests = Metric.counter(\"requests\"); yield* Metric.update(requests, 1)"
+      ]
+    },
+    {
+      "path": "12_observability/22_metric_in_code.ts",
+      "title": "Measuring real work",
+      "kind": "complete",
+      "hints": [
+        "Count in tap for successes and tapError for failures.",
+        "Effect.tap(() => Metric.update(succeeded, 1)), Effect.tapError(() => Metric.update(failed, 1))"
+      ]
+    },
+    {
+      "path": "12_observability/23_metric_gauge.ts",
+      "title": "Values that go up and down",
+      "kind": "complete",
+      "hints": [
+        "A gauge holds the latest value you set, like a speedometer. update replaces it.",
+        "yield* Metric.update(inFlight, 5); yield* Metric.update(inFlight, 3)"
+      ]
+    },
+    {
+      "path": "12_observability/24_metric_histogram.ts",
+      "title": "Distributions",
+      "kind": "complete",
+      "hints": [
+        "Update the histogram with each latency. The state has count, sum, min and max.",
+        "yield* Metric.update(latency, 12); ...; const state = yield* Metric.value(latency); return { count: state.count, sum: state.sum, min: state.min, max: state.max }"
+      ]
+    },
+    {
+      "path": "12_observability/25_metric_frequency.ts",
+      "title": "Counting categories",
+      "kind": "complete",
+      "hints": [
+        "A frequency counts how many times each text value was recorded.",
+        "yield* Metric.update(statuses, \"ok\"); then Object.fromEntries((yield* Metric.value(statuses)).occurrences)"
+      ]
+    },
+    {
+      "path": "12_observability/26_metric_attributes.ts",
+      "title": "Labelling metrics",
+      "kind": "complete",
+      "hints": [
+        "withAttributes returns a new metric that records under those labels.",
+        "Metric.withAttributes(requests, { route: \"/users\" })"
+      ]
+    },
+    {
+      "path": "12_observability/27_with_span.ts",
+      "title": "Tracing: spans",
+      "kind": "complete",
+      "hints": [
+        "withSpan takes the name of the span and wraps a program.",
+        "Effect.sleep(\"1 millis\").pipe(Effect.withSpan(\"load-user\"))"
+      ]
+    },
+    {
+      "path": "12_observability/28_nested_spans.ts",
+      "title": "Spans nest",
+      "kind": "complete",
+      "hints": [
+        "A span started while another is running becomes its child automatically.",
+        "Wrap the child steps in their own withSpan, and the whole generator in the parent's."
+      ]
+    },
+    {
+      "path": "12_observability/29_span_attributes.ts",
+      "title": "Details on a span",
+      "kind": "complete",
+      "hints": [
+        "annotateCurrentSpan is an Effect that adds a key and value to the span that is running now.",
+        "yield* Effect.annotateCurrentSpan(\"userId\", id)"
+      ]
+    },
+    {
+      "path": "12_observability/30_fn_makes_spans.ts",
+      "title": "Effect.fn already traces",
+      "kind": "complete",
+      "hints": [
+        "Effect.fn(\"name\") creates a span called \"name\" every time the function runs.",
+        "Just write the function with Effect.fn(\"loadOrder\"); no withSpan is needed."
+      ]
+    },
+    {
+      "path": "12_observability/31_capstone_instrumented.ts",
+      "title": "Capstone: an instrumented operation",
+      "kind": "complete",
+      "hints": [
+        "Use Effect.fn(\"placeOrder\") for the span. Read the limit with a default of 3, annotate the span, then log, count and fail as the rules say.",
+        "Fail with TooMany when qty is above the limit, and count failures with tapError."
+      ]
+    }
+  ]
+}

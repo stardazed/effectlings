@@ -1,0 +1,25 @@
+{
+  "name": "effectlings",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Small exercises to learn Effect v4, one idea at a time.",
+  "scripts": {
+    "start": "tsx src/cli.ts watch",
+    "list": "tsx src/cli.ts list",
+    "hint": "tsx src/cli.ts hint",
+    "next": "tsx src/cli.ts next",
+    "run": "tsx src/cli.ts run",
+    "reset": "tsx src/cli.ts reset",
+    "verify": "tsx src/cli.ts verify",
+    "build:exercises": "tsx tools/build.ts"
+  },
+  "dependencies": {
+    "effect": "4.0.0-rc.118"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "tsx": "^4.20.0",
+    "typescript": "7.0.2"
+  }
+}

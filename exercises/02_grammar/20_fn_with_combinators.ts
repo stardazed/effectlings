@@ -1,0 +1,26 @@
+/**
+ * Effect.fn takes the generator first, and then any number of extra
+ * steps, just like the arguments of `.pipe`. Do NOT call .pipe on the
+ * function; pass the steps as further arguments.
+ *
+ *   Effect.fn("name")(
+ *     function*(x: number) { ... },
+ *     Effect.map((result) => ...),
+ *     Effect.tap((result) => ...)
+ *   )
+ *
+ * Goal: after computing the raw sum, format it as text and record the
+ * text in `logged`.
+ */
+// I AM NOT DONE
+import { Effect } from "effect"
+import { check } from "../../src/check.ts"
+import { todo } from "../../src/todo.ts"
+
+const logged: Array<string> = []
+const base = Effect.succeed(100)
+
+const label: (extra: number) => Effect.Effect<string> = todo()
+
+check("result", Effect.runSync(label(5)), "total=105")
+check("logged", logged, ["total=105"])

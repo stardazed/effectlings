@@ -1,0 +1,19 @@
+/**
+ * Effect.succeed(value) takes a value that already exists. Anything you
+ * compute inside its argument runs immediately, while you build the effect.
+ * To compute something each time the program runs, give Effect.sync a function.
+ *
+ * Goal: make `next` produce 1, then 2, on successive runs, and make sure
+ * that building it does not touch the counter.
+ */
+// I AM NOT DONE
+import { Effect } from "effect"
+import { check } from "../../src/check.ts"
+
+let counter = 0
+
+const next = Effect.succeed(++counter)
+
+check("building it does not count", counter, 0)
+check("first run", Effect.runSync(next), 1)
+check("second run", Effect.runSync(next), 2)
