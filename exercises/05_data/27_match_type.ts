@@ -14,8 +14,6 @@
  */
 // I AM NOT DONE
 import { Data, Match } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Shape = Data.TaggedEnum<{
   Circle: { readonly radius: number }

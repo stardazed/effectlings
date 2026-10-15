@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Effect, Fiber, Queue, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const processAll = (jobs: ReadonlyArray<number>): Effect.Effect<number> => todo()
 

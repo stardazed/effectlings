@@ -12,10 +12,8 @@
  * "go"; return what the waiter received.
  */
 import { Deferred, Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<string> = Effect.gen(function*() {
   const signal = yield* Deferred.make<string>()
   const waiter = yield* Effect.forkChild(Deferred.await(signal))
   yield* Effect.sleep("5 millis")

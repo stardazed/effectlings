@@ -6,8 +6,6 @@
  * Goal: describe an Option, and test it for emptiness.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const describe = (o: Option.Option<number>): string => (Option.isSome(o) ? `value ${o.value}` : "nothing")
 const isMissing = (o: Option.Option<number>): boolean => Option.isNone(o)

@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Effect, Schema } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Config = Schema.Struct({ host: Schema.String, port: Schema.Number })
 

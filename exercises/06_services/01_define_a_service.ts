@@ -17,7 +17,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 class Greeter {}
 

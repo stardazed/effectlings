@@ -12,7 +12,6 @@
  * that building it does not touch the counter.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 let counter = 0
 

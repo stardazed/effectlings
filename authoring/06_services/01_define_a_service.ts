@@ -3,7 +3,7 @@
 //#teaches Context.Service
 //#deepens Effect.provideService
 //#hint A service class extends Context.Service<Self, Shape>() and then takes a string id.
-//#hint class Greeter extends Context.Service<Greeter, { readonly greet: (name: string) => string }>()("Greeter") {}
+//#hint class Greeter extends Context.Service<Greeter, { ... }>()("...") {}
 /**
  * A service is an interface your code asks for, separate from the code that
  * provides it. That separation is what makes programs easy to test and to
@@ -22,7 +22,6 @@
  * Goal: make Greeter a service.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 class Greeter extends Context.Service<Greeter, {

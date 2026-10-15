@@ -6,12 +6,10 @@
  * Goal: set the gauge to 5, then to 3, and read it.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const inFlight = Metric.gauge("in_flight")
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<number> = Effect.gen(function*() {
   yield* Metric.update(inFlight, 5)
   yield* Metric.update(inFlight, 3)
   return (yield* Metric.value(inFlight)).value

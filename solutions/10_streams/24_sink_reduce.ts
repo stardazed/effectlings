@@ -6,8 +6,6 @@
  * Goal: a sink for strings that finishes with the length of the longest one.
  */
 import { Effect, Sink, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const longest: Sink.Sink<number, string> = Sink.reduce(
   () => 0,

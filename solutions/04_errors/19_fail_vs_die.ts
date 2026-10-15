@@ -16,8 +16,6 @@
  * code reaches a branch that should never be reached.
  */
 import { Cause, Data, Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class InvalidInput extends Data.TaggedError("InvalidInput")<{ readonly field: string }> {}
 

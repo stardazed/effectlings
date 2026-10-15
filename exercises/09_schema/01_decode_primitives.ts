@@ -14,8 +14,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parseName: (input: unknown) => string = todo()
 const parseCount: (input: unknown) => number = todo()

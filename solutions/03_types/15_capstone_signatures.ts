@@ -8,9 +8,6 @@
  * and run it.
  */
 import { Context, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 // Scaffolding, do not edit.
 class Db extends Context.Service<Db, {
@@ -20,14 +17,15 @@ class Mailer extends Context.Service<Mailer, {
   readonly send: (to: string, text: string) => Effect.Effect<void>
 }>()("Mailer") {}
 
-const notify = Effect.fn("notify")(function*(id: number): Effect.fn.Return<"notified", "no such user", Db | Mailer> {
-  const db = yield* Db
-  const mailer = yield* Mailer
-  const email = db.emailOf(id)
-  if (email === undefined) return yield* Effect.fail("no such user" as const)
-  yield* mailer.send(email, "hello")
-  return "notified"
-})
+const notify: (id: number) => Effect.Effect<"notified", "no such user", Db | Mailer> =
+  Effect.fn("notify")(function*(id: number): Effect.fn.Return<"notified", "no such user", Db | Mailer> {
+    const db = yield* Db
+    const mailer = yield* Mailer
+    const email = db.emailOf(id)
+    if (email === undefined) return yield* Effect.fail("no such user" as const)
+    yield* mailer.send(email, "hello")
+    return "notified"
+  })
 
 export type Test = Expect<Equal<Effect.Services<ReturnType<typeof notify>>, Db | Mailer>>
 

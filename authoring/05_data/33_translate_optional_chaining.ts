@@ -2,7 +2,7 @@
 //#kind translate
 //#deepens Option.flatMap, Option.getOrElse, Option.fromNullishOr
 //#hint Convert each nullable step into an Option, chain with flatMap, and finish with getOrElse.
-//#hint Option.fromNullishOr(user).pipe(Option.flatMap((u) => Option.fromNullishOr(u.address)), Option.flatMap((a) => Option.fromNullishOr(a.city)), Option.getOrElse(() => "unknown"))
+//#hint Option.fromNullishOr(user).pipe(Option.flatMap(...), Option.flatMap(...), Option.getOrElse(...))
 /**
  * Plain TypeScript:
  *
@@ -12,8 +12,6 @@
  * and `??` supplies the default.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface User {
   readonly address?: { readonly city?: string } | null

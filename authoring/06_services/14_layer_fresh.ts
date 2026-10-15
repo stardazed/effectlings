@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Layer.fresh
 //#hint Layer.fresh(layer) wraps a layer so it is built again instead of shared.
-//#hint bFromBase.pipe(Layer.provide(Layer.fresh(base)))
+//#hint bFromBase.pipe(Layer.provide(Layer.fresh(...)))
 /**
  * Sharing is usually what you want. When a consumer needs its own private
  * instance (its own connection, its own counter), wrap the dependency in
@@ -12,8 +12,6 @@
  * the shared one. The two must see different ids.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Base extends Context.Service<Base, { readonly id: number }>()("Base") {}
 class A extends Context.Service<A, { readonly a: number }>()("A") {}

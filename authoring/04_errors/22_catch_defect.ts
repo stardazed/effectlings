@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.catchDefect
 //#hint Use catchDefect. Its handler receives the defect as unknown.
-//#hint bug.pipe(Effect.catchDefect((defect) => Effect.succeed(`recovered from: ${String(defect)}`)))
+//#hint bug.pipe(Effect.catchDefect((defect) => ...))
 /**
  * Effect.catch and catchTag only handle expected failures. A defect flies
  * right past them. To handle one, use Effect.catchDefect, whose handler
@@ -14,8 +14,6 @@
  * Goal: recover from the bug with a message.
  */
 import { Effect } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const bug: Effect.Effect<never> = Effect.die("bug in the pricing table")
 

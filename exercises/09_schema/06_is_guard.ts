@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Person = Schema.Struct({ name: Schema.String, age: Schema.Number })
 

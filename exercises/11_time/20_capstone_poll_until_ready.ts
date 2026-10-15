@@ -9,8 +9,6 @@
 // I AM NOT DONE
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Status = "pending" | "ready"
 

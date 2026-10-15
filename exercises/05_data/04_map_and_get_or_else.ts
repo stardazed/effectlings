@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const doubled = (price: Option.Option<number>): Option.Option<number> => todo()
 const orZero = (price: Option.Option<number>): number => todo()

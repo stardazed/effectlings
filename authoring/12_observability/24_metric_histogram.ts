@@ -14,15 +14,13 @@
  * Goal: record the latencies 12, 48 and 7 and summarize them.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const latency = Metric.histogram("latency", {
   boundaries: Metric.linearBoundaries({ start: 0, width: 10, count: 6 })
 })
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<{ count: number; sum: number; min: number; max: number }> = Effect.gen(function*() {
   yield* Metric.update(latency, 12)
   yield* Metric.update(latency, 48)
   yield* Metric.update(latency, 7)

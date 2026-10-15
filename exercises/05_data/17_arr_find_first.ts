@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Array as Arr, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Person {
   readonly name: string

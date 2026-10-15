@@ -6,8 +6,6 @@
  * Goal: the first six powers of two, starting from 1.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const powersOfTwo: Effect.Effect<Array<number>> = Stream.iterate(1, (n) => n * 2).pipe(
   Stream.take(6),

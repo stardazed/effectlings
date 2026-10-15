@@ -11,13 +11,11 @@
  * Goal: record "ok", "ok", "error" and return the counts as a plain object.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const statuses = Metric.frequency("statuses")
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<Record<string, number>> = Effect.gen(function*() {
   yield* Metric.update(statuses, "ok")
   yield* Metric.update(statuses, "ok")
   yield* Metric.update(statuses, "error")

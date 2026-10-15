@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Context, Data, Effect, Layer } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ConnectionFailed extends Data.TaggedError("ConnectionFailed")<{ readonly url: string }> {}
 

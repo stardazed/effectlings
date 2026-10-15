@@ -5,8 +5,6 @@
  * Goal: from the numbers 1 to 10, skip two and keep the next three.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const middle: Effect.Effect<Array<number>> = Stream.range(1, 10).pipe(
   Stream.drop(2),

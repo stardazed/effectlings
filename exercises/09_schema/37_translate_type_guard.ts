@@ -16,8 +16,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const User: Schema.Codec<{ readonly name: string; readonly age: number }> = todo()
 const isUser: (input: unknown) => boolean = todo()

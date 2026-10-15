@@ -10,12 +10,10 @@
  * The main fiber logs "opening gate", opens it, and joins the runner.
  */
 import { Effect, Fiber, Latch } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<string> = Effect.gen(function*() {
   const gate = yield* Latch.make(false)
   const runner = yield* Effect.forkChild(
     Effect.gen(function*() {

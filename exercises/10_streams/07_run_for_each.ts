@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const seen: Array<string> = []
 const record = (label: string) => (n: number) => Effect.sync(() => { seen.push(`${label}${n}`) })

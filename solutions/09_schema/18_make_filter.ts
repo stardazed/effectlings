@@ -8,10 +8,8 @@
  * Goal: an even number.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Even = Schema.Number.check(Schema.makeFilter((n: number) => (n % 2 === 0 ? undefined : "must be even")))
+const Even: Schema.Codec<number> = Schema.Number.check(Schema.makeFilter((n: number) => (n % 2 === 0 ? undefined : "must be even")))
 
 const error = thrown(() => Schema.decodeUnknownSync(Even)(3))
 check("even", Schema.decodeUnknownSync(Even)(4), 4)

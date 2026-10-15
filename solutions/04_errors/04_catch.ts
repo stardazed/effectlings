@@ -9,8 +9,6 @@
  * Goal: fall back to port 3000 whenever the input cannot be parsed.
  */
 import { Data, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ParseError extends Data.TaggedError("ParseError")<{ readonly input: string }> {}
 

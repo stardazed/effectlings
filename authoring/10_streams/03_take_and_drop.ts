@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Stream.take, Stream.drop
 //#hint take keeps the first n values, drop skips them.
-//#hint Stream.range(1, 10).pipe(Stream.drop(2), Stream.take(3), Stream.runCollect)
+//#hint Stream.range(1, 10).pipe(Stream.drop(...), Stream.take(...), Stream.runCollect)
 /**
  *   Stream.take(n)   only the first n values (then the stream stops)
  *   Stream.drop(n)   skip the first n values
@@ -10,8 +10,6 @@
  * Goal: from the numbers 1 to 10, skip two and keep the next three.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const middle: Effect.Effect<Array<number>> = Stream.range(1, 10).pipe(

@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.annotateLogs
 //#hint annotateLogs applies to every log inside the program it wraps.
-//#hint work.pipe(Effect.annotateLogs({ requestId: "r-1", user: "ada" }))
+//#hint work.pipe(Effect.annotateLogs({ ... }))
 /**
  * Messages are more useful with context: which request, which user.
  * Effect.annotateLogs(object) adds those fields to EVERY log line written
@@ -13,9 +13,7 @@
  * Goal: annotate the whole `handle` program.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const step = (name: string) => Effect.logInfo(name)
 const work = Effect.gen(function*() {

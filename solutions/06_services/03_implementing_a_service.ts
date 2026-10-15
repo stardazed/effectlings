@@ -10,8 +10,6 @@
  * says 1, then 2, then 3, and so on.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Clock extends Context.Service<Clock, {
   readonly now: () => number

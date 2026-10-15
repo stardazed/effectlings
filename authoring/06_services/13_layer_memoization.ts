@@ -11,8 +11,6 @@
  * Predict how many times `base` is built in each scenario.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Base extends Context.Service<Base, { readonly id: number }>()("Base") {}
 class A extends Context.Service<A, { readonly a: number }>()("A") {}
@@ -37,7 +35,7 @@ Effect.runSync(Effect.all([useA.pipe(Effect.provide(aLayer)), useB.pipe(Effect.p
 const separateBuilds = builds
 
 //#solution
-const expected = { shared: 1, separate: 2 }
+const expected: { shared: number; separate: number } = { shared: 1, separate: 2 }
 //#exercise
 const expected: { shared: number; separate: number } = todo()
 //#end

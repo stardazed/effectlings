@@ -13,8 +13,6 @@
  * Goal: record every value that flows through in `seen`, without changing it.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const seen: Array<number> = []
 const source = Effect.succeed(21)

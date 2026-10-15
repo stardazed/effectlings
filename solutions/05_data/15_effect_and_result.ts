@@ -8,8 +8,6 @@
  * Goal: lift parse into an Effect, and capture an Effect's outcome as a Result.
  */
 import { Effect, Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parse = (s: string): Result.Result<number, string> =>
   s !== "" && Number.isInteger(Number(s)) ? Result.succeed(Number(s)) : Result.fail("not a number")

@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const seen: Array<number> = []
 const source = Effect.succeed(21)

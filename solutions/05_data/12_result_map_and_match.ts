@@ -7,8 +7,6 @@
  * Goal: double the success value, and describe a Result as text.
  */
 import { Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const doubled = (r: Result.Result<number, string>): Result.Result<number, string> => r.pipe(Result.map((n) => n * 2))
 const describe = (r: Result.Result<number, string>): string =>

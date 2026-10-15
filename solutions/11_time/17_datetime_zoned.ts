@@ -8,8 +8,6 @@
  * Goal: show an instant in Paris, or none for an invalid date.
  */
 import { DateTime, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const inParis = (input: string): Option.Option<string> =>
   DateTime.makeZoned(input, { timeZone: "Europe/Paris" }).pipe(Option.map(DateTime.formatIsoZoned))

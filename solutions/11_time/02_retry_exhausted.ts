@@ -5,8 +5,6 @@
  * How many times is it attempted, and does the program fail?
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const task = Effect.suspend(() => {
@@ -16,6 +14,6 @@ const task = Effect.suspend(() => {
 
 const exit = await Effect.runPromiseExit(task.pipe(Effect.retry({ times: 2 })))
 
-const expected = { attempts: 3, failed: true }
+const expected: { attempts: number; failed: boolean } = { attempts: 3, failed: true }
 
 check("outcome", { attempts, failed: Exit.isFailure(exit) }, expected)

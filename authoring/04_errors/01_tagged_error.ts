@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Data.TaggedError
 //#hint A tagged error class extends Data.TaggedError("Name"). The type argument lists the fields.
-//#hint class Forbidden extends Data.TaggedError("Forbidden")<{ readonly user: string }> {}
+//#hint class Forbidden extends Data.TaggedError("...")<{ ... }> {}
 /**
  * In Effect, an error is an ordinary value. The habit is to give each kind
  * of error its own class with a `_tag`, so code can tell them apart:
@@ -19,7 +19,6 @@
  * Goal: make Forbidden a tagged error with a `user` field.
  */
 import { Data } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 class Forbidden extends Data.TaggedError("Forbidden")<{ readonly user: string }> {}

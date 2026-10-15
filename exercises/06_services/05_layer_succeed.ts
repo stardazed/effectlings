@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Logger extends Context.Service<Logger, {
   readonly log: (line: string) => Effect.Effect<void>

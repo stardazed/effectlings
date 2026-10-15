@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Array as Arr, Order, pipe } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const sortNumbers = (ns: ReadonlyArray<number>): Array<number> => todo()
 const sortWords = (ws: ReadonlyArray<string>): Array<string> => todo()

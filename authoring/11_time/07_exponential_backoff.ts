@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Schedule.exponential
 //#hint exponential takes the first delay. Each following delay is twice as long.
-//#hint task.pipe(Effect.retry({ schedule: Schedule.exponential("100 millis"), times: 5 }))
+//#hint task.pipe(Effect.retry({ schedule: Schedule.exponential(...), times: ... }))
 /**
  * Waiting the same time every attempt is better than none, but a server
  * that is struggling needs breathing room. Schedule.exponential(base)
@@ -15,8 +15,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const task: Effect.Effect<number, "busy"> = Effect.suspend(() => {

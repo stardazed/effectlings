@@ -10,13 +10,11 @@
  * Goal: build a date, parse input safely, and read both representations.
  */
 import { DateTime, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const meeting: DateTime.Utc = DateTime.makeUnsafe("2026-01-15T10:30:00Z")
 const parse = (input: string): Option.Option<DateTime.Utc> => DateTime.make(input)
-const iso = DateTime.formatIso(meeting)
-const millis = DateTime.toEpochMillis(meeting)
+const iso: string = DateTime.formatIso(meeting)
+const millis: number = DateTime.toEpochMillis(meeting)
 
 check("iso", iso, "2026-01-15T10:30:00.000Z")
 check("millis", millis, 1768473000000)

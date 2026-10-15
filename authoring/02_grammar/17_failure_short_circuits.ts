@@ -11,8 +11,6 @@
  * Write your prediction in `expectedLog`, then confirm it by running.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const step = (name: string) => Effect.sync(() => { log.push(name) })

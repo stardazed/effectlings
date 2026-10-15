@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const cleanup = Effect.sync(() => { log.push("cleanup") })

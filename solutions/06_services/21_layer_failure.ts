@@ -7,8 +7,6 @@
  * and otherwise provides a Db whose query prefixes the sql with the url.
  */
 import { Context, Data, Effect, Layer } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ConnectionFailed extends Data.TaggedError("ConnectionFailed")<{ readonly url: string }> {}
 

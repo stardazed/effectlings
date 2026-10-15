@@ -15,11 +15,9 @@
  * schema you write the shape once and get both.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const User = Schema.Struct({ name: Schema.String, age: Schema.Number })
-const isUser = Schema.is(User)
+const User: Schema.Codec<{ readonly name: string; readonly age: number }> = Schema.Struct({ name: Schema.String, age: Schema.Number })
+const isUser: (input: unknown) => boolean = Schema.is(User)
 
 check("a user", isUser({ name: "Ada", age: 36 }), true)
 check("missing age", isUser({ name: "Ada" }), false)

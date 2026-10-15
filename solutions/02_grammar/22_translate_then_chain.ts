@@ -8,8 +8,6 @@
  * The two fetch functions already return Effects. Write the same pipeline.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const fetchUser = (id: number): Effect.Effect<{ readonly id: number }> => Effect.succeed({ id })
 const fetchPosts = (userId: number): Effect.Effect<ReadonlyArray<string>> =>

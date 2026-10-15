@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const bug: Effect.Effect<never> = Effect.die("bug in the pricing table")
 

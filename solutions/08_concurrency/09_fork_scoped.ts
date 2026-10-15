@@ -7,8 +7,6 @@
  * Goal: write startWorker, which starts `worker` in the scope and returns.
  */
 import { Effect, Scope } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

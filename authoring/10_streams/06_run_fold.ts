@@ -13,8 +13,6 @@
  * Goal: the product of 1..5 with runFold, then the sum and the count of the same numbers.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const numbers = Stream.range(1, 5)
 

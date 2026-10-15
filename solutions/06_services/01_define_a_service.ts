@@ -16,7 +16,6 @@
  * Goal: make Greeter a service.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 class Greeter extends Context.Service<Greeter, {
   readonly greet: (name: string) => string

@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { checkTrue } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const pause: Effect.Effect<void> = todo()
 

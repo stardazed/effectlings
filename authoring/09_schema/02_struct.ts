@@ -21,11 +21,9 @@
  * Goal: define Person.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Person = Schema.Struct({ name: Schema.String, age: Schema.Number })
+const Person: Schema.Codec<{ readonly name: string; readonly age: number }> = Schema.Struct({ name: Schema.String, age: Schema.Number })
 //#exercise
 const Person: Schema.Codec<{ readonly name: string; readonly age: number }> = todo()
 //#end

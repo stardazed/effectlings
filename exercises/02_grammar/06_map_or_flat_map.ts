@@ -6,7 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 interface User {
   readonly id: number

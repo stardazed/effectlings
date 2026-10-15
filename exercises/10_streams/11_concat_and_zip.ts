@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const letters = Stream.make("a", "b", "c")
 const numbers = Stream.make(1, 2)

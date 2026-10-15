@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Config.schema
 //#hint Config.schema takes a Schema.Struct whose fields are the setting names.
-//#hint Config.schema(Schema.Struct({ HOST: Schema.String, PORT: Schema.NumberFromString }))
+//#hint Config.schema(Schema.Struct({ ... }))
 /**
  * You already know schemas. Config.schema(schema) reads a whole group of
  * settings and validates it with a schema, so every rule from the schema
@@ -11,11 +11,10 @@
  * Goal: a config with HOST (text) and PORT (a number, from text).
  */
 import { ConfigProvider, Config, Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const serverConfig = Config.schema(Schema.Struct({ HOST: Schema.String, PORT: Schema.NumberFromString }))
+const serverConfig: Config.Config<{ readonly HOST: string; readonly PORT: number }> =
+  Config.schema(Schema.Struct({ HOST: Schema.String, PORT: Schema.NumberFromString }))
 //#exercise
 const serverConfig: Config.Config<{ readonly HOST: string; readonly PORT: number }> = todo()
 //#end

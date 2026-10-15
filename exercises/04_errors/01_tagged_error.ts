@@ -15,7 +15,6 @@
  */
 // I AM NOT DONE
 import { Data } from "effect"
-import { check } from "../../src/check.ts"
 
 class Forbidden {}
 

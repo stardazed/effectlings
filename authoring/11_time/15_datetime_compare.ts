@@ -11,8 +11,6 @@
  * two times.
  */
 import { DateTime, Duration } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const hasPassed = (deadline: DateTime.Utc, now: DateTime.Utc): boolean => DateTime.isGreaterThan(now, deadline)

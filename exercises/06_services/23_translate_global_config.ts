@@ -16,8 +16,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Settings extends Context.Service<Settings, { readonly apiUrl: string }>()("Settings") {}
 

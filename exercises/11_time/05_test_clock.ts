@@ -13,8 +13,6 @@
 // I AM NOT DONE
 import { Effect, Fiber } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const moveClock: Effect.Effect<void> = todo() // move the clock forward by one hour
 

@@ -12,12 +12,10 @@
  * Goal: write the two shapes. The union is given.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Circle = Schema.TaggedStruct("Circle", { radius: Schema.Number })
-const Square = Schema.TaggedStruct("Square", { side: Schema.Number })
+const Circle: Schema.Codec<{ readonly _tag: "Circle"; readonly radius: number }> = Schema.TaggedStruct("Circle", { radius: Schema.Number })
+const Square: Schema.Codec<{ readonly _tag: "Square"; readonly side: number }> = Schema.TaggedStruct("Square", { side: Schema.Number })
 //#exercise
 const Circle: Schema.Codec<{ readonly _tag: "Circle"; readonly radius: number }> = todo()
 const Square: Schema.Codec<{ readonly _tag: "Square"; readonly side: number }> = todo()

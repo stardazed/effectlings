@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Duration.Input, Duration.fromInput, Duration.isGreaterThan
 //#hint fromInput accepts the same text Effect.sleep accepts, and returns an Option.
-//#hint Duration.fromInput(input).pipe(Option.map((d) => Duration.isGreaterThan(d, limit)), Option.getOrElse(() => false))
+//#hint Duration.fromInput(input).pipe(Option.map(...), Option.getOrElse(...))
 /**
  * Effect.sleep("20 millis") accepted text. That text is a Duration.Input:
  * a Duration, a number of milliseconds, or text like "2 seconds".
@@ -14,8 +14,6 @@
  * input counts as not longer.
  */
 import { Duration, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const isSlow = (input: Duration.Input, limit: Duration.Duration): boolean =>

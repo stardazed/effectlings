@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Scope.make, Scope.close, Exit.void
 //#hint The scope is made and used, but nothing ever closes it.
-//#hint await Effect.runPromise(Scope.close(scope, Exit.void))
+//#hint Scope.close takes the scope and an Exit, and returns an Effect. Run it with Effect.runPromise and await it.
 /**
  * Effect.scoped opens and closes a scope for you. You can also manage one by hand:
  *
@@ -16,7 +16,6 @@
  * Goal: this code leaks its connection. Close the scope.
  */
 import { Effect, Exit, Scope } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const connection = Effect.acquireRelease(

@@ -8,7 +8,6 @@
  * Goal: Settings.make({ host: "localhost" }) should compile and give retries 3.
  */
 import { Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 const Settings = Schema.Struct({
   host: Schema.String,

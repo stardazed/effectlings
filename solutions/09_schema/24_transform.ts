@@ -13,10 +13,8 @@
  * Goal: the outside world sends meters, your program works in kilometers.
  */
 import { Schema, SchemaTransformation } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Kilometers = Schema.Finite.pipe(
+const Kilometers: Schema.Codec<number> = Schema.Finite.pipe(
   Schema.decode(
     SchemaTransformation.transform({
       decode: (meters: number) => meters / 1000,

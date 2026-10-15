@@ -11,10 +11,8 @@
  */
 import { Effect, Exit, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const policy = Schedule.exponential("100 millis").pipe(Schedule.upTo({ times: 3 }))
+const policy: Schedule.Schedule<unknown> = Schedule.exponential("100 millis").pipe(Schedule.upTo({ times: 3 }))
 
 let attempts = 0
 const neverWorks: Effect.Effect<never, "down"> = Effect.suspend(() => {

@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const adultAge = (age: Option.Option<number>): Option.Option<number> => todo()
 const primaryOrBackup = (primary: Option.Option<string>, backup: Option.Option<string>): Option.Option<string> => todo()

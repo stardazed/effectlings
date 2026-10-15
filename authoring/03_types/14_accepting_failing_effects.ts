@@ -14,7 +14,6 @@
  * Goal: make both calls compile.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
 
 //#solution
 const runIt = (task: Effect.Effect<number, string>): Promise<number> => Effect.runPromise(task)

@@ -9,8 +9,6 @@
  *
  * Goal: ask for a hint, then fill in the hole.
  */
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const total: number = 2 + 3
 

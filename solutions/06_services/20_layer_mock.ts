@@ -8,8 +8,6 @@
  * Goal: a Users layer that only implements find.
  */
 import { Context, Effect, Layer } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Users extends Context.Service<Users, {
   readonly find: (id: number) => Effect.Effect<string>

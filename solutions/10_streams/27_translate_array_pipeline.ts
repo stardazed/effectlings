@@ -11,8 +11,6 @@
  * millions of them. Write the stream version.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Order {
   readonly paid: boolean

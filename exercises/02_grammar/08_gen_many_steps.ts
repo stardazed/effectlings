@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const priceOf = (sku: string): Effect.Effect<number> => Effect.succeed(sku === "pen" ? 3 : 10)
 const quantityOf = (sku: string): Effect.Effect<number> => Effect.succeed(sku === "pen" ? 4 : 1)

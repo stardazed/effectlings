@@ -11,8 +11,6 @@
  * Goal: the words longer than 3 letters, and the numbers 1 to 5.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const longWords = (words: ReadonlyArray<string>): Effect.Effect<Array<string>> =>

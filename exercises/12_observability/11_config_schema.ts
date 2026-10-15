@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const serverConfig: Config.Config<{ readonly HOST: string; readonly PORT: number }> = todo()
 

@@ -7,8 +7,6 @@
  * Goal: Server.layer reads HOST and PORT.
  */
 import { ConfigProvider, Config, Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Server extends Context.Service<Server, { readonly address: string }>()("Server") {
   static readonly layer: Layer.Layer<Server, Config.ConfigError> = Layer.effect(

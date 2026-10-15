@@ -15,7 +15,6 @@
  * Goal: fix the three annotations.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 // Scaffolding, do not edit.
 class Mailer extends Context.Service<Mailer, {

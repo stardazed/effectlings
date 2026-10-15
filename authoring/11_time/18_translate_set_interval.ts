@@ -2,7 +2,7 @@
 //#kind translate
 //#deepens Effect.repeat, Schedule.spaced
 //#hint Three polls means one run plus two repeats, one second apart.
-//#hint poll.pipe(Effect.repeat({ schedule: Schedule.spaced("1 second"), times: 2 }), Effect.asVoid)
+//#hint poll.pipe(Effect.repeat({ schedule: Schedule.spaced(...), times: ... }), Effect.asVoid)
 /**
  * Plain TypeScript:
  *
@@ -20,8 +20,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let polls = 0
 const poll = Effect.sync(() => { polls += 1 })

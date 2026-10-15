@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Schema.TaggedClass
 //#hint TaggedClass works like Class, but takes the tag as its first argument and adds the _tag field.
-//#hint class Deposit extends Schema.TaggedClass<Deposit>()("Deposit", { amount: Schema.Number }) {}
+//#hint class Deposit extends Schema.TaggedClass<Deposit>()("...", { ... }) {}
 /**
  * Schema.TaggedClass<Self>()(tag, fields) is Schema.Class with a fixed
  * `_tag`. It is the class version of a tagged struct, and is convenient for
@@ -11,7 +11,6 @@
  * Goal: make Deposit a tagged class with an amount.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 class Deposit extends Schema.TaggedClass<Deposit>()("Deposit", { amount: Schema.Number }) {}

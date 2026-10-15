@@ -9,8 +9,6 @@
  */
 import { DateTime, Effect } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const isExpired = (deadline: DateTime.Utc): Effect.Effect<boolean> =>
   Effect.gen(function*() {

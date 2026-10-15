@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const latency = Metric.histogram("latency", {
   boundaries: Metric.linearBoundaries({ start: 0, width: 10, count: 6 })

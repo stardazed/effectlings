@@ -23,8 +23,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 class Denied extends Data.TaggedError("Denied")<{ readonly who: string }> {}

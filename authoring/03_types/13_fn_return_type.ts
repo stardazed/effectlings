@@ -16,8 +16,6 @@
  * Goal: make the body satisfy the contract.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 //#solution
 const safeDivide = Effect.fn("safeDivide")(function*(a: number, b: number): Effect.fn.Return<number, "divide by zero"> {

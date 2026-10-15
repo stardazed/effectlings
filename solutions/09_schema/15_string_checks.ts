@@ -9,10 +9,8 @@
  * Goal: a username is 3 to 12 characters of lower case letters, digits and underscores.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Username = Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))
+const Username: Schema.Codec<string> = Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))
 
 const valid = (input: unknown): boolean => thrown(() => Schema.decodeUnknownSync(Username)(input)) === undefined
 

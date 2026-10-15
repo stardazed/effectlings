@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect, Schedule } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const task: Effect.Effect<string, "busy"> = Effect.suspend(() => {

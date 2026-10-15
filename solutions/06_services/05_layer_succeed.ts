@@ -12,8 +12,6 @@
  * Goal: write a layer that records lines, and use it to make `program` runnable.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Logger extends Context.Service<Logger, {
   readonly log: (line: string) => Effect.Effect<void>
@@ -31,7 +29,7 @@ const loggerLayer: Layer.Layer<Logger> = Layer.succeed(
   Logger,
   Logger.of({ log: (line) => Effect.sync(() => { recorded.push(line) }) })
 )
-const runnable = program.pipe(Effect.provide(loggerLayer))
+const runnable: Effect.Effect<string> = program.pipe(Effect.provide(loggerLayer))
 
 check("result", Effect.runSync(runnable), "ok")
 check("recorded", recorded, ["hello"])

@@ -15,13 +15,11 @@
  * then join the fiber and return the two added together.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const slowDouble = (n: number) => Effect.sleep("5 millis").pipe(Effect.as(n * 2))
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<number> = Effect.gen(function*() {
   const fiber = yield* Effect.forkChild(slowDouble(21))
   const other = yield* Effect.succeed(1)
   const doubled = yield* Fiber.join(fiber)

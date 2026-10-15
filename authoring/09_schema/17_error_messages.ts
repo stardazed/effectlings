@@ -12,11 +12,9 @@
  * Goal: a quantity is a number greater than 0, reported as "must be positive".
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Quantity = Schema.Number.check(Schema.isGreaterThan(0, { message: "must be positive" }))
+const Quantity: Schema.Codec<number> = Schema.Number.check(Schema.isGreaterThan(0, { message: "must be positive" }))
 //#exercise
 const Quantity: Schema.Codec<number> = todo()
 //#end

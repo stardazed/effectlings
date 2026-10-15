@@ -12,9 +12,7 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const loadUser = Effect.succeed("ada")
 

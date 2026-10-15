@@ -6,7 +6,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 const UserId = Schema.String.pipe(Schema.brand("UserId"))
 type UserId = typeof UserId.Type

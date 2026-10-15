@@ -8,7 +8,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
 
 interface User {
   readonly id: string

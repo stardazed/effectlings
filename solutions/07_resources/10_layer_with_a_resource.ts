@@ -8,8 +8,6 @@
  * Goal: a Db layer that logs "connect" when built and "disconnect" when released.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Db extends Context.Service<Db, { readonly id: number }>()("Db") {}
 

@@ -14,8 +14,6 @@
  * When an exercise passes, delete the "// I AM NOT DONE" line under this
  * comment. That tells the CLI you are finished and moves you to the next one.
  */
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const answer: number = 42

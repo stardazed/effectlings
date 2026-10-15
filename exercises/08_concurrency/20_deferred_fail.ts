@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Deferred, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<string, string> = todo()
 

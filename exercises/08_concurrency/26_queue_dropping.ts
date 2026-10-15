@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect, Queue } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<{ accepted: Array<boolean>; kept: ReadonlyArray<number> }> = todo()
 

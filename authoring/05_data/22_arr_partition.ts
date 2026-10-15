@@ -1,26 +1,24 @@
 //#title Splitting in two
 //#kind complete
 //#teaches Arr.partition
-//#hint The function returns a Result for each item: succeed for one group, fail for the other.
-//#hint Arr.partition(ns, (n) => n % 2 === 0 ? Result.succeed(n) : Result.fail(n))
+//#hint The function returns a Result for each item: succeed for the first group, fail for the second.
+//#hint Arr.partition(ns, (n) => ... ? Result.succeed(n) : Result.fail(n))
 /**
  * Arr.partition(items, f) splits an array in two. For every item, f
- * returns a Result: a failure puts the item in the first group, a success
+ * returns a Result: a success puts the item in the first group, a failure
  * puts it in the second.
  *
- *   [itemsThatFailed, itemsThatSucceeded]
+ *   [itemsThatSucceeded, itemsThatFailed]
  *
- * The failing group comes first, the same order you saw in Effect.partition.
+ * The succeeding group comes first, the same order you saw in Effect.partition.
  *
- * Goal: split numbers into odds (the failures) and evens (the successes).
+ * Goal: split numbers into odds (the successes) and evens (the failures).
  */
 import { Array as Arr, Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const oddsAndEvens = (ns: ReadonlyArray<number>): [Array<number>, Array<number>] =>
-  Arr.partition(ns, (n) => (n % 2 === 0 ? Result.succeed(n) : Result.fail(n)))
+  Arr.partition(ns, (n) => (n % 2 === 0 ? Result.fail(n) : Result.succeed(n)))
 //#exercise
 const oddsAndEvens = (ns: ReadonlyArray<number>): [Array<number>, Array<number>] => todo()
 //#end

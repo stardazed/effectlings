@@ -13,8 +13,6 @@
  * `download` already returns an Effect. Write downloadAll.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let active = 0
 let maxActive = 0

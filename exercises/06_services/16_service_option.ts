@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Metrics extends Context.Service<Metrics, {
   readonly count: (name: string) => Effect.Effect<void>

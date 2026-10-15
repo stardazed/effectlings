@@ -15,8 +15,6 @@
  * Goal: build a full name and a person record, only when both parts exist.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const fullName = (first: Option.Option<string>, last: Option.Option<string>): Option.Option<string> =>

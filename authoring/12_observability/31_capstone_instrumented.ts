@@ -15,9 +15,7 @@
  *  - it finishes with "ok"
  */
 import { ConfigProvider, Config, Data, Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs, recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 class TooMany extends Data.TaggedError("TooMany")<{ readonly qty: number }> {}
 
@@ -25,17 +23,18 @@ const orders = Metric.counter("orders")
 const rejections = Metric.counter("rejections")
 
 //#solution
-const placeOrder = Effect.fn("placeOrder")(function*(qty: number): Effect.fn.Return<"ok", TooMany | Config.ConfigError> {
-  yield* Effect.annotateCurrentSpan("qty", qty)
-  const limit = yield* Config.Int("MAX_QTY").pipe(Config.withDefault(3))
-  if (qty > limit) {
-    yield* Metric.update(rejections, 1)
-    return yield* new TooMany({ qty })
-  }
-  yield* Effect.logInfo("order placed").pipe(Effect.annotateLogs({ qty }))
-  yield* Metric.update(orders, 1)
-  return "ok"
-})
+const placeOrder: (qty: number) => Effect.Effect<"ok", TooMany | Config.ConfigError> =
+  Effect.fn("placeOrder")(function*(qty: number): Effect.fn.Return<"ok", TooMany | Config.ConfigError> {
+    yield* Effect.annotateCurrentSpan("qty", qty)
+    const limit = yield* Config.Int("MAX_QTY").pipe(Config.withDefault(3))
+    if (qty > limit) {
+      yield* Metric.update(rejections, 1)
+      return yield* new TooMany({ qty })
+    }
+    yield* Effect.logInfo("order placed").pipe(Effect.annotateLogs({ qty }))
+    yield* Metric.update(orders, 1)
+    return "ok"
+  })
 //#exercise
 const placeOrder: (qty: number) => Effect.Effect<"ok", TooMany | Config.ConfigError> = todo()
 //#end

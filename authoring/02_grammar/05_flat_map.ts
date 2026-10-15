@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.flatMap
 //#hint The function you give to flatMap returns an Effect, not a plain value.
-//#hint userId.pipe(Effect.flatMap(loadUser), Effect.map((user) => user.name))
+//#hint userId.pipe(Effect.flatMap(...), Effect.map(...))
 /**
  * map takes a function that returns a plain value.
  * flatMap takes a function that returns another Effect, and runs it
@@ -14,8 +14,6 @@
  * that user's name.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface User {
   readonly id: number

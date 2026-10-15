@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect, Redacted } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<{ printed: string; header: string }, Config.ConfigError> = todo()
 

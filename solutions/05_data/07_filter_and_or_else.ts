@@ -5,8 +5,6 @@
  * Goal: keep only adult ages, and pick the primary value or else the backup.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const adultAge = (age: Option.Option<number>): Option.Option<number> => age.pipe(Option.filter((a) => a >= 18))
 const primaryOrBackup = (primary: Option.Option<string>, backup: Option.Option<string>): Option.Option<string> =>

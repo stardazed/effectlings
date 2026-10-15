@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Predicate } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const isEven: Predicate.Predicate<number> = (n) => n % 2 === 0
 const isSmall: Predicate.Predicate<number> = (n) => n < 10

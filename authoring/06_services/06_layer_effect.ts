@@ -16,8 +16,6 @@
  * Goal: a Counter whose next() returns 1, 2, 3, ...
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Counter extends Context.Service<Counter, {
   readonly next: () => number

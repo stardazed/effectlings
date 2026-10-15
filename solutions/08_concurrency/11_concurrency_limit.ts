@@ -5,8 +5,6 @@
  * Goal: run `work` over the numbers with at most 2 in flight.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let active = 0
 let maxActive = 0

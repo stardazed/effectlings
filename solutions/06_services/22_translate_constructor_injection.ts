@@ -17,8 +17,6 @@
  * Write UserService.layer, typed Layer<UserService, never, Db | Mailer>.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Db extends Context.Service<Db, { readonly save: (name: string) => Effect.Effect<void> }>()("Db") {}
 class Mailer extends Context.Service<Mailer, { readonly send: (name: string) => Effect.Effect<void> }>()("Mailer") {}

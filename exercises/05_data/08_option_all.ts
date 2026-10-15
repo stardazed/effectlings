@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const fullName = (first: Option.Option<string>, last: Option.Option<string>): Option.Option<string> => todo()
 const person = (

@@ -13,8 +13,6 @@
  * Goal: turn a Map lookup and an optional field into Options.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const prices = new Map([["pen", 3]])
 

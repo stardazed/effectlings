@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Schema.isMinLength, Schema.isMaxLength, Schema.isPattern
 //#hint Put the rules inside .check(...) on the base schema. You can give it several.
-//#hint Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))
+//#hint Schema.String.check(Schema.isMinLength(...), Schema.isMaxLength(...), Schema.isPattern(...))
 /**
  * A type can say "string". A schema can say what KIND of string.
  * Rules are added with .check(...):
@@ -14,11 +14,9 @@
  * Goal: a username is 3 to 12 characters of lower case letters, digits and underscores.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Username = Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))
+const Username: Schema.Codec<string> = Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))
 //#exercise
 const Username: Schema.Codec<string> = todo()
 //#end

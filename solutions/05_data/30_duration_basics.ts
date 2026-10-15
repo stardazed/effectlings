@@ -10,8 +10,6 @@
  * and a 50 millisecond tick.
  */
 import { Duration } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const minuteAndAHalf: Duration.Duration = Duration.sum(Duration.minutes(1), Duration.seconds(30))
 const inMillis: number = Duration.toMillis(minuteAndAHalf)

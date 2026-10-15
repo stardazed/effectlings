@@ -12,8 +12,6 @@
  * (age 18 to 130), and "rejected" otherwise.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Adult = Schema.Struct({
   name: Schema.String,

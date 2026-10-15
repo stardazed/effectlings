@@ -9,9 +9,6 @@
  * Goal: write `strict` so it cannot fail in its type.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const parse = (s: string): Effect.Effect<number, string> =>
   Number.isNaN(Number(s)) ? Effect.fail("not a number") : Effect.succeed(Number(s))

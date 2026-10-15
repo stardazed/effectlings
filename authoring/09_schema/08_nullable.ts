@@ -11,11 +11,10 @@
  * Goal: a Row with an id and a deletedAt that is a string or null.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Row = Schema.Struct({ id: Schema.Number, deletedAt: Schema.NullOr(Schema.String) })
+const Row: Schema.Codec<{ readonly id: number; readonly deletedAt: string | null }> =
+  Schema.Struct({ id: Schema.Number, deletedAt: Schema.NullOr(Schema.String) })
 //#exercise
 const Row: Schema.Codec<{ readonly id: number; readonly deletedAt: string | null }> = todo()
 //#end

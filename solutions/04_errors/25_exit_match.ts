@@ -10,8 +10,6 @@
  * Goal: describe an exit as text.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const describe = (exit: Exit.Exit<number, string>): string =>
   Exit.match(exit, {

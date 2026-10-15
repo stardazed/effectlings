@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Circle: Schema.Codec<{ readonly _tag: "Circle"; readonly radius: number }> = todo()
 const Square: Schema.Codec<{ readonly _tag: "Square"; readonly side: number }> = todo()

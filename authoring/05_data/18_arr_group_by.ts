@@ -9,8 +9,6 @@
  * Goal: group words by their length.
  */
 import { Array as Arr } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const byLength = (words: ReadonlyArray<string>): Record<string, Array<string>> =>

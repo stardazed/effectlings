@@ -13,11 +13,9 @@
  * Goal: build a string parser and a number parser.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const parseName = Schema.decodeUnknownSync(Schema.String)
-const parseCount = Schema.decodeUnknownSync(Schema.Number)
+const parseName: (input: unknown) => string = Schema.decodeUnknownSync(Schema.String)
+const parseCount: (input: unknown) => number = Schema.decodeUnknownSync(Schema.Number)
 
 check("a string", parseName("ada"), "ada")
 check("a number", parseCount(3), 3)

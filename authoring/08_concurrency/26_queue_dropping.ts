@@ -15,11 +15,9 @@
  * was accepted, and what the queue ended up holding.
  */
 import { Effect, Queue } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<{ accepted: Array<boolean>; kept: ReadonlyArray<number> }> = Effect.gen(function*() {
   const queue = yield* Queue.dropping<number>(2)
   const first = yield* Queue.offer(queue, 1)
   const second = yield* Queue.offer(queue, 2)

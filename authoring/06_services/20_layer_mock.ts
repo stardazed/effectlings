@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Layer.mock
 //#hint Layer.mock(Service) returns a function. Call it with only the members you want to implement.
-//#hint Layer.mock(Users)({ find: (id) => Effect.succeed(`user-${id}`) })
+//#hint Layer.mock(Users)({ ... })
 /**
  * Real services can have many methods, and a test may only need one.
  * Layer.mock(Service)(partial) builds a layer from a PARTIAL implementation.
@@ -13,8 +13,6 @@
  * Goal: a Users layer that only implements find.
  */
 import { Context, Effect, Layer } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Users extends Context.Service<Users, {
   readonly find: (id: number) => Effect.Effect<string>

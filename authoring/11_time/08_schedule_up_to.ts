@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Schedule.upTo
 //#hint upTo takes an options object with times, duration, or both.
-//#hint Schedule.exponential("100 millis").pipe(Schedule.upTo({ times: 3 }))
+//#hint Schedule.exponential(...).pipe(Schedule.upTo({ ... }))
 /**
  * Schedule.exponential never ends by itself. Schedule.upTo limits any
  * schedule by number of repetitions, by elapsed time, or both:
@@ -16,11 +16,9 @@
  */
 import { Effect, Exit, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const policy = Schedule.exponential("100 millis").pipe(Schedule.upTo({ times: 3 }))
+const policy: Schedule.Schedule<unknown> = Schedule.exponential("100 millis").pipe(Schedule.upTo({ times: 3 }))
 //#exercise
 const policy: Schedule.Schedule<unknown> = todo()
 //#end

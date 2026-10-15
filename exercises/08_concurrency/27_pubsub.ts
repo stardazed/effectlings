@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect, PubSub } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<Array<string>> = todo()
 

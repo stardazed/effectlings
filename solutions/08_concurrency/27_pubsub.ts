@@ -10,10 +10,8 @@
  * Goal: two subscribers both receive the published message.
  */
 import { Effect, PubSub } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const program = Effect.scoped(
+const program: Effect.Effect<Array<string>> = Effect.scoped(
   Effect.gen(function*() {
     const hub = yield* PubSub.unbounded<string>()
     const first = yield* PubSub.subscribe(hub)

@@ -13,8 +13,6 @@
  * 2. appLayer: Layer<Users>, with the Db and Mailer layers already fed in.
  */
 import { Context, Data, Effect, Layer } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 

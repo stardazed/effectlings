@@ -8,16 +8,15 @@
  *    SchemaError's message.
  */
 import { Data, Effect, Schema } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ConfigError extends Data.TaggedError("ConfigError")<{ readonly reason: string }> {}
 
-const Config = Schema.Struct({
-  host: Schema.String,
-  port: Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 1, maximum: 65535 })),
-  env: Schema.optionalKey(Schema.Literals(["dev", "prod"])).pipe(Schema.withDecodingDefaultKey(Effect.succeed("dev" as const)))
-})
+const Config: Schema.Codec<{ readonly host: string; readonly port: number; readonly env: "dev" | "prod" }, { readonly host: string; readonly port: number; readonly env?: "dev" | "prod" }> =
+  Schema.Struct({
+    host: Schema.String,
+    port: Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 1, maximum: 65535 })),
+    env: Schema.Literals(["dev", "prod"]).pipe(Schema.withDecodingDefaultKey(Effect.succeed("dev" as const)))
+  })
 
 const loadConfig = (text: string): Effect.Effect<typeof Config.Type, ConfigError> =>
   Schema.decodeUnknownEffect(Schema.fromJsonString(Config))(text).pipe(

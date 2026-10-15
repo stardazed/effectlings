@@ -6,8 +6,6 @@
  * and returns the final count.
  */
 import { Effect, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const countTo = (n: number): Effect.Effect<number> =>
   Effect.gen(function*() {

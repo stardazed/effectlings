@@ -2,7 +2,7 @@
 //#kind translate
 //#deepens Effect.retry, Schedule.exponential, Schedule.upTo
 //#hint The loop, the counter and the sleep all collapse into a schedule.
-//#hint call.pipe(Effect.retry({ schedule: Schedule.exponential("100 millis"), times: 3 }))
+//#hint call.pipe(Effect.retry({ schedule: Schedule.exponential(...), times: ... }))
 /**
  * Plain TypeScript:
  *
@@ -23,8 +23,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const withRetry = <A, E>(call: Effect.Effect<A, E>): Effect.Effect<A, E> =>

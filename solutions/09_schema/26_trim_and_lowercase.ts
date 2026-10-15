@@ -5,10 +5,8 @@
  * Goal: an email schema that trims and lower-cases whatever it receives.
  */
 import { Schema, SchemaTransformation } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Email = Schema.String.pipe(
+const Email: Schema.Codec<string> = Schema.String.pipe(
   Schema.decode(SchemaTransformation.trim()),
   Schema.decode(SchemaTransformation.toLowerCase())
 )

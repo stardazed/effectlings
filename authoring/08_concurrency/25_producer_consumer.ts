@@ -11,11 +11,9 @@
  * their sum. The main fiber produces 1, 2 and 3, then joins the consumer.
  */
 import { Effect, Fiber, Queue } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<number> = Effect.gen(function*() {
   const queue = yield* Queue.unbounded<number>()
   const consumer = yield* Effect.forkChild(
     Effect.gen(function*() {

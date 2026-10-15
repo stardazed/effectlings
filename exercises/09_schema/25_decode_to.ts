@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Schema, SchemaTransformation } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const currentYear = 2026
 

@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.orDie
 //#hint orDie removes the error from the type. The error becomes a crash.
-//#hint parse(s).pipe(Effect.orDie)
+//#hint Effect.orDie takes no arguments. Put it in the pipe.
 /**
  * Sometimes an error is a bug you do not intend to handle. Effect.orDie
  * turns a failure into a "defect": it removes E from the type (E becomes
@@ -14,9 +14,6 @@
  * Goal: write `strict` so it cannot fail in its type.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const parse = (s: string): Effect.Effect<number, string> =>
   Number.isNaN(Number(s)) ? Effect.fail("not a number") : Effect.succeed(Number(s))

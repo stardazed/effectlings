@@ -17,8 +17,6 @@
  * Goal: open the file, run `read` on it, and always close it.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface File {
   readonly readLine: () => string

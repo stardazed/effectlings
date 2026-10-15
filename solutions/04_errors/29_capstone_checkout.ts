@@ -13,8 +13,6 @@
  *    so it cannot fail.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class UnknownSku extends Data.TaggedError("UnknownSku")<{ readonly sku: string }> {}
 class OutOfStock extends Data.TaggedError("OutOfStock")<{ readonly sku: string; readonly wanted: number }> {}
@@ -29,16 +27,14 @@ const stockOf = (sku: string): Effect.Effect<number, UnknownSku> =>
 const charge = (amount: number): Effect.Effect<string, PaymentDeclined> =>
   amount > 50 ? Effect.fail(new PaymentDeclined({ amount })) : Effect.succeed(`receipt-${amount}`)
 
-const placeOrder = Effect.fn("placeOrder")(function*(
-  sku: string,
-  qty: number
-): Effect.fn.Return<string, UnknownSku | OutOfStock | PaymentDeclined> {
-  const available = yield* stockOf(sku)
-  if (available < qty) return yield* new OutOfStock({ sku, wanted: qty })
-  return yield* charge(unitPrice[sku] * qty)
-})
+const placeOrder: (sku: string, qty: number) => Effect.Effect<string, UnknownSku | OutOfStock | PaymentDeclined> =
+  Effect.fn("placeOrder")(function*(sku: string, qty: number) {
+    const available = yield* stockOf(sku)
+    if (available < qty) return yield* new OutOfStock({ sku, wanted: qty })
+    return yield* charge(unitPrice[sku] * qty)
+  })
 
-const safeOrder = (sku: string, qty: number) =>
+const safeOrder: (sku: string, qty: number) => Effect.Effect<string> = (sku, qty) =>
   placeOrder(sku, qty).pipe(
     Effect.catchTags({
       UnknownSku: (e) => Effect.succeed(`we do not sell ${e.sku}`),

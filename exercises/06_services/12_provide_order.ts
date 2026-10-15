@@ -15,7 +15,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
 
 class Db extends Context.Service<Db, { readonly url: string }>()("Db") {}
 class Users extends Context.Service<Users, { readonly describe: () => string }>()("Users") {}

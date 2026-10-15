@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const source = Stream.make(1, 2, 3).pipe(
   Stream.mapEffect((n) => (n === 3 ? Effect.fail("bad value" as const) : Effect.succeed(n)))

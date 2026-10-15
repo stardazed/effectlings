@@ -7,7 +7,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 class Deposit {}
 

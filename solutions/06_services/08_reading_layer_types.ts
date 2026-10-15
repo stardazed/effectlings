@@ -13,8 +13,6 @@
  * Goal: fix the three aliases so they describe usersLayer.
  */
 import { Context, Data, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 class Db extends Context.Service<Db, { readonly connected: boolean }>()("Db") {}
 class Users extends Context.Service<Users, { readonly count: () => number }>()("Users") {}

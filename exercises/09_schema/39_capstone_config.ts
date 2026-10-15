@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect, Schema } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ConfigError extends Data.TaggedError("ConfigError")<{ readonly reason: string }> {}
 

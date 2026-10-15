@@ -6,8 +6,6 @@
  * Goal: build a price record, keep the expensive ones, list their names.
  */
 import { Record as Rec } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const pairs: ReadonlyArray<readonly [string, number]> = [["pen", 3], ["book", 20], ["tv", 600]]
 

@@ -11,7 +11,6 @@
  */
 // I AM NOT DONE
 import { Data, Equal } from "effect"
-import { check } from "../../src/check.ts"
 
 class Point {}
 

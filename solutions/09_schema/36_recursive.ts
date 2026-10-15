@@ -11,8 +11,6 @@
  * Goal: define the Category schema.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Category {
   readonly name: string

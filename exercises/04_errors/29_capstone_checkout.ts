@@ -14,8 +14,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class UnknownSku extends Data.TaggedError("UnknownSku")<{ readonly sku: string }> {}
 class OutOfStock extends Data.TaggedError("OutOfStock")<{ readonly sku: string; readonly wanted: number }> {}

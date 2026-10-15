@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.catch
 //#hint Effect.catch takes a function from the error to a new Effect.
-//#hint parsePort(input).pipe(Effect.catch(() => Effect.succeed(3000)))
+//#hint parsePort(input).pipe(Effect.catch(() => ...))
 /**
  * Effect.catch(handler) runs when the program fails. The handler receives
  * the error and returns an Effect that takes over.
@@ -14,8 +14,6 @@
  * Goal: fall back to port 3000 whenever the input cannot be parsed.
  */
 import { Data, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class ParseError extends Data.TaggedError("ParseError")<{ readonly input: string }> {}
 

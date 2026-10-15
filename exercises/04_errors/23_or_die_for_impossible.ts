@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class InvalidHex extends Data.TaggedError("InvalidHex")<{ readonly input: string }> {}
 

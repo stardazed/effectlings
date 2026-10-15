@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Mailer extends Context.Service<Mailer, {
   readonly send: (to: string) => Effect.Effect<string>

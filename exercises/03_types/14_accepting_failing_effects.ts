@@ -10,7 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
 
 const runIt = (task: Effect.Effect<number>): Promise<number> => Effect.runPromise(task)
 

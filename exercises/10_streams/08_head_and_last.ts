@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect, Option, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const first = <A>(stream: Stream.Stream<A>): Effect.Effect<Option.Option<A>> => todo()
 const last = <A>(stream: Stream.Stream<A>): Effect.Effect<Option.Option<A>> => todo()

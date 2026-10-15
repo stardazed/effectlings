@@ -9,8 +9,6 @@
  * Goal: build appLayer: a layer that provides Users and needs nothing.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Db extends Context.Service<Db, { readonly url: string }>()("Db") {}
 class Users extends Context.Service<Users, { readonly describe: () => string }>()("Users") {}

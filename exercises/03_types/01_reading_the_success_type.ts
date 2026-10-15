@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const program = Effect.gen(function*() {
   const n = yield* Effect.succeed(2)

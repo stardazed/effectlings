@@ -15,11 +15,9 @@
  * Goal: a parser from text to number and a formatter from number to text.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const parseQty = Schema.decodeUnknownSync(Schema.NumberFromString)
-const formatQty = Schema.encodeSync(Schema.NumberFromString)
+const parseQty: (input: unknown) => number = Schema.decodeUnknownSync(Schema.NumberFromString)
+const formatQty: (n: number) => string = Schema.encodeSync(Schema.NumberFromString)
 
 check("decode", parseQty("12"), 12)
 check("decode a decimal", parseQty("2.5"), 2.5)

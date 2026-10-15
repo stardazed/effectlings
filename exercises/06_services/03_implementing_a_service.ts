@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Clock extends Context.Service<Clock, {
   readonly now: () => number

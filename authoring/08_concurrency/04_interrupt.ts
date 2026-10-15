@@ -16,11 +16,9 @@
  * Goal: start an endless task, interrupt it, and return its Exit.
  */
 import { Cause, Effect, Exit, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<Exit.Exit<never>> = Effect.gen(function*() {
   const fiber = yield* Effect.forkChild(Effect.never)
   yield* Effect.yieldNow
   yield* Fiber.interrupt(fiber)

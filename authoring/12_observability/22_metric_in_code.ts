@@ -2,7 +2,7 @@
 //#kind complete
 //#deepens Metric.counter, Metric.update, Metric.value, Effect.tap, Effect.tapError
 //#hint Count in tap for successes and tapError for failures.
-//#hint Effect.tap(() => Metric.update(succeeded, 1)), Effect.tapError(() => Metric.update(failed, 1))
+//#hint Effect.tap(() => Metric.update(..., 1)), Effect.tapError(() => Metric.update(..., 1))
 /**
  * Metrics are updated right where things happen. Wrap a task so it counts
  * how often it succeeds and how often it fails, without changing its result.
@@ -10,8 +10,6 @@
  * Goal: instrument `task`.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const succeeded = Metric.counter("tasks_succeeded")
 const failed = Metric.counter("tasks_failed")

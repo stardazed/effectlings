@@ -2,7 +2,7 @@
 //#kind complete
 //#deepens Effect.map, .pipe
 //#hint One .pipe call can take many steps, separated by commas.
-//#hint .pipe(Effect.map((s) => s.trim()), Effect.map((s) => s.toUpperCase()), Effect.map((s) => s + "!"))
+//#hint .pipe(Effect.map(...), Effect.map(...), Effect.map(...))
 /**
  * A pipeline is a list of small steps. Each step receives the result of
  * the one before it.
@@ -11,8 +11,6 @@
  * (trim, then upper case, then add an exclamation mark).
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const raw = Effect.succeed("  hello ")
 

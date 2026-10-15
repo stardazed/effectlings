@@ -11,9 +11,7 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Data, Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs, recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 class TooMany extends Data.TaggedError("TooMany")<{ readonly qty: number }> {}
 

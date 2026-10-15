@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Option, Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Nickname: Schema.Codec<Option.Option<string>, string | null> = todo()
 

@@ -234,7 +234,7 @@
 | 230 | 09_schema/36_recursive.ts | complete | Schema.suspend |  |
 | 231 | 09_schema/37_translate_type_guard.ts | translate |  | Schema.Struct, Schema.is |
 | 232 | 09_schema/38_translate_json_parse.ts | translate |  | Schema.fromJsonString, Schema.decodeUnknownEffect, Schema.SchemaError, Schema.isSchemaError |
-| 233 | 09_schema/39_capstone_config.ts | complete |  | Schema.Struct, Schema.isInt, Schema.isBetween, Schema.Literals, Schema.optionalKey, Schema.withDecodingDefaultKey, Schema.fromJsonString, Schema.decodeUnknownEffect, Effect.mapError |
+| 233 | 09_schema/39_capstone_config.ts | complete |  | Schema.Struct, Schema.isInt, Schema.isBetween, Schema.Literals, Schema.withDecodingDefaultKey, Schema.fromJsonString, Schema.decodeUnknownEffect, Effect.mapError |
 | 234 | 10_streams/01_make_and_collect.ts | complete | Stream.make, Stream.map, Stream.runCollect |  |
 | 235 | 10_streams/02_from_iterable.ts | complete | Stream.fromIterable, Stream.range, Stream.filter |  |
 | 236 | 10_streams/03_take_and_drop.ts | complete | Stream.take, Stream.drop |  |

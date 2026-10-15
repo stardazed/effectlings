@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const fetchPrice = (sku: string): Effect.Effect<number, string> =>
   sku === "pen" ? Effect.succeed(3) : Effect.fail("no such sku")

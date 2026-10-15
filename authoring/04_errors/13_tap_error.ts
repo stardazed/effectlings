@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.tapError
 //#hint tapError is to the error what tap is to the result.
-//#hint lookup(id).pipe(Effect.tapError((e) => Effect.sync(() => { seen.push(e._tag) })))
+//#hint lookup(id).pipe(Effect.tapError((e) => ...))
 /**
  * Effect.tapError(f) runs an effect when the program fails, then lets the
  * same failure continue. It is how you log or count errors without
@@ -12,8 +12,6 @@
  * still fail.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 class Denied extends Data.TaggedError("Denied")<{ readonly who: string }> {}

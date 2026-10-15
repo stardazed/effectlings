@@ -18,8 +18,6 @@
  * by asking: can this code throw?
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const double = (n: number): number => n * 2
 const mustBePositive = (n: number): number => {

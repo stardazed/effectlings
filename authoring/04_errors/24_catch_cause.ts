@@ -17,8 +17,6 @@
  * Goal: classify a program as "ok", "failure", "defect" or "interrupted".
  */
 import { Cause, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Outcome = "ok" | "failure" | "defect" | "interrupted"
 

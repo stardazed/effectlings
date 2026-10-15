@@ -13,13 +13,11 @@
  * text in `logged`.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const logged: Array<string> = []
 const base = Effect.succeed(100)
 
-const label = Effect.fn("label")(
+const label: (extra: number) => Effect.Effect<string> = Effect.fn("label")(
   function*(extra: number) {
     const b = yield* base
     return b + extra

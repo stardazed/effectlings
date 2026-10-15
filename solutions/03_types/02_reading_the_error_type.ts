@@ -8,13 +8,11 @@
  * Goal: fix `Failure` so it matches the program.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const program = Effect.gen(function*() {
-  const n = yield* Effect.succeed(1)
-  if (n > 0) return yield* Effect.fail("too big")
-  return n
+  const age = yield* Effect.succeed(15)
+  if (age >= 18) return age
+  return yield* Effect.fail("too young")
 })
 
 type Failure = string

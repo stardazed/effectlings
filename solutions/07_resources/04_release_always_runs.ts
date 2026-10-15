@@ -3,8 +3,6 @@
  * Write your prediction in `expected`, then confirm by running.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

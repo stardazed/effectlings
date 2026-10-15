@@ -10,7 +10,6 @@
  * Goal: make Point a Data.Class with fields x and y.
  */
 import { Data, Equal } from "effect"
-import { check } from "../../src/check.ts"
 
 class Point extends Data.Class<{ readonly x: number; readonly y: number }> {}
 

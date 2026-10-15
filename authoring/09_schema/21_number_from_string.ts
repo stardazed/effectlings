@@ -20,12 +20,10 @@
  * Goal: a parser from text to number and a formatter from number to text.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const parseQty = Schema.decodeUnknownSync(Schema.NumberFromString)
-const formatQty = Schema.encodeSync(Schema.NumberFromString)
+const parseQty: (input: unknown) => number = Schema.decodeUnknownSync(Schema.NumberFromString)
+const formatQty: (n: number) => string = Schema.encodeSync(Schema.NumberFromString)
 //#exercise
 const parseQty: (input: unknown) => number = todo()
 const formatQty: (n: number) => string = todo()

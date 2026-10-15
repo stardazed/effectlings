@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Data.Class, Equal.equals
 //#hint Two Point objects are different objects, so === is false. Data.Class makes them equal by value.
-//#hint class Point extends Data.Class<{ readonly x: number; readonly y: number }> {}
+//#hint class Point extends Data.Class<{ ... }> {}
 /**
  * Two objects with the same fields are still different objects, and === says so.
  * Classes that extend Data.Class compare by value with Equal.equals:
@@ -15,7 +15,6 @@
  * Goal: make Point a Data.Class with fields x and y.
  */
 import { Data, Equal } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 class Point extends Data.Class<{ readonly x: number; readonly y: number }> {}

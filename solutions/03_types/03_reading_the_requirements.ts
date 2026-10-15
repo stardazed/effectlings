@@ -13,8 +13,6 @@
  * Goal: fix `Needs`.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 // Scaffolding, do not edit.
 class Mailer extends Context.Service<Mailer, {

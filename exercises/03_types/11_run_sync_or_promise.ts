@@ -7,7 +7,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 const slow = Effect.sleep("10 millis").pipe(Effect.as("waited"))
 

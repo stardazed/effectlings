@@ -8,7 +8,6 @@
  *
  * Fix the type error. Do not change the check at the bottom.
  */
-import { check } from "../../src/check.ts"
 
 //#solution
 const greeting: string = "hello"

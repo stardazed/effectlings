@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Duration, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const isSlow = (input: Duration.Input, limit: Duration.Duration): boolean => todo()
 

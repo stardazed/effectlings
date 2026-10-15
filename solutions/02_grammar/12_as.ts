@@ -7,8 +7,6 @@
  * Goal: after `save` runs, produce "created", and also produce nothing.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const save = Effect.succeed({ rowsWritten: 1 })
 

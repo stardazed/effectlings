@@ -12,12 +12,10 @@
  * Goal: a version marker and a status.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Version = Schema.Literal("v1")
-const Status = Schema.Literals(["draft", "published"])
+const Version: Schema.Codec<"v1"> = Schema.Literal("v1")
+const Status: Schema.Codec<"draft" | "published"> = Schema.Literals(["draft", "published"])
 //#exercise
 const Version: Schema.Codec<"v1"> = todo()
 const Status: Schema.Codec<"draft" | "published"> = todo()

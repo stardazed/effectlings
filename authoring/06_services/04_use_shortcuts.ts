@@ -15,8 +15,6 @@
  * Goal: read the port with useSync, and run describe with use.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Settings extends Context.Service<Settings, {
   readonly port: number
@@ -24,8 +22,8 @@ class Settings extends Context.Service<Settings, {
 }>()("Settings") {}
 
 //#solution
-const port = Settings.useSync((s) => s.port)
-const description = Settings.use((s) => s.describe())
+const port: Effect.Effect<number, never, Settings> = Settings.useSync((s) => s.port)
+const description: Effect.Effect<string, never, Settings> = Settings.use((s) => s.describe())
 //#exercise
 const port: Effect.Effect<number, never, Settings> = todo()
 const description: Effect.Effect<string, never, Settings> = todo()

@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect, Exit, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const outcome = <A, E>(task: Effect.Effect<A, E>): Effect.Effect<Exit.Exit<A, E>> => todo()
 const joined = <A, E>(task: Effect.Effect<A, E>): Effect.Effect<A, E> => todo()

@@ -12,8 +12,6 @@
  * Goal: define `connection`, and run the code that uses it inside Effect.scoped.
  */
 import { Effect, Scope } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const open = Effect.sync(() => {

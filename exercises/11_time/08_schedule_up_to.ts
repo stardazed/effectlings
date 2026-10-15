@@ -12,8 +12,6 @@
 // I AM NOT DONE
 import { Effect, Exit, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const policy: Schedule.Schedule<unknown> = todo()
 

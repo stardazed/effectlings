@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Even: Schema.Codec<number> = todo()
 

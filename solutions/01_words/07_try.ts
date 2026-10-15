@@ -7,8 +7,6 @@
  * Goal: parse JSON. Invalid input must fail with the string "invalid json".
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parse = (input: string): Effect.Effect<unknown, string> =>
   Effect.try({

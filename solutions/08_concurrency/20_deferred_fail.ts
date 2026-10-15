@@ -8,8 +8,6 @@
  * Goal: make a Deferred, fail it with "cancelled", and await it.
  */
 import { Deferred, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<string, string> = Effect.gen(function*() {
   const signal = yield* Deferred.make<string, string>()

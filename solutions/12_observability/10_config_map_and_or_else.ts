@@ -6,8 +6,6 @@
  * NEW_NAME or else from the older OLD_NAME.
  */
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const timeoutMillis: Config.Config<number> = Config.Int("TIMEOUT_SECONDS").pipe(Config.map((s) => s * 1000))
 const name: Config.Config<string> = Config.String("NEW_NAME").pipe(Config.orElse(() => Config.String("OLD_NAME")))

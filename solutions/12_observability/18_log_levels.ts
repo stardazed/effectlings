@@ -8,9 +8,7 @@
  * Goal: make `verbose` show its debug line, while `quiet` does not.
  */
 import { Effect, References } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const work = Effect.logDebug("internal detail")
 

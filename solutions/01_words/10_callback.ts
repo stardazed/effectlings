@@ -11,14 +11,12 @@
  * Goal: wrap `later` so the program finishes with the value it delivers.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const later = (ms: number, callback: (value: string) => void): void => {
   setTimeout(() => callback("done"), ms)
 }
 
-const program = Effect.callback<string>((resume) => {
+const program: Effect.Effect<string> = Effect.callback<string>((resume) => {
   later(5, (value) => resume(Effect.succeed(value)))
 })
 

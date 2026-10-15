@@ -2,7 +2,7 @@
 //#kind complete
 //#deepens Effect.repeat, Schedule.spaced
 //#hint Give repeat a schedule for the pause and a limit for the count.
-//#hint sample.pipe(Effect.repeat({ schedule: Schedule.spaced("1 second"), times: 2 }))
+//#hint sample.pipe(Effect.repeat({ schedule: Schedule.spaced(...), times: ... }))
 /**
  * A schedule works with repeat the same way it does with retry.
  *
@@ -11,8 +11,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let samples = 0
 const sample = Effect.sync(() => ++samples)

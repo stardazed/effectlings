@@ -14,15 +14,13 @@
  * when it is not. The program needs nothing, so its R is never.
  */
 import { Context, Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Metrics extends Context.Service<Metrics, {
   readonly count: (name: string) => Effect.Effect<void>
 }>()("Metrics") {}
 
 //#solution
-const work = Effect.gen(function*() {
+const work: Effect.Effect<string> = Effect.gen(function*() {
   const metrics = yield* Effect.serviceOption(Metrics)
   if (Option.isSome(metrics)) yield* metrics.value.count("work")
   return "done"

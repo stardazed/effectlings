@@ -11,8 +11,6 @@
  * Goal: define `done`.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const done: Effect.Effect<void> = Effect.void

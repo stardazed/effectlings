@@ -19,8 +19,6 @@
  * QuotaExceeded must still fail with the AiError.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class RateLimited extends Data.TaggedError("RateLimited")<{ readonly retryAfter: number }> {}
 class QuotaExceeded extends Data.TaggedError("QuotaExceeded")<{ readonly limit: number }> {}

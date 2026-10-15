@@ -8,14 +8,13 @@
  * Goal: nickname is an optionalKey of string. age is optional of number.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Profile = Schema.Struct({
-  name: Schema.String,
-  nickname: Schema.optionalKey(Schema.String),
-  age: Schema.optional(Schema.Number)
-})
+const Profile: Schema.Codec<{ readonly name: string; readonly nickname?: string; readonly age?: number | undefined }> =
+  Schema.Struct({
+    name: Schema.String,
+    nickname: Schema.optionalKey(Schema.String),
+    age: Schema.optional(Schema.Number)
+  })
 
 const decode = Schema.decodeUnknownSync(Profile)
 

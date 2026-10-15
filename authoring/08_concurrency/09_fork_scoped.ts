@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.forkScoped
 //#hint forkScoped ties the fiber to the current Scope, so the type needs Scope.Scope in R.
-//#hint Effect.gen(function*() { yield* Effect.forkScoped(worker) })
+//#hint Effect.gen(function*() { yield* Effect.forkScoped(...) })
 /**
  * Effect.forkScoped(program) starts a fiber whose lifetime is the current
  * scope, not the current fiber. When the scope closes, the fiber is
@@ -12,8 +12,6 @@
  * Goal: write startWorker, which starts `worker` in the scope and returns.
  */
 import { Effect, Scope } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

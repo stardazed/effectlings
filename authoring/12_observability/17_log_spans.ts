@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.withLogSpan
 //#hint withLogSpan takes a label. Every log inside carries it, with the elapsed time.
-//#hint work.pipe(Effect.withLogSpan("checkout"))
+//#hint work.pipe(Effect.withLogSpan("..."))
 /**
  * Effect.withLogSpan(label) marks a stretch of code. Log lines written
  * inside it carry the label, and a real logger shows how long the span has
@@ -11,9 +11,7 @@
  * Goal: put the whole `work` program in a log span called "checkout".
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const work = Effect.logInfo("paying")
 

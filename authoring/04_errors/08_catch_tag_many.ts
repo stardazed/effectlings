@@ -2,7 +2,7 @@
 //#kind complete
 //#deepens Effect.catchTag
 //#hint Give catchTag an array of tags. The handler receives the union of those errors.
-//#hint Effect.catchTag(["NotFound", "Denied"], (e) => Effect.succeed(`recovered from ${e._tag}`))
+//#hint Effect.catchTag(["...", "..."], (e) => ...)
 /**
  * catchTag also accepts an array of tags. One handler covers all of them,
  * and its parameter is the union of those error types. Every error has a
@@ -11,8 +11,6 @@
  * Goal: recover from both errors, saying which one happened.
  */
 import { Data, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 class Denied extends Data.TaggedError("Denied")<{ readonly who: string }> {}

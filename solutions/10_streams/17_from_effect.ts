@@ -7,8 +7,6 @@
  * Goal: read the sensor three times.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let reading = 0
 const readSensor = Effect.sync(() => ++reading * 10)

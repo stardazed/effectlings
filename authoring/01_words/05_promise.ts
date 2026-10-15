@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.promise
 //#hint Effect.promise takes a function that returns a promise, not the promise itself.
-//#hint Effect.promise(() => loadGreeting())
+//#hint Effect.promise(() => ...)
 /**
  * A Promise starts working the moment it is created. An Effect should not.
  * Effect.promise takes a function that creates the promise, and calls it
@@ -16,8 +16,6 @@
  * Goal: wrap loadGreeting so it only starts when the program runs.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let started = 0
 const loadGreeting = (): Promise<string> => {

@@ -4,10 +4,8 @@
  * Goal: an identifier may be a string or a number.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Id = Schema.Union([Schema.String, Schema.Number])
+const Id: Schema.Codec<string | number> = Schema.Union([Schema.String, Schema.Number])
 
 const decode = Schema.decodeUnknownSync(Id)
 

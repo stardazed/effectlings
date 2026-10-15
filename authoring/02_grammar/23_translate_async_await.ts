@@ -18,8 +18,6 @@
  * loadCart and priceOf already return Effects. Write `checkout`.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Cart {
   readonly items: ReadonlyArray<string>
@@ -30,7 +28,7 @@ const loadCart = (id: string): Effect.Effect<Cart> => Effect.succeed({ items: ["
 const priceOf = (sku: string): Effect.Effect<number> => Effect.succeed(sku === "a" ? 10 : 20)
 
 //#solution
-const checkout = Effect.fn("checkout")(function*(cartId: string) {
+const checkout: (cartId: string) => Effect.Effect<number> = Effect.fn("checkout")(function*(cartId: string) {
   const cart = yield* loadCart(cartId)
   let total = 0
   for (const sku of cart.items) {

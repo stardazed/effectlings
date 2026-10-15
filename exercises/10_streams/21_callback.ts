@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect, Queue, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const ticker = (onTick: (n: number) => void, onDone: () => void): void => {
   let n = 0

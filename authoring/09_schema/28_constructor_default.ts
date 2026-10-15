@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Schema.withConstructorDefault
 //#hint Settings.make({ host }) fails to compile because retries is required. Give retries a constructor default.
-//#hint retries: Schema.Number.pipe(Schema.withConstructorDefault(Effect.succeed(3)))
+//#hint retries: Schema.Number.pipe(Schema.withConstructorDefault(Effect.succeed(...)))
 /**
  * A Struct has a .make function that builds a value and validates it.
  * Decoding defaults apply to decoding. To let callers of .make leave a
@@ -13,7 +13,6 @@
  * Goal: Settings.make({ host: "localhost" }) should compile and give retries 3.
  */
 import { Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 const Settings = Schema.Struct({

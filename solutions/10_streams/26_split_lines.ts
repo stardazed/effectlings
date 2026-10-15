@@ -5,8 +5,6 @@
  * Goal: turn the chunks into lines.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const lines = (chunks: ReadonlyArray<string>): Effect.Effect<Array<string>> =>
   Stream.fromIterable(chunks).pipe(Stream.splitLines, Stream.runCollect)

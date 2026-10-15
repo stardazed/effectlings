@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const divide = (a: number, b: number): Result.Result<number, string> => todo()
 

@@ -7,8 +7,6 @@
  */
 import { Effect, Fiber } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const slow = Effect.sleep("10 minutes").pipe(Effect.as("finished"))
 
@@ -18,7 +16,7 @@ const guarded = <A, E, R>(task: Effect.Effect<A, E, R>) =>
     Effect.catchTag("TimeoutError", () => Effect.succeed("too slow" as const))
   )
 
-const outcome = Effect.gen(function*() {
+const outcome: Effect.Effect<string> = Effect.gen(function*() {
   const fiber = yield* Effect.forkChild(guarded(slow))
   yield* TestClock.adjust("1 minute")
   return yield* Fiber.join(fiber)

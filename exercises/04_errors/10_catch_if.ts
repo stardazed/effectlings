@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class HttpError extends Data.TaggedError("HttpError")<{ readonly status: number }> {}
 

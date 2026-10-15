@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Layer.provideMerge
 //#hint provideMerge feeds the dependency like provide does, and also keeps it in the output.
-//#hint usersLayer.pipe(Layer.provideMerge(dbLayer))
+//#hint usersLayer.pipe(Layer.provideMerge(...))
 /**
  * Layer.provide hides the dependency. Layer.provideMerge feeds it in and
  * ALSO exposes it, so the result provides both services:
@@ -14,8 +14,6 @@
  * Goal: build a layer that provides both Users and Db.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Db extends Context.Service<Db, { readonly url: string }>()("Db") {}
 class Users extends Context.Service<Users, { readonly describe: () => string }>()("Users") {}

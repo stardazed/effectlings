@@ -11,8 +11,6 @@
  * Goal: an optional proxy URL.
  */
 import { ConfigProvider, Config, Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const proxy: Config.Config<Option.Option<string>> = Config.option(Config.String("PROXY"))

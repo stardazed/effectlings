@@ -5,8 +5,6 @@
  * Goal: define `pause` that waits 20 milliseconds.
  */
 import { Effect } from "effect"
-import { checkTrue } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const pause: Effect.Effect<void> = Effect.sleep("20 millis")
 

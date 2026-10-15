@@ -12,8 +12,6 @@
  * Goal: retries defaults to 3.
  */
 import { ConfigProvider, Config, Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const retries: Config.Config<number> = Config.Int("RETRIES").pipe(Config.withDefault(3))
 

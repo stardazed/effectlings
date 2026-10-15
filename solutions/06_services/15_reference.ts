@@ -12,10 +12,9 @@
  * Goal: define Verbosity with the default "quiet".
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Verbosity = Context.Reference<"quiet" | "loud">("Verbosity", { defaultValue: () => "quiet" as const })
+const Verbosity: Context.Reference<"quiet" | "loud"> =
+  Context.Reference<"quiet" | "loud">("Verbosity", { defaultValue: () => "quiet" as const })
 
 const current = Effect.gen(function*() {
   return yield* Verbosity

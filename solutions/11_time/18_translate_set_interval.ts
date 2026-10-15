@@ -15,8 +15,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let polls = 0
 const poll = Effect.sync(() => { polls += 1 })

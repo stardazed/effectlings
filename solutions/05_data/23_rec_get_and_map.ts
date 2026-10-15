@@ -7,8 +7,6 @@
  * Goal: look up a price and double every price.
  */
 import { Option, Record as Rec } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const prices: Record<string, number> = { pen: 3, book: 20 }
 

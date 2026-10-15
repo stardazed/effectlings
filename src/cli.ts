@@ -108,12 +108,12 @@ const typecheck = async (relPath: string): Promise<Exec> => {
   const cfg = join(tmpDir, `tsconfig.${process.pid}.${tmpCounter++}.json`)
   writeFileSync(
     cfg,
-    JSON.stringify({ extends: "../../tsconfig.json", include: [], files: [`../../${relPath}`] })
+    JSON.stringify({ extends: "../../tsconfig.json", include: [], files: [`../../src/global-types.d.ts`, `../../${relPath}`] })
   )
   return exec([tscBin, "-p", cfg, "--pretty", "false"])
 }
 
-const runFile = (relPath: string): Promise<Exec> => exec(["--import", "tsx", relPath])
+const runFile = (relPath: string): Promise<Exec> => exec(["--import", "tsx", "--import", "./src/globals.ts", relPath])
 
 const tidyRuntime = (out: string, relPath: string): string => {
   const keep: Array<string> = []
@@ -330,7 +330,7 @@ const cmdVerify = async (): Promise<void> => {
     if (!typeErrors.has(`exercises/${info.path}`)) toRun.push(`exercises/${info.path}`)
   }
   process.stdout.write(`running ${toRun.length} files...\n`)
-  const run = await exec(["--import", "tsx", "src/verify-runner.ts", ...toRun], 900_000)
+  const run = await exec(["--import", "tsx", "--import", "./src/globals.ts", "src/verify-runner.ts", ...toRun], 900_000)
   let results: Array<{ file: string; ok: boolean; output: string }> = []
   try {
     results = JSON.parse(run.out.trim().split("\n").pop() ?? "[]")

@@ -16,7 +16,6 @@
  * Goal: fix the three annotations so they describe what the programs produce.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 const greeting: Effect.Effect<string> = Effect.succeed("hello")

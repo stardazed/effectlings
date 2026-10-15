@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.runPromise
 //#hint runPromise returns a Promise, so await it.
-//#hint await Effect.runPromise(program)
+//#hint await Effect.runPromise(...)
 /**
  * Effect.runSync runs a program right now, but only when the program can
  * finish without waiting. Most real programs wait (timers, files, network),
@@ -13,8 +13,6 @@
  * Goal: run `program` and keep its result.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program = Effect.succeed("hello")
 

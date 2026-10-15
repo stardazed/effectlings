@@ -12,8 +12,6 @@
  */
 // I AM NOT DONE
 import { Effect, Layer, Logger } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const lines: Array<string> = []
 

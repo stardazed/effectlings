@@ -12,8 +12,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const settings: Effect.Effect<{ port: number; debug: boolean; retries: number; rate: number }, Config.ConfigError> = todo()
 

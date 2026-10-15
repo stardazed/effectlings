@@ -10,13 +10,11 @@
  * Goal: write `doubled` in data-first style and `tripled` in pipe style.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const price = Effect.succeed(10)
 
-const doubled = Effect.map(price, (n) => n * 2)
-const tripled = price.pipe(Effect.map((n) => n * 3))
+const doubled: Effect.Effect<number> = Effect.map(price, (n) => n * 2)
+const tripled: Effect.Effect<number> = price.pipe(Effect.map((n) => n * 3))
 
 check("doubled", Effect.runSync(doubled), 20)
 check("tripled", Effect.runSync(tripled), 30)

@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Base extends Context.Service<Base, { readonly id: number }>()("Base") {}
 class A extends Context.Service<A, { readonly a: number }>()("A") {}

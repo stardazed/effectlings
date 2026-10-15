@@ -12,8 +12,6 @@
  * Goal: put 1, 2, 3 in a queue, end it, and read the values as a stream.
  */
 import { Cause, Effect, Queue, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const program: Effect.Effect<Array<number>> = Effect.gen(function*() {

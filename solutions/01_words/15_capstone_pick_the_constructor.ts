@@ -3,8 +3,6 @@
  * legacy piece does; choose the right way to wrap it.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let ticks = 0
 const tick = (): number => ++ticks // plain function, never throws

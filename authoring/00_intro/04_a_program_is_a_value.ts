@@ -13,8 +13,6 @@
  * Goal: describe a program that finishes with 42, then run it.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const program = Effect.succeed(42)

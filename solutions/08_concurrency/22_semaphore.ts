@@ -10,8 +10,6 @@
  * Goal: run three jobs concurrently, but never two at the same time.
  */
 import { Effect, Semaphore } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let active = 0
 let maxActive = 0

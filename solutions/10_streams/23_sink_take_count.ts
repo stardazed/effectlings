@@ -5,8 +5,6 @@
  * Goal: the first three values of an endless stream, and the length of a finite one.
  */
 import { Effect, Sink, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const firstThree: Effect.Effect<ReadonlyArray<number>> = Stream.iterate(0, (n) => n + 1).pipe(
   Stream.run(Sink.take<number>(3))

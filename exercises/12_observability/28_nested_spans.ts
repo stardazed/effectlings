@@ -6,9 +6,7 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const charge = Effect.succeed("charged")
 const email = Effect.succeed("emailed")

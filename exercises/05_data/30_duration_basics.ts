@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Duration } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const minuteAndAHalf: Duration.Duration = todo()
 const inMillis: number = todo()

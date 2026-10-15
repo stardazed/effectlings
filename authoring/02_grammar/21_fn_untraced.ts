@@ -11,13 +11,11 @@
  * Goal: write `square` with fnUntraced.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const one = Effect.succeed(1)
 
 //#solution
-const squarePlusOne = Effect.fnUntraced(function*(n: number) {
+const squarePlusOne: (n: number) => Effect.Effect<number> = Effect.fnUntraced(function*(n: number) {
   const extra = yield* one
   return n * n + extra
 })

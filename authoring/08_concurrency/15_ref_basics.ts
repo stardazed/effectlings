@@ -15,11 +15,9 @@
  * Goal: return the status before and after publishing.
  */
 import { Effect, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<Array<string>> = Effect.gen(function*() {
   const status: Ref.Ref<string> = yield* Ref.make("draft")
   const before = yield* Ref.get(status)
   yield* Ref.set(status, "published")

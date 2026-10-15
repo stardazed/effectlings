@@ -5,14 +5,12 @@
  * Goal: a "checkout" span that contains two child spans, "charge" then "email".
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const charge = Effect.succeed("charged")
 const email = Effect.succeed("emailed")
 
-const checkout = Effect.gen(function*() {
+const checkout: Effect.Effect<void> = Effect.gen(function*() {
   yield* charge.pipe(Effect.withSpan("charge"))
   yield* email.pipe(Effect.withSpan("email"))
 }).pipe(Effect.withSpan("checkout"))

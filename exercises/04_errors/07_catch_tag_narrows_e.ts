@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 class Denied extends Data.TaggedError("Denied")<{ readonly who: string }> {}

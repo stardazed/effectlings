@@ -7,8 +7,6 @@
  * Goal: double a price that may be missing, and read a price with a default of 0.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const doubled = (price: Option.Option<number>): Option.Option<number> => price.pipe(Option.map((p) => p * 2))
 const orZero = (price: Option.Option<number>): number => price.pipe(Option.getOrElse(() => 0))

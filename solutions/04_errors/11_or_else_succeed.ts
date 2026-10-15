@@ -6,8 +6,6 @@
  * Goal: a count that is 0 whenever parsing fails.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parseCount = (s: string): Effect.Effect<number, string> =>
   Number.isInteger(Number(s)) ? Effect.succeed(Number(s)) : Effect.fail(`not an integer: ${s}`)

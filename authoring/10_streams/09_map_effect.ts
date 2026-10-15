@@ -12,8 +12,6 @@
  * Goal: look every id up, three at a time.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let active = 0
 let maxActive = 0

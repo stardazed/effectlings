@@ -8,8 +8,6 @@
  * Goal: retry timeouts, but give up at once on a BadRequest.
  */
 import { Data, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Timeout extends Data.TaggedError("Timeout")<{}> {}
 class BadRequest extends Data.TaggedError("BadRequest")<{}> {}

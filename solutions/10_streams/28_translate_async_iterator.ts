@@ -13,8 +13,6 @@
  * Goal: the doubled numbers, as a stream collected into an array.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 async function* numbers(): AsyncGenerator<number> {
   yield 1

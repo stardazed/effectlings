@@ -4,7 +4,7 @@
 Small exercises that teach Effect v4, one idea at a time. Think rustlings or ziglings, for Effect.
 You only need to know TypeScript. Effect is taught as a language, from the ground up.
 
-Pinned to `effect@4.0.0-rc.118` (TypeScript 7, Node 22 or newer).
+Pinned to `effect@4.0.4` (TypeScript 7, Node 22 or newer).
 
 ## Start
 

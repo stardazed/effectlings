@@ -16,8 +16,6 @@
  * Other errors must not be hidden.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Age = Schema.Number
 

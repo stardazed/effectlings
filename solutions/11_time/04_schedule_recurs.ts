@@ -10,8 +10,6 @@
  * Goal: define the policy so the task succeeds on its fourth attempt.
  */
 import { Effect, Schedule } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const task: Effect.Effect<string, "busy"> = Effect.suspend(() => {

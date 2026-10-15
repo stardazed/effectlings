@@ -13,14 +13,13 @@
  * Goal: Employee is a Person with a company. NameOnly has just the name.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Person = Schema.Struct({ name: Schema.String, age: Schema.Number })
 
 //#solution
-const Employee = Person.pipe(Schema.fieldsAssign({ company: Schema.String }))
-const NameOnly = Schema.Struct({ name: Person.fields.name })
+const Employee: Schema.Codec<{ readonly name: string; readonly age: number; readonly company: string }> =
+  Person.pipe(Schema.fieldsAssign({ company: Schema.String }))
+const NameOnly: Schema.Codec<{ readonly name: string }> = Schema.Struct({ name: Person.fields.name })
 //#exercise
 const Employee: Schema.Codec<{ readonly name: string; readonly age: number; readonly company: string }> = todo()
 const NameOnly: Schema.Codec<{ readonly name: string }> = todo()

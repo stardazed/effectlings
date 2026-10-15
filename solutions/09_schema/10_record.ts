@@ -5,10 +5,8 @@
  * Goal: a schema for a dictionary from names to prices.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Prices = Schema.Record(Schema.String, Schema.Number)
+const Prices: Schema.Codec<{ readonly [key: string]: number }> = Schema.Record(Schema.String, Schema.Number)
 
 const decode = Schema.decodeUnknownSync(Prices)
 

@@ -7,8 +7,6 @@
  * other level are ignored.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Level = "info" | "warn" | "error"
 type Counts = Record<Level, number>

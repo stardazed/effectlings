@@ -13,8 +13,6 @@
  * Goal: return both ends of an array.
  */
 import { Array as Arr, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const ends = (ns: ReadonlyArray<number>): [Option.Option<number>, Option.Option<number>] => [Arr.head(ns), Arr.last(ns)]
 

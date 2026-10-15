@@ -7,8 +7,6 @@
  * takes anything for 5ms. Predict how many offers have completed by then.
  */
 import { Effect, Fiber, Queue } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let offered = 0
 

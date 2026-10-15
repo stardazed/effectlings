@@ -9,15 +9,13 @@
  * Goal: compute four dates from `start`.
  */
 import { DateTime } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const start = DateTime.makeUnsafe("2026-01-15T10:30:00Z")
 
-const inTwentyDays = DateTime.add(start, { days: 20 })
-const aWeekAgo = DateTime.subtract(start, { weeks: 1 })
-const firstOfMonth = DateTime.startOf(start, "month")
-const endOfDay = DateTime.endOf(start, "day")
+const inTwentyDays: DateTime.Utc = DateTime.add(start, { days: 20 })
+const aWeekAgo: DateTime.Utc = DateTime.subtract(start, { weeks: 1 })
+const firstOfMonth: DateTime.Utc = DateTime.startOf(start, "month")
+const endOfDay: DateTime.Utc = DateTime.endOf(start, "day")
 
 check("in twenty days", DateTime.formatIso(inTwentyDays), "2026-02-04T10:30:00.000Z")
 check("a week ago", DateTime.formatIso(aWeekAgo), "2026-01-08T10:30:00.000Z")

@@ -13,8 +13,6 @@
  * Goal: the first and the last of a stream.
  */
 import { Effect, Option, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const first = <A>(stream: Stream.Stream<A>): Effect.Effect<Option.Option<A>> => stream.pipe(Stream.runHead)

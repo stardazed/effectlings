@@ -17,11 +17,10 @@
  * Goal: define Verbosity with the default "quiet".
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Verbosity = Context.Reference<"quiet" | "loud">("Verbosity", { defaultValue: () => "quiet" as const })
+const Verbosity: Context.Reference<"quiet" | "loud"> =
+  Context.Reference<"quiet" | "loud">("Verbosity", { defaultValue: () => "quiet" as const })
 //#exercise
 const Verbosity: Context.Reference<"quiet" | "loud"> = todo()
 //#end

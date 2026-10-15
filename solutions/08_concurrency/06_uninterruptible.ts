@@ -9,7 +9,6 @@
  * Goal: the job below must always finish. Fix `task`.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const job = Effect.sleep("10 millis").pipe(Effect.tap(() => Effect.sync(() => { log.push("finished") })))

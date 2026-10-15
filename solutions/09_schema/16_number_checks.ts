@@ -5,10 +5,8 @@
  * Goal: an age is a whole number from 0 to 130.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Age = Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))
+const Age: Schema.Codec<number> = Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))
 
 const valid = (input: unknown): boolean => thrown(() => Schema.decodeUnknownSync(Age)(input)) === undefined
 

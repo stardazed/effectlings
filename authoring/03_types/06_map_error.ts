@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.mapError
 //#hint mapError is to E what map is to A.
-//#hint lookup.pipe(Effect.mapError((e) => new Error(`user ${e}`)))
+//#hint lookup.pipe(Effect.mapError((e) => ...))
 /**
  * Effect.mapError(f) transforms the error of a program, leaving the
  * success alone. It is map for the E slot.
@@ -13,14 +13,11 @@
  * "user not found".
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const lookup: Effect.Effect<number, "not found"> = Effect.fail("not found")
 
 //#solution
-const friendly = lookup.pipe(Effect.mapError((e) => new Error(`user ${e}`)))
+const friendly: Effect.Effect<number, Error> = lookup.pipe(Effect.mapError((e) => new Error(`user ${e}`)))
 //#exercise
 const friendly: Effect.Effect<number, Error> = todo()
 //#end

@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const proxy: Config.Config<Option.Option<string>> = todo()
 

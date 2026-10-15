@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class TooYoung extends Data.TaggedError("TooYoung")<{ readonly age: number }> {}
 

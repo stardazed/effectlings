@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Cause, Effect, Queue, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<Array<number>> = todo()
 

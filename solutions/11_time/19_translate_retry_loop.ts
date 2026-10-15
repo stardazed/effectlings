@@ -18,8 +18,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const withRetry = <A, E>(call: Effect.Effect<A, E>): Effect.Effect<A, E> =>
   call.pipe(Effect.retry({ schedule: Schedule.exponential("100 millis"), times: 3 }))

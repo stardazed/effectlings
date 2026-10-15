@@ -6,8 +6,6 @@
  * Goal: the words longer than 3 letters, and the numbers 1 to 5.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const longWords = (words: ReadonlyArray<string>): Effect.Effect<Array<string>> =>
   Stream.fromIterable(words).pipe(Stream.filter((w) => w.length > 3), Stream.runCollect)

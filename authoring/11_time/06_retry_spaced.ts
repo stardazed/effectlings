@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Schedule.spaced
 //#hint Pass a schedule AND a limit to retry. spaced waits the same time before each retry.
-//#hint task.pipe(Effect.retry({ schedule: Schedule.spaced("1 second"), times: 5 }))
+//#hint task.pipe(Effect.retry({ schedule: Schedule.spaced(...), times: ... }))
 /**
  * Retrying instantly can hammer a struggling server. Schedule.spaced(duration)
  * waits that long between attempts. retry accepts a schedule together with
@@ -15,8 +15,6 @@
  */
 import { Effect, Fiber, Schedule } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const task: Effect.Effect<string, "busy"> = Effect.suspend(() => {

@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect, Option, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const pages: Record<number, { items: Array<string>; next: Option.Option<number> }> = {
   1: { items: ["a", "b"], next: Option.some(2) },

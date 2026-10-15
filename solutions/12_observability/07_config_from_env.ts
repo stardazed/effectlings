@@ -7,8 +7,6 @@
  * Goal: read the port from the APP group of an environment-style record.
  */
 import { ConfigProvider, Config, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const port = Config.nested(Config.Int("PORT"), "APP")
 

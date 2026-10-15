@@ -10,15 +10,13 @@
  * Goal: join two streams end to end, and pair them up.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const letters = Stream.make("a", "b", "c")
 const numbers = Stream.make(1, 2)
 
 //#solution
-const together = Stream.concat(letters, Stream.make("d")).pipe(Stream.runCollect)
-const paired = Stream.zip(letters, numbers).pipe(Stream.runCollect)
+const together: Effect.Effect<Array<string>> = Stream.concat(letters, Stream.make("d")).pipe(Stream.runCollect)
+const paired: Effect.Effect<Array<readonly [string, number]>> = Stream.zip(letters, numbers).pipe(Stream.runCollect)
 //#exercise
 const together: Effect.Effect<Array<string>> = todo()
 const paired: Effect.Effect<Array<readonly [string, number]>> = todo()

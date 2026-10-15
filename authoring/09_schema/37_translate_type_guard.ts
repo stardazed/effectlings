@@ -20,12 +20,10 @@
  * schema you write the shape once and get both.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const User = Schema.Struct({ name: Schema.String, age: Schema.Number })
-const isUser = Schema.is(User)
+const User: Schema.Codec<{ readonly name: string; readonly age: number }> = Schema.Struct({ name: Schema.String, age: Schema.Number })
+const isUser: (input: unknown) => boolean = Schema.is(User)
 //#exercise
 const User: Schema.Codec<{ readonly name: string; readonly age: number }> = todo()
 const isUser: (input: unknown) => boolean = todo()

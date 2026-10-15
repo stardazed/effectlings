@@ -6,9 +6,7 @@
  * Goal: put the whole `work` program in a log span called "checkout".
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const work = Effect.logInfo("paying")
 

@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect, Sink, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const firstThree: Effect.Effect<ReadonlyArray<number>> = todo()
 const howMany: Effect.Effect<number> = todo()

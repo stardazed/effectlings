@@ -15,8 +15,6 @@
  * Write both.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const loadA = Effect.succeed(1)
 const loadB = Effect.succeed("b")

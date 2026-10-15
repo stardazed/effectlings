@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

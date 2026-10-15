@@ -12,12 +12,10 @@
  * Goal: write priceWithTax.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const taxRate = Effect.succeed(0.5)
 
-const priceWithTax = Effect.fn("priceWithTax")(function*(price: number) {
+const priceWithTax: (price: number) => Effect.Effect<number> = Effect.fn("priceWithTax")(function*(price: number) {
   const rate = yield* taxRate
   return price + price * rate
 })

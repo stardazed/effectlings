@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const timeoutMillis: Config.Config<number> = todo()
 const name: Config.Config<string> = todo()

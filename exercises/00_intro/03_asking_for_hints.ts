@@ -10,8 +10,6 @@
  * Goal: ask for a hint, then fill in the hole.
  */
 // I AM NOT DONE
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const total: number = todo()
 

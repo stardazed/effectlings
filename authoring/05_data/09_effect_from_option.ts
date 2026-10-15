@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.fromOption
 //#hint Effect.fromOption turns none into a failure. Then rename the failure with mapError.
-//#hint Effect.fromOption(findUser(id)).pipe(Effect.mapError(() => new NotFound({ id })))
+//#hint Effect.fromOption(findUser(id)).pipe(Effect.mapError(() => ...))
 /**
  * Effect.fromOption(option) is a program that succeeds with the value of a
  * some, and fails for a none. The failure it produces is a generic
@@ -11,8 +11,6 @@
  * Goal: turn the optional lookup into a program that fails with NotFound.
  */
 import { Data, Effect, Option } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 

@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Effect, Sink, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const longest: Sink.Sink<number, string> = todo()
 

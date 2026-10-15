@@ -16,17 +16,16 @@
  * Goal: read the four settings into one object.
  */
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const settings = Effect.gen(function*() {
-  const port = yield* Config.Port("PORT")
-  const debug = yield* Config.Boolean("DEBUG")
-  const retries = yield* Config.Int("RETRIES")
-  const rate = yield* Config.Number("RATE")
-  return { port, debug, retries, rate }
-})
+const settings: Effect.Effect<{ port: number; debug: boolean; retries: number; rate: number }, Config.ConfigError> =
+  Effect.gen(function*() {
+    const port = yield* Config.Port("PORT")
+    const debug = yield* Config.Boolean("DEBUG")
+    const retries = yield* Config.Int("RETRIES")
+    const rate = yield* Config.Number("RATE")
+    return { port, debug, retries, rate }
+  })
 //#exercise
 const settings: Effect.Effect<{ port: number; debug: boolean; retries: number; rate: number }, Config.ConfigError> = todo()
 //#end

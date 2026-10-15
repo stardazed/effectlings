@@ -13,8 +13,6 @@
  * Goal: write area. Use radius * radius * 3 for circles (a rough pi).
  */
 import { Data, Match } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Shape = Data.TaggedEnum<{
   Circle: { readonly radius: number }
@@ -22,7 +20,7 @@ type Shape = Data.TaggedEnum<{
 }>
 const { Circle, Square } = Data.taggedEnum<Shape>()
 
-const area = Match.type<Shape>().pipe(
+const area: (shape: Shape) => number = Match.type<Shape>().pipe(
   Match.tag("Circle", (c) => c.radius * c.radius * 3),
   Match.tag("Square", (s) => s.side * s.side),
   Match.exhaustive

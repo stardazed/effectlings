@@ -6,9 +6,6 @@
  * The last lines finish the job.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 // Scaffolding, do not edit.
 class Db extends Context.Service<Db, { readonly find: (id: number) => string }>()("Db") {}
@@ -22,7 +19,8 @@ const program = Effect.gen(function*() {
   return yield* mailer.send(db.find(1))
 })
 
-const halfProvided = program.pipe(Effect.provideService(Db, { find: (id) => `user-${id}@example.com` }))
+const halfProvided: Effect.Effect<string, never, Mailer> =
+  program.pipe(Effect.provideService(Db, { find: (id) => `user-${id}@example.com` }))
 
 export type Test = Expect<Equal<Effect.Services<typeof halfProvided>, Mailer>>
 

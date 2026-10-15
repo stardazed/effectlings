@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.catchTag
 //#hint catchTag takes the tag first and the handler second.
-//#hint lookup(id).pipe(Effect.catchTag("NotFound", () => Effect.succeed("anonymous")))
+//#hint lookup(id).pipe(Effect.catchTag("...", () => ...))
 /**
  * Effect.catch handles every error. Effect.catchTag handles only errors
  * with a given tag, and removes that error from the type:
@@ -15,9 +15,6 @@
  * Goal: recover from NotFound with "anonymous". Denied must still fail.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 class NotFound extends Data.TaggedError("NotFound")<{ readonly id: number }> {}
 class Denied extends Data.TaggedError("Denied")<{ readonly who: string }> {}

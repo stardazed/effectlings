@@ -8,8 +8,6 @@
  * Goal: run `program` and keep its result.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program = Effect.succeed("hello")
 

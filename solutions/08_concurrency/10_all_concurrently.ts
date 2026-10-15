@@ -10,7 +10,6 @@
  * Goal: task "a" takes 10ms and task "b" takes 1ms. They should overlap.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const task = (name: string, ms: number) =>

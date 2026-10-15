@@ -8,9 +8,7 @@
  * Goal: annotate the whole `handle` program.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
 const step = (name: string) => Effect.logInfo(name)
 const work = Effect.gen(function*() {

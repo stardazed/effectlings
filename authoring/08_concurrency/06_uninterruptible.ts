@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Effect.uninterruptible
 //#hint The job is cut short by the interrupt. Mark it so interruption waits for it.
-//#hint const task = Effect.uninterruptible(job)
+//#hint Effect.uninterruptible(...) wraps an effect and returns an effect.
 /**
  * Sometimes a step must finish once started, such as a write that would
  * otherwise be left half done. Effect.uninterruptible(program) makes a
@@ -14,7 +14,6 @@
  * Goal: the job below must always finish. Fix `task`.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const job = Effect.sleep("10 millis").pipe(Effect.tap(() => Effect.sync(() => { log.push("finished") })))

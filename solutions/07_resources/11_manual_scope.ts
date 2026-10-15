@@ -11,7 +11,6 @@
  * Goal: this code leaks its connection. Close the scope.
  */
 import { Effect, Exit, Scope } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const connection = Effect.acquireRelease(

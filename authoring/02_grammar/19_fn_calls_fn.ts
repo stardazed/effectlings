@@ -10,20 +10,17 @@
  * Goal: total = subtotal + shipping, where subtotal comes from `subtotal`.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const subtotal = Effect.fn("subtotal")(function*(unit: number, qty: number) {
-  return yield* Effect.succeed(unit * qty)
-})
+const subtotal = Effect.fn("subtotal")((unit: number, qty: number) => Effect.succeed(unit * qty))
 const shipping = Effect.succeed(5)
 
 //#solution
-const total = Effect.fn("total")(function*(unit: number, qty: number) {
-  const sub = yield* subtotal(unit, qty)
-  const ship = yield* shipping
-  return sub + ship
-})
+const total: (unit: number, qty: number) => Effect.Effect<number> =
+  Effect.fn("total")(function*(unit: number, qty: number) {
+    const sub = yield* subtotal(unit, qty)
+    const ship = yield* shipping
+    return sub + ship
+  })
 //#exercise
 const total: (unit: number, qty: number) => Effect.Effect<number> = todo()
 //#end

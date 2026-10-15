@@ -10,8 +10,6 @@
  * Goal: add 50% tax to the price.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const price = Effect.succeed(20)
 

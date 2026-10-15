@@ -5,8 +5,6 @@
  * Goal: parse JSON into a Result. Invalid input is the failure "invalid json".
  */
 import { Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parse = (input: string): Result.Result<unknown, string> =>
   Result.try({ try: () => JSON.parse(input) as unknown, catch: () => "invalid json" })

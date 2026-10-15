@@ -8,10 +8,8 @@
  * Goal: a nickname that is an Option in your program.
  */
 import { Option, Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Nickname = Schema.OptionFromNullOr(Schema.String)
+const Nickname: Schema.Codec<Option.Option<string>, string | null> = Schema.OptionFromNullOr(Schema.String)
 
 check("null becomes none", Schema.decodeUnknownSync(Nickname)(null), Option.none())
 check("a string becomes some", Schema.decodeUnknownSync(Nickname)("ace"), Option.some("ace"))

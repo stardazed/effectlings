@@ -5,8 +5,6 @@
  * Goal: an endless task that logs "cleanup" when it is interrupted.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

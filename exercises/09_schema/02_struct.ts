@@ -17,8 +17,6 @@
  */
 // I AM NOT DONE
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Person: Schema.Codec<{ readonly name: string; readonly age: number }> = todo()
 

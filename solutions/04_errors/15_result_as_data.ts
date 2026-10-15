@@ -10,13 +10,11 @@
  * Goal: describe the outcome of parseAge as text.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parseAge = (s: string): Effect.Effect<number, string> =>
   s !== "" && Number.isInteger(Number(s)) ? Effect.succeed(Number(s)) : Effect.fail(`not a number: ${s}`)
 
-const summary = Effect.fn("summary")(function*(s: string) {
+const summary: (s: string) => Effect.Effect<string> = Effect.fn("summary")(function*(s: string) {
   const outcome = yield* Effect.result(parseAge(s))
   return outcome._tag === "Success" ? `age ${outcome.success}` : `error: ${outcome.failure}`
 })

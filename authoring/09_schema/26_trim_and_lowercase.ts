@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches SchemaTransformation.trim, SchemaTransformation.toLowerCase
 //#hint Both are ready-made transformations. Attach each with Schema.decode.
-//#hint Schema.String.pipe(Schema.decode(SchemaTransformation.trim()), Schema.decode(SchemaTransformation.toLowerCase()))
+//#hint Schema.String.pipe(Schema.decode(SchemaTransformation.<one>()), Schema.decode(SchemaTransformation.<other>()))
 /**
  * The SchemaTransformation module has ready-made conversions, such as
  * trim() and toLowerCase(). You attach them with Schema.decode.
@@ -10,11 +10,9 @@
  * Goal: an email schema that trims and lower-cases whatever it receives.
  */
 import { Schema, SchemaTransformation } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Email = Schema.String.pipe(
+const Email: Schema.Codec<string> = Schema.String.pipe(
   Schema.decode(SchemaTransformation.trim()),
   Schema.decode(SchemaTransformation.toLowerCase())
 )

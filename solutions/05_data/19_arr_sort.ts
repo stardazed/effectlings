@@ -10,8 +10,6 @@
  * Goal: sort numbers and sort words.
  */
 import { Array as Arr, Order, pipe } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const sortNumbers = (ns: ReadonlyArray<number>): Array<number> => pipe(ns, Arr.sort(Order.Number))
 const sortWords = (ws: ReadonlyArray<string>): Array<string> => pipe(ws, Arr.sort(Order.String))

@@ -12,8 +12,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Order {
   readonly paid: boolean

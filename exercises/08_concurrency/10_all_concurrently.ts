@@ -11,7 +11,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const task = (name: string, ms: number) =>

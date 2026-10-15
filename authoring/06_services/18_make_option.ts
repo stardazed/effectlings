@@ -1,8 +1,8 @@
 //#title The make option
 //#kind complete
 //#deepens Layer.effect, Context.Service
-//#hint this.make is the effect you gave to the class. Layer.effect(this, this.make) builds a layer from it.
-//#hint static readonly layer = Layer.effect(this, this.make)
+//#hint this.make is the effect you gave to the class. Build a layer from it with Layer.effect.
+//#hint static readonly layer = Layer.effect(..., ...)
 /**
  * A service class can carry its own constructor. Pass `make` when defining it:
  *
@@ -18,8 +18,6 @@
  * Goal: write Cache.layer.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Cache extends Context.Service<Cache>()("Cache", {
   make: Effect.sync(() => {

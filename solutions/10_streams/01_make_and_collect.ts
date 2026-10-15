@@ -11,8 +11,6 @@
  * Goal: double every number.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const doubled: Effect.Effect<Array<number>> = Stream.make(1, 2, 3).pipe(
   Stream.map((n) => n * 2),

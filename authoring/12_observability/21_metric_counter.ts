@@ -16,13 +16,11 @@
  * Goal: count three requests, adding 1, 1 and 3, then read the total.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const requests = Metric.counter("requests")
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<number> = Effect.gen(function*() {
   yield* Metric.update(requests, 1)
   yield* Metric.update(requests, 1)
   yield* Metric.update(requests, 3)

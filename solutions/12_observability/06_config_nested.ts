@@ -6,10 +6,9 @@
  * Goal: read url and pool from the "db" group.
  */
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const dbConfig = Config.nested(Config.all({ url: Config.String("url"), pool: Config.Int("pool") }), "db")
+const dbConfig: Config.Config<{ url: string; pool: number }> =
+  Config.nested(Config.all({ url: Config.String("url"), pool: Config.Int("pool") }), "db")
 
 const provider = ConfigProvider.layer(ConfigProvider.fromUnknown({ db: { url: "pg://localhost", pool: "5" } }))
 check("db config", await Effect.runPromise(dbConfig.pipe(Effect.provide(provider))), { url: "pg://localhost", pool: 5 })

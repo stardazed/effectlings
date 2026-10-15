@@ -7,8 +7,6 @@
  * Goal: gather the three values.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const name = Effect.succeed("ada")
 const age = Effect.succeed(36)

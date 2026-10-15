@@ -7,9 +7,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 // Scaffolding, do not edit.
 class Db extends Context.Service<Db, { readonly find: (id: number) => string }>()("Db") {}

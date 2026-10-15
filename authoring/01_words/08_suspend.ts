@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.suspend
 //#hint suspend takes a function that returns an Effect. Put the if inside that function.
-//#hint Effect.suspend(() => mode === "on" ? Effect.succeed("on") : Effect.fail("off"))
+//#hint Effect.suspend(() => ...), where the function picks between two Effects.
 /**
  * Sometimes the choice of which effect to build depends on something that
  * can change between runs. Effect.suspend delays that choice until the
@@ -14,8 +14,6 @@
  * "off" while mode is "off". The same `status` value is run twice.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let mode: "on" | "off" = "on"
 

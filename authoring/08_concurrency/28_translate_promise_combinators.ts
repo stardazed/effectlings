@@ -16,8 +16,6 @@
  * The loaders already return Effects. Write both.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const loader = (name: string, ms: number) =>
@@ -29,8 +27,8 @@ const loader = (name: string, ms: number) =>
   })
 
 //#solution
-const both = Effect.all([loader("user", 8), loader("posts", 2)], { concurrency: "unbounded" })
-const fastest = Effect.race(loader("mirrorA", 30), loader("mirrorB", 2))
+const both: Effect.Effect<[string, string]> = Effect.all([loader("user", 8), loader("posts", 2)], { concurrency: "unbounded" })
+const fastest: Effect.Effect<string> = Effect.race(loader("mirrorA", 30), loader("mirrorB", 2))
 //#exercise
 const both: Effect.Effect<[string, string]> = todo()
 const fastest: Effect.Effect<string> = todo()

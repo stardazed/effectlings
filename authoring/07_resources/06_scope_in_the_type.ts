@@ -15,8 +15,6 @@
  * Goal: fix the two aliases.
  */
 import { Effect, Scope } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const acquired = Effect.acquireRelease(Effect.succeed("res"), () => Effect.void)
 const released = Effect.scoped(acquired)

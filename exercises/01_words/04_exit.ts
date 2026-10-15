@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const good = Effect.succeed(1)
 const bad = Effect.fail("no")

@@ -11,10 +11,8 @@
  * Goal: define UserId. Give it a rule too: it must start with "u_".
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const UserId = Schema.String.check(Schema.isPattern(/^u_/)).pipe(Schema.brand("UserId"))
+const UserId: Schema.Codec<string> = Schema.String.check(Schema.isPattern(/^u_/)).pipe(Schema.brand("UserId"))
 
 const userId = Schema.decodeUnknownSync(UserId)("u_42")
 

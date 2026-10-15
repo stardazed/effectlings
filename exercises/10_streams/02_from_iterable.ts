@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const longWords = (words: ReadonlyArray<string>): Effect.Effect<Array<string>> => todo()
 const oneToFive: Effect.Effect<Array<number>> = todo()

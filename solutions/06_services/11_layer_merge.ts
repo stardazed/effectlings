@@ -7,8 +7,6 @@
  * Goal: build `two` from clock and logger, and `three` from all three.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Clock extends Context.Service<Clock, { readonly now: () => number }>()("Clock") {}
 class Logger extends Context.Service<Logger, { readonly tag: string }>()("Logger") {}

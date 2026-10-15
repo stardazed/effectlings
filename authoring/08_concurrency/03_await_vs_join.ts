@@ -15,8 +15,6 @@
  * Goal: write outcome (using await) and joined (using join).
  */
 import { Effect, Exit, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const outcome = <A, E>(task: Effect.Effect<A, E>): Effect.Effect<Exit.Exit<A, E>> =>

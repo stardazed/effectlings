@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect, pipe } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const double = (n: number): number => n * 2
 const addOne = (n: number): number => n + 1

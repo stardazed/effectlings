@@ -10,7 +10,6 @@
  * Goal: fix `user` so it has the type Effect<User>.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 
 interface User {
   readonly id: number

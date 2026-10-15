@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.filterOrFail
 //#hint filterOrFail takes a predicate, then a function that builds the error.
-//#hint Effect.succeed(age).pipe(Effect.filterOrFail((n) => n >= 18, (n) => new TooYoung({ age: n })))
+//#hint Effect.succeed(age).pipe(Effect.filterOrFail((n) => ..., (n) => new TooYoung({ ... })))
 /**
  * Effect.filterOrFail(predicate, makeError) keeps the value when the
  * predicate is true, and fails with makeError(value) when it is not.
@@ -10,8 +10,6 @@
  * Goal: accept ages of 18 or more. Younger ages fail with TooYoung.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class TooYoung extends Data.TaggedError("TooYoung")<{ readonly age: number }> {}
 

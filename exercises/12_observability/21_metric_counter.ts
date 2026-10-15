@@ -12,8 +12,6 @@
  */
 // I AM NOT DONE
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const requests = Metric.counter("requests")
 

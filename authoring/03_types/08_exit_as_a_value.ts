@@ -12,8 +12,6 @@
  * Goal: capture the outcome of `risky` and inspect it.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const risky: Effect.Effect<number, string> = Effect.fail("boom")
 

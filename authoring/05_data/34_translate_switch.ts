@@ -17,8 +17,6 @@
  * Write the same with Match. Event is a plain union with a _tag field.
  */
 import { Match } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Event =
   | { readonly _tag: "Click"; readonly x: number; readonly y: number }
@@ -26,7 +24,7 @@ type Event =
   | { readonly _tag: "Scroll"; readonly dy: number }
 
 //#solution
-const describe = Match.type<Event>().pipe(
+const describe: (event: Event) => string = Match.type<Event>().pipe(
   Match.tag("Click", (e) => `click at ${e.x},${e.y}`),
   Match.tag("Key", (e) => `key ${e.key}`),
   Match.tag("Scroll", (e) => `scroll by ${e.dy}`),

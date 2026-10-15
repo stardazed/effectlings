@@ -10,10 +10,8 @@
  * Write the Config version.
  */
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const appConfig = Config.all({
+const appConfig: Config.Config<{ name: string; workers: number }> = Config.all({
   name: Config.String("APP_NAME"),
   workers: Config.Int("WORKERS").pipe(Config.withDefault(4))
 })

@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Deferred, Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const program: Effect.Effect<string> = todo()
 

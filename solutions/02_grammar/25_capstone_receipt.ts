@@ -7,8 +7,6 @@
  * produced by lookupPrice.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Receipt {
   readonly subtotal: number
@@ -21,12 +19,13 @@ const lookupPrice = (sku: string): Effect.Effect<number, string> =>
   sku in prices ? Effect.succeed(prices[sku]) : Effect.fail(`unknown sku: ${sku}`)
 const taxRate = Effect.succeed(0.1)
 
-const receipt = Effect.fn("receipt")(function*(skus: ReadonlyArray<string>) {
-  const [unitPrices, rate] = yield* Effect.all([Effect.forEach(skus, lookupPrice), taxRate])
-  const subtotal = unitPrices.reduce((sum, p) => sum + p, 0)
-  const tax = subtotal * rate
-  return { subtotal, tax, total: subtotal + tax } satisfies Receipt
-})
+const receipt: (skus: ReadonlyArray<string>) => Effect.Effect<Receipt, string> =
+  Effect.fn("receipt")(function*(skus: ReadonlyArray<string>) {
+    const [unitPrices, rate] = yield* Effect.all([Effect.forEach(skus, lookupPrice), taxRate])
+    const subtotal = unitPrices.reduce((sum, p) => sum + p, 0)
+    const tax = subtotal * rate
+    return { subtotal, tax, total: subtotal + tax } satisfies Receipt
+  })
 
 check("receipt", await Effect.runPromise(receipt(["apple", "pear"])), { subtotal: 5, tax: 0.5, total: 5.5 })
 check("empty", await Effect.runPromise(receipt([])), { subtotal: 0, tax: 0, total: 0 })

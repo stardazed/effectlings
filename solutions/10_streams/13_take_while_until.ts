@@ -5,8 +5,6 @@
  * Goal: take while the number is under 4, and take until the number is 4.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const numbers = Stream.range(1, 10)
 

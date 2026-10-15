@@ -17,8 +17,6 @@
  */
 import { Effect, Fiber } from "effect"
 import { TestClock } from "effect/testing"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const moveClock: Effect.Effect<void> = TestClock.adjust("1 hour")

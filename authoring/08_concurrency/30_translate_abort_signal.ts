@@ -2,7 +2,7 @@
 //#kind translate
 //#deepens Effect.tryPromise, Fiber.interrupt, Effect.forkChild, Effect.yieldNow
 //#hint tryPromise passes an AbortSignal to your try function. Interrupting the fiber aborts that signal.
-//#hint Effect.tryPromise({ try: (signal) => slowFetch(signal), catch: () => "failed" })
+//#hint Effect.tryPromise({ try: (signal) => ..., catch: () => ... })
 /**
  * Plain TypeScript:
  *
@@ -19,8 +19,6 @@
  * slowFetch is given. Write `request`.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let aborted = false
 const slowFetch = (signal: AbortSignal): Promise<string> =>

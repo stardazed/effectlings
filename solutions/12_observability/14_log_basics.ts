@@ -15,11 +15,9 @@
  * Effect hides debug messages, so you will see only three of your four lines.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordLogs } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<void> = Effect.gen(function*() {
   yield* Effect.logInfo("started")
   yield* Effect.logWarning("slow")
   yield* Effect.logError("failed")

@@ -10,11 +10,9 @@
  * Goal: a point is a pair of numbers.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Point = Schema.Tuple([Schema.Number, Schema.Number])
+const Point: Schema.Codec<readonly [number, number]> = Schema.Tuple([Schema.Number, Schema.Number])
 //#exercise
 const Point: Schema.Codec<readonly [number, number]> = todo()
 //#end

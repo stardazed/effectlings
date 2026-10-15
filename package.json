@@ -15,7 +15,7 @@
     "build:exercises": "tsx tools/build.ts"
   },
   "dependencies": {
-    "effect": "4.0.0-rc.118"
+    "effect": "4.0.4"
   },
   "devDependencies": {
     "@types/node": "^22.0.0",

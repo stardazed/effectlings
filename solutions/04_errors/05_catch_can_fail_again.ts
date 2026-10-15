@@ -7,8 +7,6 @@
  * there, otherwise fail with Unavailable.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Timeout extends Data.TaggedError("Timeout")<{ readonly ms: number }> {}
 class Unavailable extends Data.TaggedError("Unavailable")<{ readonly key: string }> {}

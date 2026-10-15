@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Result.flatMap
 //#hint Each step returns a Result, so chain them with flatMap.
-//#hint parse(s).pipe(Result.flatMap(positive), Result.flatMap(even))
+//#hint parse(s).pipe(Result.flatMap(...), Result.flatMap(...))
 /**
  * Result.flatMap(f) continues with another Result-returning step. The
  * first failure ends the chain and is what you get back.
@@ -10,8 +10,6 @@
  * Goal: accept a string only if it is a number, positive, and even.
  */
 import { Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parse = (s: string): Result.Result<number, string> =>
   s !== "" && Number.isInteger(Number(s)) ? Result.succeed(Number(s)) : Result.fail("not a number")

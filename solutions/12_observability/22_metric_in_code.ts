@@ -5,8 +5,6 @@
  * Goal: instrument `task`.
  */
 import { Effect, Metric } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const succeeded = Metric.counter("tasks_succeeded")
 const failed = Metric.counter("tasks_failed")

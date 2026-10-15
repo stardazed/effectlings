@@ -14,11 +14,9 @@
  * Goal: put 1, then 2 and 3 into a queue, then take three values out.
  */
 import { Effect, Queue } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<Array<number>> = Effect.gen(function*() {
   const queue: Queue.Queue<number> = yield* Queue.unbounded<number>()
   yield* Queue.offer(queue, 1)
   yield* Queue.offerAll(queue, [2, 3])

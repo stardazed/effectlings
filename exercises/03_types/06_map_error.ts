@@ -9,9 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const lookup: Effect.Effect<number, "not found"> = Effect.fail("not found")
 

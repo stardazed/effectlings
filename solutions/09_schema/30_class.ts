@@ -14,7 +14,6 @@
  * Goal: give Person its fields.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 class Person extends Schema.Class<Person>("Person")({
   name: Schema.String,

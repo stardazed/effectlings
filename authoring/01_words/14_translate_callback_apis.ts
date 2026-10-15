@@ -14,8 +14,6 @@
  * Effect.callback<A, E>.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const readSetting = (key: string, callback: (error: Error | null, value?: string) => void): void => {
   setTimeout(() => (key === "theme" ? callback(null, "dark") : callback(new Error(`unknown setting: ${key}`))), 1)

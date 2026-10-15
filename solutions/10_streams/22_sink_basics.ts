@@ -11,8 +11,6 @@
  * Goal: consume the same stream with two different sinks.
  */
 import { Effect, Sink, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const numbers = Stream.make(1, 2, 3, 4)
 

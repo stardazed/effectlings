@@ -16,8 +16,6 @@
  * Goal: a logger that stores "<LEVEL>: <message>" lines in `lines`.
  */
 import { Effect, Layer, Logger } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const lines: Array<string> = []
 

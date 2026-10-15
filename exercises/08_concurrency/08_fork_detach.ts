@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const job = Effect.sleep("10 millis").pipe(Effect.tap(() => Effect.sync(() => { log.push("job done") })))

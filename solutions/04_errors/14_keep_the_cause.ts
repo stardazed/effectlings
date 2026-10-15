@@ -14,8 +14,6 @@
  * Goal: wrap queryRaw.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class DbError extends Data.TaggedError("DbError")<{ readonly cause: unknown }> {}
 

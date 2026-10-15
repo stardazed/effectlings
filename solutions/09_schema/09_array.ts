@@ -5,10 +5,8 @@
  * Goal: a schema for an array of numbers.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Scores = Schema.Array(Schema.Number)
+const Scores: Schema.Codec<ReadonlyArray<number>> = Schema.Array(Schema.Number)
 
 const decode = Schema.decodeUnknownSync(Scores)
 

@@ -14,8 +14,6 @@
  * Goal: describe a program that fails with "out of stock".
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const outOfStock: Effect.Effect<never, string> = Effect.fail("out of stock")

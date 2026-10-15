@@ -8,8 +8,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const fast = Stream.make("f1", "f2", "f3").pipe(Stream.mapEffect((v) => Effect.sleep("20 millis").pipe(Effect.as(v))))
 const slow = Stream.fromEffect(Effect.sleep("50 millis").pipe(Effect.as("s1")))

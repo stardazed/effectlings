@@ -11,8 +11,6 @@
  * comment. That tells the CLI you are finished and moves you to the next one.
  */
 // I AM NOT DONE
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const answer: number = todo()
 

@@ -6,8 +6,6 @@
  * Goal: treat a 404 as an empty body. Any other status must still fail.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class HttpError extends Data.TaggedError("HttpError")<{ readonly status: number }> {}
 

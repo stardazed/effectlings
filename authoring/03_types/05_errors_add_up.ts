@@ -14,8 +14,6 @@
  * Goal: fix `Failure`.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const timeout = Effect.fail("timeout" as const)
 const notFound = Effect.fail(404 as const)

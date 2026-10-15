@@ -10,8 +10,6 @@
  */
 // I AM NOT DONE
 import { DateTime } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const start = DateTime.makeUnsafe("2026-01-15T10:30:00Z")
 

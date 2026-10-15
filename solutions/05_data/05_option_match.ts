@@ -9,8 +9,6 @@
  * Goal: label a price as text.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const label = (price: Option.Option<number>): string =>
   price.pipe(Option.match({ onNone: () => "no price", onSome: (p) => `$${p}` }))

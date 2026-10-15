@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parse = (input: string): Result.Result<unknown, string> => todo()
 

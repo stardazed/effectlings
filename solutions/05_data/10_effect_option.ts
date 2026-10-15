@@ -8,8 +8,6 @@
  * Goal: parse an age, getting an Option instead of a failure.
  */
 import { Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parseAge = (s: string): Effect.Effect<number, string> =>
   s !== "" && Number.isInteger(Number(s)) ? Effect.succeed(Number(s)) : Effect.fail(`not a number: ${s}`)

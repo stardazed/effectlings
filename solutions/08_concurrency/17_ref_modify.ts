@@ -11,8 +11,6 @@
  * Goal: write nextTicket.
  */
 import { Effect, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const nextTicket = (ref: Ref.Ref<number>): Effect.Effect<number> => Ref.modify(ref, (n) => [n, n + 1])
 

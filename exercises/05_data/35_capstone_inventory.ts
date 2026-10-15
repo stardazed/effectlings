@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { Array as Arr, Option, Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface Item {
   readonly sku: string

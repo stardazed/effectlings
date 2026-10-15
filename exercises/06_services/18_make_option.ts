@@ -14,8 +14,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Cache extends Context.Service<Cache>()("Cache", {
   make: Effect.sync(() => {

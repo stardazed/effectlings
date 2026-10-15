@@ -2,7 +2,7 @@
 //#kind fix
 //#teaches Schema.TaggedError
 //#hint It has the same shape as TaggedClass: Schema.TaggedError<Self>()(tag, fields).
-//#hint class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()("InsufficientFunds", { needed: Schema.Number }) {}
+//#hint class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()("...", { ... }) {}
 /**
  * Data.TaggedError, from the errors chapter, is enough for errors that stay
  * inside your program. When an error must also cross a boundary (sent over
@@ -19,7 +19,6 @@
  * Goal: define InsufficientFunds.
  */
 import { Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 //#solution
 class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()("InsufficientFunds", {

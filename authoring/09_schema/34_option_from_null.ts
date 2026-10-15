@@ -13,11 +13,9 @@
  * Goal: a nickname that is an Option in your program.
  */
 import { Option, Schema } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Nickname = Schema.OptionFromNullOr(Schema.String)
+const Nickname: Schema.Codec<Option.Option<string>, string | null> = Schema.OptionFromNullOr(Schema.String)
 //#exercise
 const Nickname: Schema.Codec<Option.Option<string>, string | null> = todo()
 //#end

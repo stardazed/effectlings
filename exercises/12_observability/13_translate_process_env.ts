@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const appConfig: Config.Config<{ name: string; workers: number }> = todo()
 

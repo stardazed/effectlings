@@ -1,18 +1,16 @@
 /**
  * Arr.partition(items, f) splits an array in two. For every item, f
- * returns a Result: a failure puts the item in the first group, a success
+ * returns a Result: a success puts the item in the first group, a failure
  * puts it in the second.
  *
- *   [itemsThatFailed, itemsThatSucceeded]
+ *   [itemsThatSucceeded, itemsThatFailed]
  *
- * The failing group comes first, the same order you saw in Effect.partition.
+ * The succeeding group comes first, the same order you saw in Effect.partition.
  *
- * Goal: split numbers into odds (the failures) and evens (the successes).
+ * Goal: split numbers into odds (the successes) and evens (the failures).
  */
 // I AM NOT DONE
 import { Array as Arr, Result } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const oddsAndEvens = (ns: ReadonlyArray<number>): [Array<number>, Array<number>] => todo()
 

@@ -2,7 +2,7 @@
 //#kind fix
 //#deepens Schema.brand, Schema.decodeUnknownSync
 //#hint loadUser wants a UserId, not any string. Turn the string into a UserId first.
-//#hint loadUser(Schema.decodeUnknownSync(UserId)("u_7"))
+//#hint Decode the string with Schema.decodeUnknownSync(...) and pass the result to loadUser.
 /**
  * A function that takes a UserId will not accept a plain string. That is
  * the point: nobody can forget to validate.
@@ -10,7 +10,6 @@
  * Goal: fix the call. Get a UserId by decoding.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 const UserId = Schema.String.pipe(Schema.brand("UserId"))
 type UserId = typeof UserId.Type

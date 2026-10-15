@@ -5,7 +5,6 @@
  * Goal: fix the call. Get a UserId by decoding.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 const UserId = Schema.String.pipe(Schema.brand("UserId"))
 type UserId = typeof UserId.Type

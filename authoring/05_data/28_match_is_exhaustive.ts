@@ -12,7 +12,6 @@
  * Goal: handle Triangle. Its area is base * height / 2.
  */
 import { Data, Match } from "effect"
-import { check } from "../../src/check.ts"
 
 type Shape = Data.TaggedEnum<{
   Circle: { readonly radius: number }

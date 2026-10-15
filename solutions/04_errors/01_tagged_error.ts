@@ -14,7 +14,6 @@
  * Goal: make Forbidden a tagged error with a `user` field.
  */
 import { Data } from "effect"
-import { check } from "../../src/check.ts"
 
 class Forbidden extends Data.TaggedError("Forbidden")<{ readonly user: string }> {}
 

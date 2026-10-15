@@ -16,19 +16,18 @@
  * low, otherwise it finishes with the new balance.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Insufficient extends Data.TaggedError("Insufficient")<{ readonly needed: number }> {}
 
 //#solution
-const withdraw = Effect.fn("withdraw")(function*(
-  balance: number,
-  amount: number
-): Effect.fn.Return<number, Insufficient> {
-  if (amount > balance) return yield* new Insufficient({ needed: amount - balance })
-  return balance - amount
-})
+const withdraw: (balance: number, amount: number) => Effect.Effect<number, Insufficient> =
+  Effect.fn("withdraw")(function*(
+    balance: number,
+    amount: number
+  ): Effect.fn.Return<number, Insufficient> {
+    if (amount > balance) return yield* new Insufficient({ needed: amount - balance })
+    return balance - amount
+  })
 //#exercise
 const withdraw: (balance: number, amount: number) => Effect.Effect<number, Insufficient> = todo()
 //#end

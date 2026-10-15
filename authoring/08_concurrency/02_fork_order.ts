@@ -7,8 +7,6 @@
  * Predict the log. The parent does not wait for the child until it joins.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

@@ -10,10 +10,8 @@
  * authorization header.
  */
 import { ConfigProvider, Config, Effect, Redacted } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<{ printed: string; header: string }, Config.ConfigError> = Effect.gen(function*() {
   const apiKey = yield* Config.Redacted("API_KEY")
   return { printed: String(apiKey), header: `Bearer ${Redacted.value(apiKey)}` }
 })

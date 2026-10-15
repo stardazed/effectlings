@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.onExit
 //#hint The function you give to onExit receives the Exit. Exit.isSuccess tells you which way it went.
-//#hint task.pipe(Effect.onExit((exit) => Effect.sync(() => { log.push(Exit.isSuccess(exit) ? "succeeded" : "failed") })))
+//#hint task.pipe(Effect.onExit((exit) => Effect.sync(() => { ... })))
 /**
  * Effect.ensuring runs blindly. Effect.onExit hands your cleanup the Exit,
  * so it can react differently to success and failure:
@@ -12,8 +12,6 @@
  * Goal: record "succeeded" or "failed" depending on how the task ended.
  */
 import { Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

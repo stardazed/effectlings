@@ -7,7 +7,6 @@
  * Goal: the body is right but the annotation is wrong. Fix the return type.
  */
 import { Context, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
 
 interface User {
   readonly id: string

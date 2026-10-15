@@ -14,7 +14,6 @@
  * Goal: define InsufficientFunds.
  */
 import { Effect, Schema } from "effect"
-import { check } from "../../src/check.ts"
 
 class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()("InsufficientFunds", {
   needed: Schema.Number

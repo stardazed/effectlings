@@ -16,10 +16,8 @@
  * Goal: define Person.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Person = Schema.Struct({ name: Schema.String, age: Schema.Number })
+const Person: Schema.Codec<{ readonly name: string; readonly age: number }> = Schema.Struct({ name: Schema.String, age: Schema.Number })
 
 const asCodec: Schema.Codec<typeof Person.Type> = Person
 const decode = Schema.decodeUnknownSync(asCodec)

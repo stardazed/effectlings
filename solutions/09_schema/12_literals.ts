@@ -7,11 +7,9 @@
  * Goal: a version marker and a status.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const Version = Schema.Literal("v1")
-const Status = Schema.Literals(["draft", "published"])
+const Version: Schema.Codec<"v1"> = Schema.Literal("v1")
+const Status: Schema.Codec<"draft" | "published"> = Schema.Literals(["draft", "published"])
 
 check("version", Schema.decodeUnknownSync(Version)("v1"), "v1")
 check("wrong version", thrown(() => Schema.decodeUnknownSync(Version)("v2")) !== undefined, true)

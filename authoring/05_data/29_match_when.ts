@@ -12,8 +12,6 @@
  * Goal: describe an unknown input as "text: ...", "number: ..." or "something else".
  */
 import { Match } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const describe = (input: unknown): string =>

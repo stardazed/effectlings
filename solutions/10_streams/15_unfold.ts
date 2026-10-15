@@ -8,8 +8,6 @@
  * Goal: the squares of 1 to 5.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const squares: Effect.Effect<Array<number>> = Stream.unfold(1, (n) =>
   Effect.succeed(n > 5 ? undefined : ([n * n, n + 1] as const))

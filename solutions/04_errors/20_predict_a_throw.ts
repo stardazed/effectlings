@@ -8,15 +8,14 @@
  * `fails` means it ended with an expected failure. `dies` means a defect.
  */
 import { Effect } from "effect"
-import { causeKind, check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const thrownInSync = Effect.sync(() => {
   throw new Error("oops")
 })
 const thrownInGen = Effect.gen(function*() {
-  if (Math.random() < 2) throw new Error("oops")
-  return 1
+  const n = yield* Effect.succeed(1)
+  if (n > 0) throw new Error("oops")
+  return n
 })
 const thrownInTry = Effect.try({
   try: () => {

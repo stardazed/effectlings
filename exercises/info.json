@@ -42,7 +42,7 @@
       "kind": "complete",
       "hints": [
         "Effect.sync takes a function. Put the counter update inside it.",
-        "Effect.sync(() => { calls += 1 })"
+        "Effect.sync(() => { ... })"
       ]
     },
     {
@@ -60,7 +60,7 @@
       "kind": "complete",
       "hints": [
         "runPromise returns a Promise, so await it.",
-        "await Effect.runPromise(program)"
+        "await Effect.runPromise(...)"
       ]
     },
     {
@@ -96,7 +96,7 @@
       "kind": "complete",
       "hints": [
         "Effect.promise takes a function that returns a promise, not the promise itself.",
-        "Effect.promise(() => loadGreeting())"
+        "Effect.promise(() => ...)"
       ]
     },
     {
@@ -124,7 +124,7 @@
       "kind": "complete",
       "hints": [
         "suspend takes a function that returns an Effect. Put the if inside that function.",
-        "Effect.suspend(() => mode === \"on\" ? Effect.succeed(\"on\") : Effect.fail(\"off\"))"
+        "Effect.suspend(() => ...), where the function picks between two Effects."
       ]
     },
     {
@@ -225,7 +225,7 @@
       "kind": "complete",
       "hints": [
         "One .pipe call can take many steps, separated by commas.",
-        ".pipe(Effect.map((s) => s.trim()), Effect.map((s) => s.toUpperCase()), Effect.map((s) => s + \"!\"))"
+        ".pipe(Effect.map(...), Effect.map(...), Effect.map(...))"
       ]
     },
     {
@@ -234,7 +234,7 @@
       "kind": "complete",
       "hints": [
         "The function you give to flatMap returns an Effect, not a plain value.",
-        "userId.pipe(Effect.flatMap(loadUser), Effect.map((user) => user.name))"
+        "userId.pipe(Effect.flatMap(...), Effect.map(...))"
       ]
     },
     {
@@ -468,7 +468,7 @@
       "kind": "complete",
       "hints": [
         "mapError is to E what map is to A.",
-        "lookup.pipe(Effect.mapError((e) => new Error(`user ${e}`)))"
+        "lookup.pipe(Effect.mapError((e) => ...))"
       ]
     },
     {
@@ -477,7 +477,7 @@
       "kind": "complete",
       "hints": [
         "orDie removes the error from the type. The error becomes a crash.",
-        "parse(s).pipe(Effect.orDie)"
+        "Effect.orDie takes no arguments. Put it in the pipe."
       ]
     },
     {
@@ -558,7 +558,7 @@
       "kind": "fix",
       "hints": [
         "A tagged error class extends Data.TaggedError(\"Name\"). The type argument lists the fields.",
-        "class Forbidden extends Data.TaggedError(\"Forbidden\")<{ readonly user: string }> {}"
+        "class Forbidden extends Data.TaggedError(\"...\")<{ ... }> {}"
       ]
     },
     {
@@ -585,7 +585,7 @@
       "kind": "complete",
       "hints": [
         "Effect.catch takes a function from the error to a new Effect.",
-        "parsePort(input).pipe(Effect.catch(() => Effect.succeed(3000)))"
+        "parsePort(input).pipe(Effect.catch(() => ...))"
       ]
     },
     {
@@ -603,7 +603,7 @@
       "kind": "complete",
       "hints": [
         "catchTag takes the tag first and the handler second.",
-        "lookup(id).pipe(Effect.catchTag(\"NotFound\", () => Effect.succeed(\"anonymous\")))"
+        "lookup(id).pipe(Effect.catchTag(\"...\", () => ...))"
       ]
     },
     {
@@ -621,7 +621,7 @@
       "kind": "complete",
       "hints": [
         "Give catchTag an array of tags. The handler receives the union of those errors.",
-        "Effect.catchTag([\"NotFound\", \"Denied\"], (e) => Effect.succeed(`recovered from ${e._tag}`))"
+        "Effect.catchTag([\"...\", \"...\"], (e) => ...)"
       ]
     },
     {
@@ -639,7 +639,7 @@
       "kind": "complete",
       "hints": [
         "catchIf takes a predicate on the error, then a handler.",
-        "get(status).pipe(Effect.catchIf((e) => e.status === 404, () => Effect.succeed(\"\")))"
+        "get(status).pipe(Effect.catchIf((e) => ..., () => ...))"
       ]
     },
     {
@@ -666,7 +666,7 @@
       "kind": "complete",
       "hints": [
         "tapError is to the error what tap is to the result.",
-        "lookup(id).pipe(Effect.tapError((e) => Effect.sync(() => { seen.push(e._tag) })))"
+        "lookup(id).pipe(Effect.tapError((e) => ...))"
       ]
     },
     {
@@ -702,7 +702,7 @@
       "kind": "complete",
       "hints": [
         "filterOrFail takes a predicate, then a function that builds the error.",
-        "Effect.succeed(age).pipe(Effect.filterOrFail((n) => n >= 18, (n) => new TooYoung({ age: n })))"
+        "Effect.succeed(age).pipe(Effect.filterOrFail((n) => ..., (n) => new TooYoung({ ... })))"
       ]
     },
     {
@@ -738,7 +738,7 @@
       "kind": "fix",
       "hints": [
         "A failing effect does not throw an exception, so the catch block never runs.",
-        "Drop the try/catch and use Effect.catch on the effect itself."
+        "Handle the failure on the effect itself, before yield* sees it. Effect.catch does that."
       ]
     },
     {
@@ -747,7 +747,7 @@
       "kind": "complete",
       "hints": [
         "Use catchDefect. Its handler receives the defect as unknown.",
-        "bug.pipe(Effect.catchDefect((defect) => Effect.succeed(`recovered from: ${String(defect)}`)))"
+        "bug.pipe(Effect.catchDefect((defect) => ...))"
       ]
     },
     {
@@ -855,7 +855,7 @@
       "kind": "complete",
       "hints": [
         "match takes an object with onNone and onSome.",
-        "price.pipe(Option.match({ onNone: () => \"no price\", onSome: (p) => `$${p}` }))"
+        "price.pipe(Option.match({ onNone: () => ..., onSome: (p) => ... }))"
       ]
     },
     {
@@ -891,7 +891,7 @@
       "kind": "complete",
       "hints": [
         "Effect.fromOption turns none into a failure. Then rename the failure with mapError.",
-        "Effect.fromOption(findUser(id)).pipe(Effect.mapError(() => new NotFound({ id })))"
+        "Effect.fromOption(findUser(id)).pipe(Effect.mapError(() => ...))"
       ]
     },
     {
@@ -927,7 +927,7 @@
       "kind": "complete",
       "hints": [
         "Same shape as Effect.try: an object with try and catch.",
-        "Result.try({ try: () => JSON.parse(input) as unknown, catch: () => \"invalid json\" })"
+        "Result.try({ try: () => ..., catch: () => ... })"
       ]
     },
     {
@@ -936,7 +936,7 @@
       "kind": "complete",
       "hints": [
         "Each step returns a Result, so chain them with flatMap.",
-        "parse(s).pipe(Result.flatMap(positive), Result.flatMap(even))"
+        "parse(s).pipe(Result.flatMap(...), Result.flatMap(...))"
       ]
     },
     {
@@ -1007,8 +1007,8 @@
       "title": "Splitting in two",
       "kind": "complete",
       "hints": [
-        "The function returns a Result for each item: succeed for one group, fail for the other.",
-        "Arr.partition(ns, (n) => n % 2 === 0 ? Result.succeed(n) : Result.fail(n))"
+        "The function returns a Result for each item: succeed for the first group, fail for the second.",
+        "Arr.partition(ns, (n) => ... ? Result.succeed(n) : Result.fail(n))"
       ]
     },
     {
@@ -1035,7 +1035,7 @@
       "kind": "fix",
       "hints": [
         "Two Point objects are different objects, so === is false. Data.Class makes them equal by value.",
-        "class Point extends Data.Class<{ readonly x: number; readonly y: number }> {}"
+        "class Point extends Data.Class<{ ... }> {}"
       ]
     },
     {
@@ -1089,7 +1089,7 @@
       "kind": "complete",
       "hints": [
         "fromInput accepts the same text Effect.sleep accepts, and returns an Option.",
-        "Duration.fromInput(input).pipe(Option.map((d) => Duration.isGreaterThan(d, limit)), Option.getOrElse(() => false))"
+        "Duration.fromInput(input).pipe(Option.map(...), Option.getOrElse(...))"
       ]
     },
     {
@@ -1107,7 +1107,7 @@
       "kind": "translate",
       "hints": [
         "Convert each nullable step into an Option, chain with flatMap, and finish with getOrElse.",
-        "Option.fromNullishOr(user).pipe(Option.flatMap((u) => Option.fromNullishOr(u.address)), Option.flatMap((a) => Option.fromNullishOr(a.city)), Option.getOrElse(() => \"unknown\"))"
+        "Option.fromNullishOr(user).pipe(Option.flatMap(...), Option.flatMap(...), Option.getOrElse(...))"
       ]
     },
     {
@@ -1134,7 +1134,7 @@
       "kind": "fix",
       "hints": [
         "A service class extends Context.Service<Self, Shape>() and then takes a string id.",
-        "class Greeter extends Context.Service<Greeter, { readonly greet: (name: string) => string }>()(\"Greeter\") {}"
+        "class Greeter extends Context.Service<Greeter, { ... }>()(\"...\") {}"
       ]
     },
     {
@@ -1188,7 +1188,7 @@
       "kind": "complete",
       "hints": [
         "Inside the class body, write a static property. You can refer to the class by name.",
-        "static readonly layer = Layer.succeed(Mailer, Mailer.of({ send: (to) => Effect.succeed(`sent to ${to}`) }))"
+        "static readonly layer = Layer.succeed(Mailer, ...). Build the implementation with Mailer.of."
       ]
     },
     {
@@ -1206,7 +1206,7 @@
       "kind": "complete",
       "hints": [
         "usersLayer needs Db, and dbLayer provides Db.",
-        "usersLayer.pipe(Layer.provide(dbLayer))"
+        "usersLayer.pipe(Layer.provide(...))"
       ]
     },
     {
@@ -1215,7 +1215,7 @@
       "kind": "complete",
       "hints": [
         "provideMerge feeds the dependency like provide does, and also keeps it in the output.",
-        "usersLayer.pipe(Layer.provideMerge(dbLayer))"
+        "usersLayer.pipe(Layer.provideMerge(...))"
       ]
     },
     {
@@ -1251,7 +1251,7 @@
       "kind": "complete",
       "hints": [
         "Layer.fresh(layer) wraps a layer so it is built again instead of shared.",
-        "bFromBase.pipe(Layer.provide(Layer.fresh(base)))"
+        "bFromBase.pipe(Layer.provide(Layer.fresh(...)))"
       ]
     },
     {
@@ -1278,7 +1278,7 @@
       "kind": "complete",
       "hints": [
         "updateService takes the service class and a function from the current implementation to a new one.",
-        "greet.pipe(Effect.updateService(Settings, (s) => ({ ...s, prefix: \"child\" })))"
+        "greet.pipe(Effect.updateService(Settings, (s) => ...))"
       ]
     },
     {
@@ -1286,8 +1286,8 @@
       "title": "The make option",
       "kind": "complete",
       "hints": [
-        "this.make is the effect you gave to the class. Layer.effect(this, this.make) builds a layer from it.",
-        "static readonly layer = Layer.effect(this, this.make)"
+        "this.make is the effect you gave to the class. Build a layer from it with Layer.effect.",
+        "static readonly layer = Layer.effect(..., ...)"
       ]
     },
     {
@@ -1305,7 +1305,7 @@
       "kind": "complete",
       "hints": [
         "Layer.mock(Service) returns a function. Call it with only the members you want to implement.",
-        "Layer.mock(Users)({ find: (id) => Effect.succeed(`user-${id}`) })"
+        "Layer.mock(Users)({ ... })"
       ]
     },
     {
@@ -1359,7 +1359,7 @@
       "kind": "complete",
       "hints": [
         "The function you give to onExit receives the Exit. Exit.isSuccess tells you which way it went.",
-        "task.pipe(Effect.onExit((exit) => Effect.sync(() => { log.push(Exit.isSuccess(exit) ? \"succeeded\" : \"failed\") })))"
+        "task.pipe(Effect.onExit((exit) => Effect.sync(() => { ... })))"
       ]
     },
     {
@@ -1440,7 +1440,7 @@
       "kind": "fix",
       "hints": [
         "The scope is made and used, but nothing ever closes it.",
-        "await Effect.runPromise(Scope.close(scope, Exit.void))"
+        "Scope.close takes the scope and an Exit, and returns an Effect. Run it with Effect.runPromise and await it."
       ]
     },
     {
@@ -1449,7 +1449,7 @@
       "kind": "translate",
       "hints": [
         "The open is the acquire, the body of try is use, the finally block is release.",
-        "Effect.acquireUseRelease(open(path), (file) => file.readLine(), (file) => file.close())"
+        "Effect.acquireUseRelease(open(path), (file) => ..., (file) => ...)"
       ]
     },
     {
@@ -1512,7 +1512,7 @@
       "kind": "complete",
       "hints": [
         "onInterrupt takes a function returning the cleanup Effect. It runs only on interruption.",
-        "Effect.never.pipe(Effect.onInterrupt(() => Effect.sync(() => { log.push(\"cleanup\") })))"
+        "Effect.never.pipe(Effect.onInterrupt(() => ...))"
       ]
     },
     {
@@ -1521,7 +1521,7 @@
       "kind": "fix",
       "hints": [
         "The job is cut short by the interrupt. Mark it so interruption waits for it.",
-        "const task = Effect.uninterruptible(job)"
+        "Effect.uninterruptible(...) wraps an effect and returns an effect."
       ]
     },
     {
@@ -1548,7 +1548,7 @@
       "kind": "complete",
       "hints": [
         "forkScoped ties the fiber to the current Scope, so the type needs Scope.Scope in R.",
-        "Effect.gen(function*() { yield* Effect.forkScoped(worker) })"
+        "Effect.gen(function*() { yield* Effect.forkScoped(...) })"
       ]
     },
     {
@@ -1584,7 +1584,7 @@
       "kind": "complete",
       "hints": [
         "timeout takes a duration and adds a TimeoutError to the error channel.",
-        "slow.pipe(Effect.timeout(\"5 millis\"), Effect.catchTag(\"TimeoutError\", () => Effect.succeed(\"gave up\")))"
+        "slow.pipe(Effect.timeout(...), Effect.catchTag(\"TimeoutError\", () => ...))"
       ]
     },
     {
@@ -1593,7 +1593,7 @@
       "kind": "complete",
       "hints": [
         "timeoutOrElse takes one object: the duration and an orElse function.",
-        "slow.pipe(Effect.timeoutOrElse({ duration: \"5 millis\", orElse: () => Effect.succeed(\"fallback\") }))"
+        "slow.pipe(Effect.timeoutOrElse({ duration: ..., orElse: () => ... }))"
       ]
     },
     {
@@ -1737,7 +1737,7 @@
       "kind": "translate",
       "hints": [
         "tryPromise passes an AbortSignal to your try function. Interrupting the fiber aborts that signal.",
-        "Effect.tryPromise({ try: (signal) => slowFetch(signal), catch: () => \"failed\" })"
+        "Effect.tryPromise({ try: (signal) => ..., catch: () => ... })"
       ]
     },
     {
@@ -1863,7 +1863,7 @@
       "kind": "complete",
       "hints": [
         "Union takes an array of schemas. The input must fit at least one.",
-        "Schema.Union([Schema.String, Schema.Number])"
+        "Schema.Union([..., ...])"
       ]
     },
     {
@@ -1881,7 +1881,7 @@
       "kind": "complete",
       "hints": [
         "Put the rules inside .check(...) on the base schema. You can give it several.",
-        "Schema.String.check(Schema.isMinLength(3), Schema.isMaxLength(12), Schema.isPattern(/^[a-z0-9_]+$/))"
+        "Schema.String.check(Schema.isMinLength(...), Schema.isMaxLength(...), Schema.isPattern(...))"
       ]
     },
     {
@@ -1890,7 +1890,7 @@
       "kind": "complete",
       "hints": [
         "isInt() takes no arguments. isBetween takes an object with minimum and maximum.",
-        "Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))"
+        "Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: ..., maximum: ... }))"
       ]
     },
     {
@@ -1908,7 +1908,7 @@
       "kind": "complete",
       "hints": [
         "makeFilter takes a function from the value to: undefined when it is fine, or a message when it is not.",
-        "Schema.makeFilter((n: number) => (n % 2 === 0 ? undefined : \"must be even\"))"
+        "Schema.makeFilter((n: number) => ...)"
       ]
     },
     {
@@ -1926,7 +1926,7 @@
       "kind": "fix",
       "hints": [
         "loadUser wants a UserId, not any string. Turn the string into a UserId first.",
-        "loadUser(Schema.decodeUnknownSync(UserId)(\"u_7\"))"
+        "Decode the string with Schema.decodeUnknownSync(...) and pass the result to loadUser."
       ]
     },
     {
@@ -1980,7 +1980,7 @@
       "kind": "complete",
       "hints": [
         "Both are ready-made transformations. Attach each with Schema.decode.",
-        "Schema.String.pipe(Schema.decode(SchemaTransformation.trim()), Schema.decode(SchemaTransformation.toLowerCase()))"
+        "Schema.String.pipe(Schema.decode(SchemaTransformation.<one>()), Schema.decode(SchemaTransformation.<other>()))"
       ]
     },
     {
@@ -1988,8 +1988,8 @@
       "title": "A default when a field is missing",
       "kind": "complete",
       "hints": [
-        "Start from an optionalKey, then pipe it into withDecodingDefaultKey with an Effect that produces the default.",
-        "Schema.optionalKey(Schema.Number).pipe(Schema.withDecodingDefaultKey(Effect.succeed(3)))"
+        "Pipe the field's schema into withDecodingDefaultKey, with an Effect that produces the default.",
+        "Schema.Number.pipe(Schema.withDecodingDefaultKey(Effect.succeed(3)))"
       ]
     },
     {
@@ -1998,7 +1998,7 @@
       "kind": "fix",
       "hints": [
         "Settings.make({ host }) fails to compile because retries is required. Give retries a constructor default.",
-        "retries: Schema.Number.pipe(Schema.withConstructorDefault(Effect.succeed(3)))"
+        "retries: Schema.Number.pipe(Schema.withConstructorDefault(Effect.succeed(...)))"
       ]
     },
     {
@@ -2025,7 +2025,7 @@
       "kind": "fix",
       "hints": [
         "TaggedClass works like Class, but takes the tag as its first argument and adds the _tag field.",
-        "class Deposit extends Schema.TaggedClass<Deposit>()(\"Deposit\", { amount: Schema.Number }) {}"
+        "class Deposit extends Schema.TaggedClass<Deposit>()(\"...\", { ... }) {}"
       ]
     },
     {
@@ -2034,7 +2034,7 @@
       "kind": "fix",
       "hints": [
         "It has the same shape as TaggedClass: Schema.TaggedError<Self>()(tag, fields).",
-        "class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()(\"InsufficientFunds\", { needed: Schema.Number }) {}"
+        "class InsufficientFunds extends Schema.TaggedError<InsufficientFunds>()(\"...\", { ... }) {}"
       ]
     },
     {
@@ -2106,7 +2106,7 @@
       "kind": "complete",
       "hints": [
         "Stream.make takes the values. map and runCollect work like the ones you know.",
-        "Stream.make(1, 2, 3).pipe(Stream.map((n) => n * 2), Stream.runCollect)"
+        "Stream.make(...).pipe(Stream.map(...), Stream.runCollect)"
       ]
     },
     {
@@ -2124,7 +2124,7 @@
       "kind": "complete",
       "hints": [
         "take keeps the first n values, drop skips them.",
-        "Stream.range(1, 10).pipe(Stream.drop(2), Stream.take(3), Stream.runCollect)"
+        "Stream.range(1, 10).pipe(Stream.drop(...), Stream.take(...), Stream.runCollect)"
       ]
     },
     {
@@ -2133,7 +2133,7 @@
       "kind": "complete",
       "hints": [
         "iterate takes a starting value and a function from the current value to the next.",
-        "Stream.iterate(1, (n) => n * 2).pipe(Stream.take(6), Stream.runCollect)"
+        "Stream.iterate(..., (n) => ...).pipe(Stream.take(...), Stream.runCollect)"
       ]
     },
     {
@@ -2250,7 +2250,7 @@
       "kind": "complete",
       "hints": [
         "fromEffect runs the effect once per pull when combined with forever.",
-        "Stream.fromEffect(readSensor).pipe(Stream.forever, Stream.take(3), Stream.runCollect)"
+        "Stream.fromEffect(readSensor).pipe(Stream.forever, Stream.take(...), Stream.runCollect)"
       ]
     },
     {
@@ -2412,7 +2412,7 @@
       "kind": "complete",
       "hints": [
         "Pass a schedule AND a limit to retry. spaced waits the same time before each retry.",
-        "task.pipe(Effect.retry({ schedule: Schedule.spaced(\"1 second\"), times: 5 }))"
+        "task.pipe(Effect.retry({ schedule: Schedule.spaced(...), times: ... }))"
       ]
     },
     {
@@ -2421,7 +2421,7 @@
       "kind": "complete",
       "hints": [
         "exponential takes the first delay. Each following delay is twice as long.",
-        "task.pipe(Effect.retry({ schedule: Schedule.exponential(\"100 millis\"), times: 5 }))"
+        "task.pipe(Effect.retry({ schedule: Schedule.exponential(...), times: ... }))"
       ]
     },
     {
@@ -2430,7 +2430,7 @@
       "kind": "complete",
       "hints": [
         "upTo takes an options object with times, duration, or both.",
-        "Schedule.exponential(\"100 millis\").pipe(Schedule.upTo({ times: 3 }))"
+        "Schedule.exponential(...).pipe(Schedule.upTo({ ... }))"
       ]
     },
     {
@@ -2457,7 +2457,7 @@
       "kind": "complete",
       "hints": [
         "Give repeat a schedule for the pause and a limit for the count.",
-        "sample.pipe(Effect.repeat({ schedule: Schedule.spaced(\"1 second\"), times: 2 }))"
+        "sample.pipe(Effect.repeat({ schedule: Schedule.spaced(...), times: ... }))"
       ]
     },
     {
@@ -2520,7 +2520,7 @@
       "kind": "translate",
       "hints": [
         "Three polls means one run plus two repeats, one second apart.",
-        "poll.pipe(Effect.repeat({ schedule: Schedule.spaced(\"1 second\"), times: 2 }), Effect.asVoid)"
+        "poll.pipe(Effect.repeat({ schedule: Schedule.spaced(...), times: ... }), Effect.asVoid)"
       ]
     },
     {
@@ -2529,7 +2529,7 @@
       "kind": "translate",
       "hints": [
         "The loop, the counter and the sleep all collapse into a schedule.",
-        "call.pipe(Effect.retry({ schedule: Schedule.exponential(\"100 millis\"), times: 3 }))"
+        "call.pipe(Effect.retry({ schedule: Schedule.exponential(...), times: ... }))"
       ]
     },
     {
@@ -2565,7 +2565,7 @@
       "kind": "complete",
       "hints": [
         "withDefault is applied with pipe, and takes the default value.",
-        "Config.Int(\"RETRIES\").pipe(Config.withDefault(3))"
+        "Config.Int(\"RETRIES\").pipe(Config.withDefault(...))"
       ]
     },
     {
@@ -2583,7 +2583,7 @@
       "kind": "complete",
       "hints": [
         "Config.all takes an object of Configs, like Effect.all.",
-        "Config.all({ host: Config.String(\"HOST\"), port: Config.Port(\"PORT\") })"
+        "Config.all({ host: ..., port: ... })"
       ]
     },
     {
@@ -2592,7 +2592,7 @@
       "kind": "complete",
       "hints": [
         "nested takes the Config and the name of the group.",
-        "Config.nested(Config.all({ url: Config.String(\"url\"), pool: Config.Int(\"pool\") }), \"db\")"
+        "Config.nested(Config.all({ ... }), \"...\")"
       ]
     },
     {
@@ -2610,7 +2610,7 @@
       "kind": "complete",
       "hints": [
         "A bad or missing setting fails with a ConfigError, whose tag is \"ConfigError\".",
-        "Config.Port(\"PORT\").pipe(Effect.catchTag(\"ConfigError\", () => Effect.succeed(3000)))"
+        "Config.Port(\"PORT\").pipe(Effect.catchTag(\"ConfigError\", () => ...))"
       ]
     },
     {
@@ -2637,7 +2637,7 @@
       "kind": "complete",
       "hints": [
         "Config.schema takes a Schema.Struct whose fields are the setting names.",
-        "Config.schema(Schema.Struct({ HOST: Schema.String, PORT: Schema.NumberFromString }))"
+        "Config.schema(Schema.Struct({ ... }))"
       ]
     },
     {
@@ -2655,7 +2655,7 @@
       "kind": "translate",
       "hints": [
         "Each line of the plain version becomes one Config. Combine them with Config.all.",
-        "Config.all({ name: Config.String(\"APP_NAME\"), workers: Config.Int(\"WORKERS\").pipe(Config.withDefault(4)) })"
+        "Config.all({ name: ..., workers: ... })"
       ]
     },
     {
@@ -2682,7 +2682,7 @@
       "kind": "complete",
       "hints": [
         "annotateLogs applies to every log inside the program it wraps.",
-        "work.pipe(Effect.annotateLogs({ requestId: \"r-1\", user: \"ada\" }))"
+        "work.pipe(Effect.annotateLogs({ ... }))"
       ]
     },
     {
@@ -2691,7 +2691,7 @@
       "kind": "complete",
       "hints": [
         "withLogSpan takes a label. Every log inside carries it, with the elapsed time.",
-        "work.pipe(Effect.withLogSpan(\"checkout\"))"
+        "work.pipe(Effect.withLogSpan(\"...\"))"
       ]
     },
     {
@@ -2736,7 +2736,7 @@
       "kind": "complete",
       "hints": [
         "Count in tap for successes and tapError for failures.",
-        "Effect.tap(() => Metric.update(succeeded, 1)), Effect.tapError(() => Metric.update(failed, 1))"
+        "Effect.tap(() => Metric.update(..., 1)), Effect.tapError(() => Metric.update(..., 1))"
       ]
     },
     {

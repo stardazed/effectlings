@@ -2,7 +2,7 @@
 //#kind translate
 //#deepens Effect.acquireUseRelease
 //#hint The open is the acquire, the body of try is use, the finally block is release.
-//#hint Effect.acquireUseRelease(open(path), (file) => file.readLine(), (file) => file.close())
+//#hint Effect.acquireUseRelease(open(path), (file) => ..., (file) => ...)
 /**
  * Plain TypeScript:
  *
@@ -18,8 +18,6 @@
  * open, readLine and close already return Effects. Write firstLine.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface File {
   readonly readLine: () => Effect.Effect<string, string>

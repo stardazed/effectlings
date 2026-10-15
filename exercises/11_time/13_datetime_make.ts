@@ -11,8 +11,6 @@
  */
 // I AM NOT DONE
 import { DateTime, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const meeting: DateTime.Utc = todo()
 const parse = (input: string): Option.Option<DateTime.Utc> => todo()

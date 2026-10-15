@@ -12,8 +12,6 @@
  * (Defects are not ignored. Only expected failures are.)
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let attempts = 0
 const sendMetrics: Effect.Effect<void, string> = Effect.suspend(() => {

@@ -8,13 +8,9 @@
  * "loadOrder" span. The function returns "order-<id>".
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
 import { recordSpans } from "../../src/observe.ts"
-import { todo } from "../../src/todo.ts"
 
-const loadOrder = Effect.fn("loadOrder")(function*(id: number) {
-  return `order-${id}`
-})
+const loadOrder: (id: number) => Effect.Effect<string> = Effect.fn("loadOrder")((id: number) => Effect.succeed(`order-${id}`))
 
 const { spans, tracer } = recordSpans()
 check("result", await Effect.runPromise(loadOrder(7).pipe(Effect.withTracer(tracer))), "order-7")

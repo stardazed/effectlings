@@ -10,8 +10,6 @@
  * Goal: log "closed" after the stream, even though take cuts it short.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const cleanup = Effect.sync(() => { log.push("closed") })

@@ -8,10 +8,8 @@
  * Goal: start at 0, add 1 three times, then add 10 and return the result.
  */
 import { Effect, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const program = Effect.gen(function*() {
+const program: Effect.Effect<number> = Effect.gen(function*() {
   const counter = yield* Ref.make(0)
   yield* Ref.update(counter, (n) => n + 1)
   yield* Ref.update(counter, (n) => n + 1)

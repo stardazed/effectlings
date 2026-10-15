@@ -5,8 +5,6 @@
  * Goal: the same as before, in one call.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const slow = Effect.sleep("50 millis").pipe(Effect.as("finished"))
 

@@ -13,8 +13,6 @@
  *
  * Goal: ask for a hint, then fill in the hole.
  */
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const total: number = 2 + 3

@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Schema.isInt, Schema.isBetween
 //#hint isInt() takes no arguments. isBetween takes an object with minimum and maximum.
-//#hint Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))
+//#hint Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: ..., maximum: ... }))
 /**
  *   Schema.isInt()                              no fractional part
  *   Schema.isBetween({ minimum, maximum })      inside the range, ends included
@@ -10,11 +10,9 @@
  * Goal: an age is a whole number from 0 to 130.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
-const Age = Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))
+const Age: Schema.Codec<number> = Schema.Number.check(Schema.isInt(), Schema.isBetween({ minimum: 0, maximum: 130 }))
 //#exercise
 const Age: Schema.Codec<number> = todo()
 //#end

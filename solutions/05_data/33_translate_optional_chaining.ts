@@ -7,8 +7,6 @@
  * and `??` supplies the default.
  */
 import { Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 interface User {
   readonly address?: { readonly city?: string } | null

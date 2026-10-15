@@ -10,8 +10,6 @@
  * Goal: batches of 2.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const batches: Effect.Effect<Array<ReadonlyArray<number>>> = Stream.range(1, 5).pipe(

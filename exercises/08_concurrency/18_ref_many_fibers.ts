@@ -7,8 +7,6 @@
  */
 // I AM NOT DONE
 import { Effect, Ref } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const countTo = (n: number): Effect.Effect<number> => todo()
 

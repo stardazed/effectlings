@@ -5,8 +5,6 @@
  * Goal: accept ages of 18 or more. Younger ages fail with TooYoung.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class TooYoung extends Data.TaggedError("TooYoung")<{ readonly age: number }> {}
 

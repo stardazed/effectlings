@@ -10,12 +10,10 @@
  * Goal: log "body", register a finalizer that logs "cleanup", and finish with "done".
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 
-const program = Effect.scoped(
+const program: Effect.Effect<string> = Effect.scoped(
   Effect.gen(function*() {
     yield* Effect.addFinalizer(() => Effect.sync(() => { log.push("cleanup") }))
     log.push("body")

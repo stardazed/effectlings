@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Verbosity: Context.Reference<"quiet" | "loud"> = todo()
 

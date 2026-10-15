@@ -23,8 +23,6 @@
  * Goal: read HOST and describe it.
  */
 import { ConfigProvider, Config, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const describeHost: Effect.Effect<string, Config.ConfigError> = Effect.gen(function*() {

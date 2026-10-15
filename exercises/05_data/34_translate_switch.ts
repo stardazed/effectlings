@@ -13,8 +13,6 @@
  */
 // I AM NOT DONE
 import { Match } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Event =
   | { readonly _tag: "Click"; readonly x: number; readonly y: number }

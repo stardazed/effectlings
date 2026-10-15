@@ -10,8 +10,6 @@
  * Goal: use both.
  */
 import { Array as Arr } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const unique = (ns: ReadonlyArray<number>): Array<number> => Arr.dedupe(ns)

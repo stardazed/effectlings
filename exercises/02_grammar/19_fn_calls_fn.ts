@@ -6,12 +6,8 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
-const subtotal = Effect.fn("subtotal")(function*(unit: number, qty: number) {
-  return yield* Effect.succeed(unit * qty)
-})
+const subtotal = Effect.fn("subtotal")((unit: number, qty: number) => Effect.succeed(unit * qty))
 const shipping = Effect.succeed(5)
 
 const total: (unit: number, qty: number) => Effect.Effect<number> = todo()

@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const loadName = (id: number): Effect.Effect<string> => Effect.succeed(`user-${id}`)
 

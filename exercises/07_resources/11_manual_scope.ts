@@ -12,7 +12,6 @@
  */
 // I AM NOT DONE
 import { Effect, Exit, Scope } from "effect"
-import { check } from "../../src/check.ts"
 
 const log: Array<string> = []
 const connection = Effect.acquireRelease(

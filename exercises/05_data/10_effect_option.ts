@@ -9,8 +9,6 @@
  */
 // I AM NOT DONE
 import { Effect, Option } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const parseAge = (s: string): Effect.Effect<number, string> =>
   s !== "" && Number.isInteger(Number(s)) ? Effect.succeed(Number(s)) : Effect.fail(`not a number: ${s}`)

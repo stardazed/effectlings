@@ -15,15 +15,14 @@
  * for production and for local development.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Settings extends Context.Service<Settings, { readonly apiUrl: string }>()("Settings") {}
 
-const endpoint = Effect.fn("endpoint")(function*(path: string) {
-  const settings = yield* Settings
-  return `${settings.apiUrl}${path}`
-})
+const endpoint: (path: string) => Effect.Effect<string, never, Settings> =
+  Effect.fn("endpoint")(function*(path: string) {
+    const settings = yield* Settings
+    return `${settings.apiUrl}${path}`
+  })
 const prod: Layer.Layer<Settings> = Layer.succeed(Settings, Settings.of({ apiUrl: "https://prod.example.com" }))
 const local: Layer.Layer<Settings> = Layer.succeed(Settings, Settings.of({ apiUrl: "http://localhost:3000" }))
 

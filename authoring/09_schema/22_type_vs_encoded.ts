@@ -16,8 +16,6 @@
  * Goal: fix the two aliases.
  */
 import { Schema } from "effect"
-import { check } from "../../src/check.ts"
-import type { Equal, Expect } from "../../src/types.ts"
 
 const Order = Schema.Struct({
   qty: Schema.NumberFromString,

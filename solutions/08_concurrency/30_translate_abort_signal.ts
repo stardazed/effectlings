@@ -14,8 +14,6 @@
  * slowFetch is given. Write `request`.
  */
 import { Effect, Fiber } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let aborted = false
 const slowFetch = (signal: AbortSignal): Promise<string> =>

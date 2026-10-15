@@ -8,8 +8,6 @@
  * promise until it is run.
  */
 import { Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const fetchScore = (player: string): Promise<number> => Promise.resolve(player.length)
 const fetchRank = (player: string): Promise<number> =>

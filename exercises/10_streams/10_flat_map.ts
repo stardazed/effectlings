@@ -6,8 +6,6 @@
  */
 // I AM NOT DONE
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const expanded: Effect.Effect<Array<number>> = todo()
 

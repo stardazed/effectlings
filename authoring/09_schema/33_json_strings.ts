@@ -12,13 +12,11 @@
  * Goal: a schema from JSON text to a Person.
  */
 import { Schema } from "effect"
-import { check, thrown } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const Person = Schema.Struct({ name: Schema.String, age: Schema.Number })
 
 //#solution
-const PersonFromJson = Schema.fromJsonString(Person)
+const PersonFromJson: Schema.Codec<{ readonly name: string; readonly age: number }, string> = Schema.fromJsonString(Person)
 //#exercise
 const PersonFromJson: Schema.Codec<{ readonly name: string; readonly age: number }, string> = todo()
 //#end

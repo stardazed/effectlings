@@ -15,8 +15,6 @@
  * Goal: build a list of shapes and count the circles.
  */
 import { Data } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 type Shape = Data.TaggedEnum<{
   Circle: { readonly radius: number }

@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Stream.make, Stream.map, Stream.runCollect
 //#hint Stream.make takes the values. map and runCollect work like the ones you know.
-//#hint Stream.make(1, 2, 3).pipe(Stream.map((n) => n * 2), Stream.runCollect)
+//#hint Stream.make(...).pipe(Stream.map(...), Stream.runCollect)
 /**
  * An Effect produces ONE value. A Stream produces MANY, one after another,
  * possibly forever. Like an Effect, a Stream is only a description: nothing
@@ -16,8 +16,6 @@
  * Goal: double every number.
  */
 import { Effect, Stream } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const doubled: Effect.Effect<Array<number>> = Stream.make(1, 2, 3).pipe(

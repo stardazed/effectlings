@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.catchIf
 //#hint catchIf takes a predicate on the error, then a handler.
-//#hint get(status).pipe(Effect.catchIf((e) => e.status === 404, () => Effect.succeed("")))
+//#hint get(status).pipe(Effect.catchIf((e) => ..., () => ...))
 /**
  * Sometimes the tag is not enough. Effect.catchIf(predicate, handler)
  * handles only the errors for which the predicate is true. Everything
@@ -11,8 +11,6 @@
  * Goal: treat a 404 as an empty body. Any other status must still fail.
  */
 import { Data, Effect } from "effect"
-import { check, rejection } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class HttpError extends Data.TaggedError("HttpError")<{ readonly status: number }> {}
 

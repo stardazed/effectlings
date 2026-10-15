@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Config.withDefault, Config.Config
 //#hint withDefault is applied with pipe, and takes the default value.
-//#hint Config.Int("RETRIES").pipe(Config.withDefault(3))
+//#hint Config.Int("RETRIES").pipe(Config.withDefault(...))
 /**
  * A setting that is not provided normally fails. Config.withDefault(value)
  * supplies a fallback for a MISSING key:
@@ -17,8 +17,6 @@
  * Goal: retries defaults to 3.
  */
 import { ConfigProvider, Config, Effect, Exit } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 //#solution
 const retries: Config.Config<number> = Config.Int("RETRIES").pipe(Config.withDefault(3))

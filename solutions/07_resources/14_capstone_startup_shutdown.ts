@@ -7,8 +7,6 @@
  * "server down" when released. Then write appLayer by feeding it dbLayer.
  */
 import { Context, Effect, Layer } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 

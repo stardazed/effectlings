@@ -14,14 +14,12 @@
  * Goal: start `job` detached and finish with "started" right away.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 const log: Array<string> = []
 const job = Effect.sleep("10 millis").pipe(Effect.tap(() => Effect.sync(() => { log.push("job done") })))
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<string> = Effect.gen(function*() {
   yield* Effect.forkDetach(job)
   return "started"
 })

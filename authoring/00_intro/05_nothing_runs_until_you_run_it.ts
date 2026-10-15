@@ -2,7 +2,7 @@
 //#kind complete
 //#teaches Effect.sync
 //#hint Effect.sync takes a function. Put the counter update inside it.
-//#hint Effect.sync(() => { calls += 1 })
+//#hint Effect.sync(() => { ... })
 /**
  * Effect.sync(() => ...) describes a program that calls your function
  * each time the program is run. Building the effect calls nothing.
@@ -12,8 +12,6 @@
  * every run does the work again.
  */
 import { Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 let calls = 0
 

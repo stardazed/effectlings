@@ -11,15 +11,13 @@
  * Notice the type: Effect<string, never, Logger>. The requirement is in the type.
  */
 import { Context, Effect } from "effect"
-import { check } from "../../src/check.ts"
-import { todo } from "../../src/todo.ts"
 
 class Logger extends Context.Service<Logger, {
   readonly log: (line: string) => Effect.Effect<void>
 }>()("Logger") {}
 
 //#solution
-const program = Effect.gen(function*() {
+const program: Effect.Effect<string, never, Logger> = Effect.gen(function*() {
   const logger = yield* Logger
   yield* logger.log("start")
   yield* logger.log("end")
